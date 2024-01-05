@@ -34,5 +34,24 @@ namespace HK.UnitySequencerSystem
                 // Do nothing
             }
         }
+
+        public async UniTask PlayLoopAsync(PlayerLoopTiming playerLoopTiming, CancellationToken cancellationToken)
+        {
+            try
+            {
+                while (!cancellationToken.IsCancellationRequested)
+                {
+                    foreach (var s in this.sequences)
+                    {
+                        await s.PlayAsync(this.container, cancellationToken);
+                    }
+                    await UniTask.Yield(playerLoopTiming, cancellationToken: cancellationToken);
+                }
+            }
+            catch (OperationCanceledException)
+            {
+                // Do nothing
+            }
+        }
     }
 }

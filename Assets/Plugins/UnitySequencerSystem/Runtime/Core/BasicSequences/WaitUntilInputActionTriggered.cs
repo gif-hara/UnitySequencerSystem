@@ -10,7 +10,7 @@ namespace HK.UnitySequencerSystem
     /// <see cref="InputAction"/>のトリガーを待機するシーケンス
     /// </summary>
     [Serializable]
-    public sealed class WaitInputActionTriggered : ISequence
+    public sealed class WaitUntilInputActionTriggered : ISequence
     {
         [SerializeField]
         private InputActionReference inputActionReference;
@@ -18,11 +18,11 @@ namespace HK.UnitySequencerSystem
         [SerializeField]
         private PlayerLoopTiming playerLoopTiming = PlayerLoopTiming.Update;
 
-        public WaitInputActionTriggered()
+        public WaitUntilInputActionTriggered()
         {
         }
 
-        public WaitInputActionTriggered(InputActionReference inputActionReference, PlayerLoopTiming playerLoopTiming = PlayerLoopTiming.Update)
+        public WaitUntilInputActionTriggered(InputActionReference inputActionReference, PlayerLoopTiming playerLoopTiming = PlayerLoopTiming.Update)
         {
             this.inputActionReference = inputActionReference;
             this.playerLoopTiming = playerLoopTiming;

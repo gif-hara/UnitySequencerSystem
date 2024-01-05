@@ -9,7 +9,7 @@ namespace HK.UnitySequencerSystem
     /// キー入力を待機するシーケンス
     /// </summary>
     [Serializable]
-    public sealed class WaitLegacyInput : ISequence
+    public sealed class WaitUntilLegacyInput : ISequence
     {
         public enum InputKeyType
         {
@@ -24,11 +24,11 @@ namespace HK.UnitySequencerSystem
         [SerializeField]
         private KeyCode keyCode;
 
-        public WaitLegacyInput()
+        public WaitUntilLegacyInput()
         {
         }
 
-        public WaitLegacyInput(InputKeyType keyPushType, KeyCode keyCode)
+        public WaitUntilLegacyInput(InputKeyType keyPushType, KeyCode keyCode)
         {
             this.keyPushType = keyPushType;
             this.keyCode = keyCode;

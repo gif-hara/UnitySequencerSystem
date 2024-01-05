@@ -14,6 +14,10 @@ namespace HK.UnitySequencerSystem
         [SerializeField]
         private string message;
 
+        public Log()
+        {
+        }
+
         public Log(string message)
         {
             this.message = message;

@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace HK.UnitySequencerSystem
@@ -20,9 +22,10 @@ namespace HK.UnitySequencerSystem
         async void Start()
         {
             var container = new Container();
-            container.Register(target.name, target);
+            container.Register(target.name, target.transform);
+            container.Register("MyDeltaTime", new Func<float>(() => 0.01f));
             var sequencer = new Sequencer(container, this.sequences);
-            await sequencer.PlayAsync(scope.Token);
+            await sequencer.PlayLoopAsync(PlayerLoopTiming.Update, scope.Token);
             Debug.Log("end");
         }
 

@@ -7,14 +7,6 @@
       "dependencies": {},
       "hash": "5cc97c7f0085624b6ef57853d70b404440060cef"
     },
-    "com.hk.unitysequencersystem": {
-      "version": "file:UnitySequencerSystem",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {
-        "com.cysharp.unitask": "2.3.3"
-      }
-    },
     "com.unity.collab-proxy": {
       "version": "2.2.0",
       "depth": 0,

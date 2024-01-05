@@ -1,0 +1,55 @@
+using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
+using UnityEngine;
+
+namespace HK.UnitySequencerSystem
+{
+    /// <summary>
+    /// <see cref="Transform"/>の座標を設定するシーケンス
+    /// </summary>
+    [Serializable]
+    public sealed class TransformSetPosition : ISequence
+    {
+        [SerializeField]
+        private string targetName;
+
+        [SerializeField]
+        private Vector3 position;
+
+        [SerializeField]
+        private CoordinateType coordinateType;
+
+        public enum CoordinateType
+        {
+            World,
+            Local,
+        }
+
+        public TransformSetPosition()
+        {
+        }
+
+        public TransformSetPosition(string targetName)
+        {
+            this.targetName = targetName;
+        }
+
+        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        {
+            var target = container.Resolve<GameObject>(this.targetName);
+            switch (this.coordinateType)
+            {
+                case CoordinateType.World:
+                    target.transform.position = this.position;
+                    break;
+                case CoordinateType.Local:
+                    target.transform.localPosition = this.position;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            return UniTask.CompletedTask;
+        }
+    }
+}

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine.Assertions;
 
 namespace HK.UnitySequencerSystem
 {
@@ -30,11 +31,14 @@ namespace HK.UnitySequencerSystem
 
         public T Resolve<T>()
         {
+            Assert.IsTrue(this.data.ContainsKey(typeof(T)), $"{typeof(T)} is not registered.");
             return (T)this.data[typeof(T)];
         }
 
         public T Resolve<T>(string name)
         {
+            Assert.IsTrue(this.namedData.ContainsKey(typeof(T)), $"{typeof(T)} is not registered.");
+            Assert.IsTrue(this.namedData[typeof(T)].ContainsKey(name), $"{typeof(T)} {name} is not registered.");
             return (T)this.namedData[typeof(T)][name];
         }
     }

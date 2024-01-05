@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
@@ -5,7 +6,7 @@ using Cysharp.Threading.Tasks;
 namespace HK.UnitySequencerSystem
 {
     /// <summary>
-    /// シーケンサーを表すクラス
+    /// <see cref="ISequence"/>を順番に実行するクラス
     /// </summary>
     public sealed class Sequencer
     {
@@ -21,9 +22,16 @@ namespace HK.UnitySequencerSystem
 
         public async UniTask PlayAsync(CancellationToken cancellationToken)
         {
-            foreach (var s in this.sequences)
+            try
             {
-                await s.PlayAsync(this.container, cancellationToken);
+                foreach (var s in this.sequences)
+                {
+                    await s.PlayAsync(this.container, cancellationToken);
+                }
+            }
+            catch (OperationCanceledException)
+            {
+                // Do nothing
             }
         }
     }

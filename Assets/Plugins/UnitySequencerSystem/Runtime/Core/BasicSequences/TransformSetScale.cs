@@ -21,10 +21,10 @@ namespace HK.UnitySequencerSystem
         {
         }
 
-        public TransformSetScale(string targetName, Vector3 scal)
+        public TransformSetScale(string targetName, Vector3 scale)
         {
             this.targetName = targetName;
-            this.scale = scal;
+            this.scale = scale;
         }
 
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)

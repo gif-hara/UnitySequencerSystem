@@ -30,9 +30,11 @@ namespace HK.UnitySequencerSystem
         {
         }
 
-        public TransformSetPosition(string targetName)
+        public TransformSetPosition(string targetName, Vector3 position, CoordinateType coordinateType)
         {
             this.targetName = targetName;
+            this.position = position;
+            this.coordinateType = coordinateType;
         }
 
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)

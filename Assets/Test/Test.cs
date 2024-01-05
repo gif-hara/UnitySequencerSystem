@@ -1,18 +1,22 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test : MonoBehaviour
+namespace HK.UnitySequencerSystem
 {
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// 
+    /// </summary>
+    public class Test : MonoBehaviour
     {
-        
-    }
+        [SerializeReference, SubclassSelector(typeof(ISequence))]
+        private List<ISequence> sequences = default;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        async void Start()
+        {
+            var container = new Container();
+            var sequencer = new Sequencer(container, this.sequences);
+            await sequencer.PlayAsync(this.destroyCancellationToken);
+            Debug.Log("end");
+        }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace HK.UnitySequencerSystem
 {
     /// <summary>
-    /// <see cref="Transform"/>の回転を設定するシーケンス
+    /// <see cref="Transform"/>の大きさを設定するシーケンス
     /// </summary>
     [Serializable]
     public sealed class TransformSetScale : ISequence

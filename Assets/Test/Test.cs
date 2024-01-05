@@ -12,11 +12,15 @@ namespace HK.UnitySequencerSystem
         [SerializeReference, SubclassSelector(typeof(ISequence))]
         private List<ISequence> sequences = default;
 
+        [SerializeField]
+        private GameObject target = default;
+
         private CancellationTokenSource scope = new();
 
         async void Start()
         {
             var container = new Container();
+            container.Register(target.name, target);
             var sequencer = new Sequencer(container, this.sequences);
             await sequencer.PlayAsync(scope.Token);
             Debug.Log("end");

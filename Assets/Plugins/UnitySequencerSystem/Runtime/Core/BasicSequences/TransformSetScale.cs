@@ -29,8 +29,8 @@ namespace HK.UnitySequencerSystem
 
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
-            var target = container.Resolve<GameObject>(this.targetName);
-            target.transform.localScale = this.scale;
+            var target = container.Resolve<Transform>(this.targetName);
+            target.localScale = this.scale;
             return UniTask.CompletedTask;
         }
     }

@@ -39,14 +39,14 @@ namespace HK.UnitySequencerSystem
 
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
-            var target = container.Resolve<GameObject>(this.targetName);
+            var target = container.Resolve<Transform>(this.targetName);
             switch (this.coordinateType)
             {
                 case CoordinateType.World:
-                    target.transform.rotation = Quaternion.Euler(this.rotation);
+                    target.rotation = Quaternion.Euler(this.rotation);
                     break;
                 case CoordinateType.Local:
-                    target.transform.localRotation = Quaternion.Euler(this.rotation);
+                    target.localRotation = Quaternion.Euler(this.rotation);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

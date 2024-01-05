@@ -60,7 +60,7 @@ namespace HK.UnitySequencerSystem
 
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
-            var target = container.Resolve<GameObject>(this.targetName);
+            var target = container.Resolve<Transform>(this.targetName);
             var deltaTime = this.timeType switch
             {
                 TimeType.DeltaTime => Time.deltaTime,
@@ -71,10 +71,10 @@ namespace HK.UnitySequencerSystem
             switch (this.coordinateType)
             {
                 case CoordinateType.World:
-                    target.transform.position += this.position * deltaTime;
+                    target.position += this.position * deltaTime;
                     break;
                 case CoordinateType.Local:
-                    target.transform.localPosition += this.position * deltaTime;
+                    target.localPosition += this.position * deltaTime;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

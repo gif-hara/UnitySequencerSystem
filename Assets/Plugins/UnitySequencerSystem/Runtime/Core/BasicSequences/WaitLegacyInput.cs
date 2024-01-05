@@ -24,6 +24,10 @@ namespace HK.UnitySequencerSystem
         [SerializeField]
         private KeyCode keyCode;
 
+        public WaitLegacyInput()
+        {
+        }
+
         public WaitLegacyInput(InputKeyType keyPushType, KeyCode keyCode)
         {
             this.keyPushType = keyPushType;

@@ -22,9 +22,10 @@ namespace HK.UnitySequencerSystem
         {
         }
 
-        public WaitInputActionTriggered(InputActionReference inputActionReference)
+        public WaitInputActionTriggered(InputActionReference inputActionReference, PlayerLoopTiming playerLoopTiming = PlayerLoopTiming.Update)
         {
             this.inputActionReference = inputActionReference;
+            this.playerLoopTiming = playerLoopTiming;
         }
 
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)

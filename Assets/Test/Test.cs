@@ -12,10 +12,10 @@ namespace HK.UnitySequencerSystem
     /// </summary>
     public class Test : MonoBehaviour
     {
-        [SerializeReference, SubclassSelector(typeof(ISequence))]
+        [SerializeReference, SubclassSelector()]
         private List<ISequence> runOnceSequences = default;
 
-        [SerializeReference, SubclassSelector(typeof(ISequence))]
+        [SerializeReference, SubclassSelector()]
         private List<ISequence> runLoopSequences = default;
 
         [SerializeField]
@@ -31,9 +31,7 @@ namespace HK.UnitySequencerSystem
             // シーケンスを定義する
             var sequences = new List<ISequence>
             {
-                new Log("Start Press Any Key"),
                 new WaitUntilLegacyInput(WaitUntilLegacyInput.InputKeyType.Down, KeyCode.Space),
-                new Log("Press Space")
             };
 
             // シーケンスが参照するコンテナを定義する（今回は何も登録しない）
@@ -45,7 +43,6 @@ namespace HK.UnitySequencerSystem
             // シーケンスを実行する（終了するまで待機可能）
             await sequencer.PlayAsync(this.destroyCancellationToken);
 
-            Debug.Log("End");
 
             var _container = new Container();
             _container.Register(target.name, target.transform);

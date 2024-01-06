@@ -222,7 +222,7 @@ Transform:
   m_GameObject: {fileID: 324719449}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.2271986, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -501,42 +501,95 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runOnceSequences:
-  - rid: 2598803618080751624
-  - rid: 2598803618080751625
-  - rid: 2598803618080751627
+  - rid: 2598803633371611146
   runLoopSequences:
-  - rid: 2598803618080751628
+  - rid: 2598803633371611154
+  - rid: 2598803633371611160
+  - rid: 2598803633371611164
   target: {fileID: 324719449}
-  texts:
-  - {fileID: 613766085}
+  texts: []
   references:
     version: 2
     RefIds:
-    - rid: 2598803618080751624
-      type: {class: TMP_TextSetText, ns: HK.UnitySequencerSystem, asm: Assembly-CSharp-firstpass}
+    - rid: 2598803633371611146
+      type: {class: TransformSetPosition, ns: HK.UnitySequencerSystem, asm: UnitySequencerSystem}
       data:
-        targetName: Message
-        text: 'Hello UnitySequencerSystem!
-
-          Press space key!'
-    - rid: 2598803618080751625
-      type: {class: WaitUntilInputActionTriggered, ns: HK.UnitySequencerSystem, asm: Assembly-CSharp-firstpass}
-      data:
-        inputActionReference: {fileID: -4645572261985993768, guid: 605fe3ce988f2ed49b9fab56a90b0193, type: 3}
-        playerLoopTiming: 8
-    - rid: 2598803618080751627
-      type: {class: TMP_TextSetText, ns: HK.UnitySequencerSystem, asm: Assembly-CSharp-firstpass}
-      data:
-        targetName: Message
-        text: The space key was pressed!
-    - rid: 2598803618080751628
-      type: {class: TransformAddRotation, ns: HK.UnitySequencerSystem, asm: Assembly-CSharp-firstpass}
-      data:
-        targetName: Cube
-        rotation: {x: 36, y: 93, z: 0}
+        targetResolver:
+          rid: 2598803633371611151
+        positionResolver:
+          rid: 2598803633371611153
         coordinateType: 0
-        timeType: 0
-        manualDeltaTimeName: 
+    - rid: 2598803633371611151
+      type: {class: TransformResolver/NameTransform, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: Cube
+    - rid: 2598803633371611153
+      type: {class: Vector3Resolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {x: 0, y: 0, z: 0}
+    - rid: 2598803633371611154
+      type: {class: TransformAddPosition, ns: HK.UnitySequencerSystem, asm: UnitySequencerSystem}
+      data:
+        targetResolver:
+          rid: 2598803633371611155
+        positionResolver:
+          rid: 2598803633371611156
+        deltaTimeResolver:
+          rid: 2598803633371611159
+        coordinateType: 0
+    - rid: 2598803633371611155
+      type: {class: TransformResolver/ReferenceTransform, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        target: {fileID: 324719453}
+    - rid: 2598803633371611156
+      type: {class: Vector3Resolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {x: 1, y: 0, z: 0}
+    - rid: 2598803633371611159
+      type: {class: DeltaTimeResolver/UnityEngineUnscaledTime, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data: 
+    - rid: 2598803633371611160
+      type: {class: TransformAddRotation, ns: HK.UnitySequencerSystem, asm: UnitySequencerSystem}
+      data:
+        targetResolver:
+          rid: 2598803633371611161
+        rotationResolver:
+          rid: 2598803633371611162
+        deltaTimeResolver:
+          rid: 2598803633371611163
+        coordinateType: 0
+    - rid: 2598803633371611161
+      type: {class: TransformResolver/ReferenceTransform, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        target: {fileID: 324719453}
+    - rid: 2598803633371611162
+      type: {class: Vector3Resolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {x: 360, y: 0, z: 0}
+    - rid: 2598803633371611163
+      type: {class: DeltaTimeResolver/UnityEngineDeltaTime, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data: 
+    - rid: 2598803633371611164
+      type: {class: TransformAddScale, ns: HK.UnitySequencerSystem, asm: UnitySequencerSystem}
+      data:
+        targetResolver:
+          rid: 2598803633371611165
+        scaleResolver:
+          rid: 2598803633371611166
+        deltaTimeResolver:
+          rid: 2598803633371611184
+    - rid: 2598803633371611165
+      type: {class: TransformResolver/ReferenceTransform, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        target: {fileID: 324719453}
+    - rid: 2598803633371611166
+      type: {class: Vector3Resolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {x: 3, y: 0, z: 0}
+    - rid: 2598803633371611184
+      type: {class: DeltaTimeResolver/Func, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: MyDeltaTime
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

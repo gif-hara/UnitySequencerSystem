@@ -57,10 +57,10 @@ namespace HK.UnitySequencerSystem
             }
         }
 
-        private async UniTask PlayAsync(ISequence sequence, CancellationToken cancellationToken)
+        private UniTask PlayAsync(ISequence sequence, CancellationToken cancellationToken)
         {
             Assert.IsNotNull(sequence, $"[{nameof(Sequencer)}] {nameof(sequence)} is null");
-            await sequence.PlayAsync(this.container, cancellationToken);
+            return sequence.PlayAsync(this.container, cancellationToken);
         }
     }
 }

@@ -40,5 +40,10 @@ public class Test : MonoBehaviour
 }
 ```
 
+# 思想
+- `ISequence`は特定のオブジェクトの参照は持ちません
+  - 代わりに`Container`にオブジェクトの参照を持たせます
+  - `ISequence`は自分自身の仕事をこなすためのデータのみを持ち、必要な参照は`Container`から取得する方式を取っています
+
 # 基本機能
 - TODO

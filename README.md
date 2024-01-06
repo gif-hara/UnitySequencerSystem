@@ -81,3 +81,25 @@ public class TestLog : MonoBehaviour
 ```
 
 ### Delay
+- 与えられた秒数待機します
+```csharp
+using System.Collections.Generic;
+using HK.UnitySequencerSystem;
+using UnityEngine;
+
+public class Test : MonoBehaviour
+{
+    async void Start()
+    {
+        var sequences = new List<ISequence>
+        {
+            new Log("Begin"),
+            new Delay(1.0f),
+            new Log("One second has passed"),
+        };
+        var container = new Container();
+        var sequencer = new Sequencer(container, sequences);
+        await sequencer.PlayAsync(this.destroyCancellationToken);
+    }
+}
+```

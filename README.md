@@ -42,6 +42,12 @@ public class Test : MonoBehaviour
 }
 ```
 
+## 入門
+- UPM Managerにて配布しています
+```
+https://github.com/gif-hara/UnitySequencerSystem.git?path=Assets\Plugins\UnitySequencerSystem
+```
+
 ## 思想
 - `ISequence`は特定のオブジェクトの参照は持ちません
   - 代わりに`Container`にオブジェクトの参照を持たせます
@@ -74,4 +80,4 @@ public class TestLog : MonoBehaviour
 }
 ```
 
-## 
+### Delay

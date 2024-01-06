@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using UnityEngine.Assertions;
 
 namespace HK.UnitySequencerSystem
 {
@@ -16,6 +17,8 @@ namespace HK.UnitySequencerSystem
 
         public Sequencer(Container container, IEnumerable<ISequence> sequences)
         {
+            Assert.IsNotNull(container, $"[{nameof(Sequencer)}] {nameof(container)} is null");
+            Assert.IsNotNull(sequences, $"[{nameof(Sequencer)}] {nameof(sequences)} is null");
             this.container = container;
             this.sequences = sequences;
         }
@@ -26,7 +29,7 @@ namespace HK.UnitySequencerSystem
             {
                 foreach (var s in this.sequences)
                 {
-                    await s.PlayAsync(this.container, cancellationToken);
+                    await PlayAsync(s, cancellationToken);
                 }
             }
             catch (OperationCanceledException)
@@ -43,7 +46,7 @@ namespace HK.UnitySequencerSystem
                 {
                     foreach (var s in this.sequences)
                     {
-                        await s.PlayAsync(this.container, cancellationToken);
+                        await PlayAsync(s, cancellationToken);
                     }
                     await UniTask.Yield(playerLoopTiming, cancellationToken: cancellationToken);
                 }
@@ -52,6 +55,12 @@ namespace HK.UnitySequencerSystem
             {
                 // Do nothing
             }
+        }
+
+        private async UniTask PlayAsync(ISequence sequence, CancellationToken cancellationToken)
+        {
+            Assert.IsNotNull(sequence, $"[{nameof(Sequencer)}] {nameof(sequence)} is null");
+            await sequence.PlayAsync(this.container, cancellationToken);
         }
     }
 }

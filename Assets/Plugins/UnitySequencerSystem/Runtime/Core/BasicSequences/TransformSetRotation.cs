@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using HK.UnitySequencerSystem.Resolvers;
 using UnityEngine;
 
 namespace HK.UnitySequencerSystem
@@ -12,10 +13,10 @@ namespace HK.UnitySequencerSystem
     public sealed class TransformSetRotation : ISequence
     {
         [SerializeField]
-        private string targetName;
+        private TransformResolver targetResolver;
 
         [SerializeField]
-        private Vector3 rotation;
+        private Vector3Resolver rotationResolver;
 
         [SerializeField]
         private CoordinateType coordinateType;
@@ -30,23 +31,24 @@ namespace HK.UnitySequencerSystem
         {
         }
 
-        public TransformSetRotation(string targetName, Vector3 rotation, CoordinateType coordinateType)
+        public TransformSetRotation(TransformResolver targetResolver, Vector3Resolver rotationResolver, CoordinateType coordinateType)
         {
-            this.targetName = targetName;
-            this.rotation = rotation;
+            this.targetResolver = targetResolver;
+            this.rotationResolver = rotationResolver;
             this.coordinateType = coordinateType;
         }
 
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
-            var target = container.Resolve<Transform>(this.targetName);
+            var target = this.targetResolver.Resolve(container);
+            var rotation = this.rotationResolver.Resolve(container);
             switch (this.coordinateType)
             {
                 case CoordinateType.World:
-                    target.rotation = Quaternion.Euler(this.rotation);
+                    target.rotation = Quaternion.Euler(rotation);
                     break;
                 case CoordinateType.Local:
-                    target.localRotation = Quaternion.Euler(this.rotation);
+                    target.localRotation = Quaternion.Euler(rotation);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

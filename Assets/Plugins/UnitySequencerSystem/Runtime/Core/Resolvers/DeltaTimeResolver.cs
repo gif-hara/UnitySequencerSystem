@@ -45,5 +45,29 @@ namespace HK.UnitySequencerSystem.Resolvers
                 return Time.unscaledDeltaTime;
             }
         }
+
+        [Serializable]
+        public sealed class Name : DeltaTimeResolver
+        {
+            [SerializeField]
+            private string name;
+
+            public override float Resolve(Container container)
+            {
+                return container.Resolve<float>(name);
+            }
+        }
+
+        [Serializable]
+        public sealed class Func : DeltaTimeResolver
+        {
+            [SerializeField]
+            private string name;
+
+            public override float Resolve(Container container)
+            {
+                return container.Resolve<Func<float>>(name)();
+            }
+        }
     }
 }

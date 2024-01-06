@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using HK.UnitySequencerSystem.Resolvers;
 using UnityEngine;
 
 namespace HK.UnitySequencerSystem
@@ -8,56 +9,40 @@ namespace HK.UnitySequencerSystem
     /// <summary>
     /// <see cref="Transform"/>の大きさを加算するシーケンス
     /// </summary>
+    [AddTypeMenu("Transform/AddScale")]
     [Serializable]
     public sealed class TransformAddScale : ISequence
     {
-        [SerializeField]
-        private string targetName;
+        [SerializeReference, SubclassSelector]
+        private TransformResolver targetResolver;
 
-        [SerializeField]
-        private Vector3 scale;
+        [SerializeReference, SubclassSelector]
+        private Vector3Resolver scaleResolver;
 
-        [SerializeField]
-        private TimeType timeType;
-
-        [SerializeField]
-        private string manualDeltaTimeName;
-
-        public enum TimeType
-        {
-            DeltaTime,
-            UnscaledDeltaTime,
-            Manual,
-        }
+        [SerializeReference, SubclassSelector]
+        private DeltaTimeResolver deltaTimeResolver;
 
         public TransformAddScale()
         {
         }
 
         public TransformAddScale(
-            string targetName,
-            Vector3 scale,
-            TimeType timeType,
-            string manualDeltaTimeName
+            TransformResolver targetResolver,
+            Vector3Resolver scaleResolver,
+            DeltaTimeResolver deltaTimeResolver
             )
         {
-            this.targetName = targetName;
-            this.scale = scale;
-            this.timeType = timeType;
-            this.manualDeltaTimeName = manualDeltaTimeName;
+            this.targetResolver = targetResolver;
+            this.scaleResolver = scaleResolver;
+            this.deltaTimeResolver = deltaTimeResolver;
         }
 
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
-            var target = container.Resolve<Transform>(this.targetName);
-            var deltaTime = this.timeType switch
-            {
-                TimeType.DeltaTime => Time.deltaTime,
-                TimeType.UnscaledDeltaTime => Time.unscaledDeltaTime,
-                TimeType.Manual => container.Resolve<Func<float>>(this.manualDeltaTimeName)(),
-                _ => throw new ArgumentOutOfRangeException()
-            };
-            target.localScale += this.scale * deltaTime;
+            var target = this.targetResolver.Resolve(container);
+            var scale = this.scaleResolver.Resolve(container);
+            var deltaTime = this.deltaTimeResolver.Resolve(container);
+            target.localScale += scale * deltaTime;
             return UniTask.CompletedTask;
         }
     }

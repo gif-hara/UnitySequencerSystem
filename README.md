@@ -49,6 +49,7 @@ public class Test : MonoBehaviour
 - UPM Managerにて配布しています。
   - また以下のプラグインに依存しています。インストールする際は以下も同時にインストールをお願いします
     - [UniTask](https://github.com/Cysharp/UniTask)
+    - [Unity-SerializeReferenceExtensions](https://github.com/mackysoft/Unity-SerializeReferenceExtensions)
     - TextMeshPro
     - InputSystem
 ```

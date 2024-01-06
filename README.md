@@ -5,7 +5,7 @@
 ![7sf4z-9zasm (1)](https://github.com/gif-hara/UnitySequencerSystem/assets/5396546/f9dca682-43f8-42eb-a349-a6c4c0e4970a)
 
 # 目次
-1. [どうやって使うの？](#どうやって使うの？)
+1. [どうやって使うの？](#どうやって使うの)
 2. [基本機能](#基本機能)
 
 # どうやって使うの？

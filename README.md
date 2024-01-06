@@ -21,9 +21,9 @@ public class Test : MonoBehaviour
         // シーケンスを定義する
         var sequences = new List<ISequence>
         {
-            new Log("Start Press Any Key"),
+            new Log("Start Press Space Key"),
             new WaitUntilLegacyInput(WaitUntilLegacyInput.InputKeyType.Down, KeyCode.Space),
-            new Log("Press Space")
+            new Log("Pressed Space!")
         };
     
         // シーケンスが参照するコンテナを定義する（今回は何も登録しない）

@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using HK.UnitySequencerSystem.Resolvers;
 using UnityEngine;
 
 namespace HK.UnitySequencerSystem
@@ -8,23 +9,21 @@ namespace HK.UnitySequencerSystem
     /// <summary>
     /// <see cref="Transform"/>の回転を加算するシーケンス
     /// </summary>
+    [AddTypeMenu("Transform/AddRotation")]
     [Serializable]
     public sealed class TransformAddRotation : ISequence
     {
-        [SerializeField]
-        private string targetName;
+        [SerializeReference, SubclassSelector]
+        private TransformResolver targetResolver;
 
-        [SerializeField]
-        private Vector3 rotation;
+        [SerializeReference, SubclassSelector]
+        private Vector3Resolver rotationResolver;
+
+        [SerializeReference, SubclassSelector]
+        private DeltaTimeResolver deltaTimeResolver;
 
         [SerializeField]
         private CoordinateType coordinateType;
-
-        [SerializeField]
-        private TimeType timeType;
-
-        [SerializeField]
-        private string manualDeltaTimeName;
 
         public enum CoordinateType
         {
@@ -32,49 +31,35 @@ namespace HK.UnitySequencerSystem
             Local,
         }
 
-        public enum TimeType
-        {
-            DeltaTime,
-            UnscaledDeltaTime,
-            Manual,
-        }
-
         public TransformAddRotation()
         {
         }
 
         public TransformAddRotation(
-            string targetName,
-            Vector3 rotation,
-            CoordinateType coordinateType,
-            TimeType timeType,
-            string manualDeltaTimeName
+            TransformResolver targetResolver,
+            Vector3Resolver rotationResolver,
+            DeltaTimeResolver deltaTimeResolver,
+            CoordinateType coordinateType
             )
         {
-            this.targetName = targetName;
-            this.rotation = rotation;
+            this.targetResolver = targetResolver;
+            this.rotationResolver = rotationResolver;
+            this.deltaTimeResolver = deltaTimeResolver;
             this.coordinateType = coordinateType;
-            this.timeType = timeType;
-            this.manualDeltaTimeName = manualDeltaTimeName;
         }
 
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
-            var target = container.Resolve<Transform>(this.targetName);
-            var deltaTime = this.timeType switch
-            {
-                TimeType.DeltaTime => Time.deltaTime,
-                TimeType.UnscaledDeltaTime => Time.unscaledDeltaTime,
-                TimeType.Manual => container.Resolve<Func<float>>(this.manualDeltaTimeName)(),
-                _ => throw new ArgumentOutOfRangeException()
-            };
+            var target = this.targetResolver.Resolve(container);
+            var rotation = this.rotationResolver.Resolve(container);
+            var deltaTime = this.deltaTimeResolver.Resolve(container);
             switch (this.coordinateType)
             {
                 case CoordinateType.World:
-                    target.rotation *= Quaternion.Euler(this.rotation * deltaTime);
+                    target.rotation *= Quaternion.Euler(rotation * deltaTime);
                     break;
                 case CoordinateType.Local:
-                    target.localRotation *= Quaternion.Euler(this.rotation * deltaTime);
+                    target.localRotation *= Quaternion.Euler(rotation * deltaTime);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

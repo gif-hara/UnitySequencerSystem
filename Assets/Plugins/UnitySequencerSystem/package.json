@@ -3,11 +3,11 @@
   "displayName": "UnitySequencerSystem",
   "version": "0.0.1",
   "unity": "2022.3",
-  "description": "This is UnitySequencerSystem",
+  "description": "Capable of building a simple sequence system",
   "author": {
     "name": "HK"
   },
   "dependencies": {
-    "com.cysharp.unitask": "2.3.3"
+    "com.cysharp.unitask": "2.5.0"
   }
 }

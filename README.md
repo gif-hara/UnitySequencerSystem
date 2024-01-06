@@ -45,7 +45,7 @@ public class Test : MonoBehaviour
 ## 入門
 - UPM Managerにて配布しています
 ```
-https://github.com/gif-hara/UnitySequencerSystem.git?path=Assets\Plugins\UnitySequencerSystem
+https://github.com/gif-hara/UnitySequencerSystem.git?path=Assets/Plugins/UnitySequencerSystem
 ```
 
 ## 思想

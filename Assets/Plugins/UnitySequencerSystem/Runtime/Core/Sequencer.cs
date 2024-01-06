@@ -23,6 +23,9 @@ namespace HK.UnitySequencerSystem
             this.sequences = sequences;
         }
 
+        /// <summary>
+        /// シーケンスを実行する
+        /// </summary>
         public async UniTask PlayAsync(CancellationToken cancellationToken)
         {
             try
@@ -38,6 +41,9 @@ namespace HK.UnitySequencerSystem
             }
         }
 
+        /// <summary>
+        /// シーケンスをループして実行する
+        /// </summary>
         public async UniTask PlayLoopAsync(PlayerLoopTiming playerLoopTiming, CancellationToken cancellationToken)
         {
             try
@@ -57,6 +63,9 @@ namespace HK.UnitySequencerSystem
             }
         }
 
+        /// <summary>
+        /// シーケンスを実行する
+        /// </summary>
         private UniTask PlayAsync(ISequence sequence, CancellationToken cancellationToken)
         {
             Assert.IsNotNull(sequence, $"[{nameof(Sequencer)}] {nameof(sequence)} is null");

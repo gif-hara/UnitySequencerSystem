@@ -24,7 +24,14 @@
         "com.unity.inputsystem": "1.6.1",
         "com.unity.addressables": "1.21.14"
       },
-      "hash": "22b7d295ad4a8f27cedbb424ae7c14d17eb25005"
+      "hash": "76fc4cdd20cfb8f7e88b5f5c847d2b27108750c7"
+    },
+    "com.mackysoft.serializereference-extensions": {
+      "version": "https://github.com/mackysoft/Unity-SerializeReferenceExtensions.git?path=Assets/MackySoft/MackySoft.SerializeReferenceExtensions",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "afb30899439250596dbb6478d51ca1686fb55c39"
     },
     "com.unity.addressables": {
       "version": "1.21.19",

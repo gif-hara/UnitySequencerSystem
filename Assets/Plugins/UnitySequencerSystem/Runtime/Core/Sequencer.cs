@@ -13,9 +13,9 @@ namespace HK.UnitySequencerSystem
     {
         private readonly Container container;
 
-        private readonly IEnumerable<ISequence> sequences;
+        private readonly List<ISequence> sequences;
 
-        public Sequencer(Container container, IEnumerable<ISequence> sequences)
+        public Sequencer(Container container, List<ISequence> sequences)
         {
             Assert.IsNotNull(container, $"[{nameof(Sequencer)}] {nameof(container)} is null");
             Assert.IsNotNull(sequences, $"[{nameof(Sequencer)}] {nameof(sequences)} is null");

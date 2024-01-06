@@ -13,8 +13,8 @@ namespace HK.UnitySequencerSystem
     [Serializable]
     public sealed class TransformSetPosition : ISequence
     {
-        [SerializeField]
-        private string targetName;
+        [SerializeReference, SubclassSelector]
+        private TransformResolver targetResolver;
 
         [SerializeReference, SubclassSelector]
         private Vector3Resolver positionResolver;
@@ -32,16 +32,16 @@ namespace HK.UnitySequencerSystem
         {
         }
 
-        public TransformSetPosition(string targetName, Vector3Resolver positionResolver, CoordinateType coordinateType)
+        public TransformSetPosition(TransformResolver targetResolver, Vector3Resolver positionResolver, CoordinateType coordinateType)
         {
-            this.targetName = targetName;
+            this.targetResolver = targetResolver;
             this.positionResolver = positionResolver;
             this.coordinateType = coordinateType;
         }
 
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
-            var target = container.Resolve<Transform>(this.targetName);
+            var target = this.targetResolver.Resolve(container);
             var position = this.positionResolver.Resolve(container);
             switch (this.coordinateType)
             {

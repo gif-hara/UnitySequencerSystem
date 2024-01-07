@@ -13,10 +13,10 @@ namespace HK.UnitySequencerSystem
     [Serializable]
     public sealed class TransformSetScale : ISequence
     {
-        [SerializeField]
+        [SerializeReference, SubclassSelector]
         private TransformResolver targetResolver;
 
-        [SerializeField]
+        [SerializeReference, SubclassSelector]
         private Vector3Resolver scaleResolver;
 
         public TransformSetScale()

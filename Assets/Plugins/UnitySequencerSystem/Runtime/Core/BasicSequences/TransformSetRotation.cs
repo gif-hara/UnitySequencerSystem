@@ -19,7 +19,7 @@ namespace HK.UnitySequencerSystem
         [SerializeReference, SubclassSelector]
         private Vector3Resolver rotationResolver;
 
-        [SerializeReference, SubclassSelector]
+        [SerializeField]
         private CoordinateType coordinateType;
 
         public enum CoordinateType

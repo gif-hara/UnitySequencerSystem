@@ -49,18 +49,12 @@ public class Test : MonoBehaviour
 - UPM Managerにて配布しています。
   - また以下のプラグインに依存しています。インストールする際は以下も同時にインストールをお願いします
     - [UniTask](https://github.com/Cysharp/UniTask)
+    - [Unity-SerializeReferenceExtensions](https://github.com/mackysoft/Unity-SerializeReferenceExtensions)
     - TextMeshPro
     - InputSystem
 ```
 https://github.com/gif-hara/UnitySequencerSystem.git?path=Assets/Plugins/UnitySequencerSystem
 ```
-
-## 思想
-- `ISequence`は特定のオブジェクトの参照は持ちません。
-  - 代わりに`Container`にオブジェクトの参照を持たせます。
-  - `ISequence`は自分自身の仕事をこなすためのデータのみを持ち、必要な参照は`Container`から取得する方式を取っています。
-- また、`[SerializeReference]`と`[SubclassSelector]`を利用することでUnityのInspectorタブで編集可能になります。
-  - 参考：https://qiita.com/makihiro_dev/items/26daeb3e5f176934bf0a
 
 ## 基本機能
 - USSには基本的な機能として以下のシーケンスを用意しています（随時追加予定です）

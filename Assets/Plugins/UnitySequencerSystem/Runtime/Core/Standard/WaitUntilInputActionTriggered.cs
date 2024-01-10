@@ -1,4 +1,4 @@
-#if USS_INPUT_SYSTEM_SUPPORT
+#if USS_SUPPORT_INPUT_SYSTEM
 using System;
 using System.Threading;
 using UnityEngine;

@@ -6,6 +6,8 @@ using HK.UnitySequencerSystem.Resolvers.LitMotion;
 using LitMotion;
 using LitMotion.Extensions;
 using UnityEngine;
+using LitMotion.Adapters;
+
 
 #if USS_SUPPORT_UNITASK
 using Cysharp.Threading.Tasks;
@@ -17,6 +19,89 @@ using HK.UnitySequencerSystem.Core;
 
 namespace HK.UnitySequencerSystem.LitMotion
 {
+    [Serializable]
+    public abstract class Parameters<TValueResolver, TValue, TOptions, TAdapter>
+        where TValueResolver : IResolver<TValue>
+        where TValue : unmanaged
+        where TOptions : unmanaged, IMotionOptions
+        where TAdapter : unmanaged, IMotionAdapter<TValue, TOptions>
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public TValueResolver fromResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public TValueResolver toResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public FloatResolver durationResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public FloatResolver delayResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public IntResolver loopCountResolver;
+
+        [SerializeField]
+        private LoopType loopType;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public MotionSchedulerResolver motionSchedulerResolver;
+
+        [SerializeField]
+        public Ease ease;
+
+        [SerializeField]
+        private bool ignoreTimeScale = true;
+
+        public MotionBuilder<TValue, TOptions, TAdapter> Build(Container container)
+        {
+            var result = LMotion.Create<TValue, TOptions, TAdapter>(
+                    fromResolver.Resolve(container),
+                    toResolver.Resolve(container),
+                    durationResolver.Resolve(container)
+                    )
+                .WithEase(ease)
+                .WithIgnoreTimeScale(ignoreTimeScale);
+            if (delayResolver != null)
+            {
+                result = result.WithDelay(delayResolver.Resolve(container));
+            }
+            if (loopCountResolver != null)
+            {
+                result = result.WithLoops(loopCountResolver.Resolve(container), loopType);
+            }
+            if (motionSchedulerResolver != null)
+            {
+                result = result.WithScheduler(motionSchedulerResolver.Resolve(container));
+            }
+
+            return result;
+        }
+    }
+
+    [Serializable]
+    public sealed class Vector3Parameters : Parameters<Vector3Resolver, Vector3, NoOptions, Vector3MotionAdapter>
+    {
+    }
+
     [AddTypeMenu("LitMotion/Bind To Position")]
     [Serializable]
     public sealed class BindToPosition : ISequence
@@ -25,70 +110,19 @@ namespace HK.UnitySequencerSystem.LitMotion
         [SubclassSelector]
 #endif
         [SerializeReference]
-        private TransformResolver targetResolver;
+        public TransformResolver targetResolver;
 
         [SerializeField]
-        private Ease ease;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private Vector3Resolver fromResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private Vector3Resolver toResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private FloatResolver durationResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private FloatResolver delayResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private IntResolver loopCountResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private MotionSchedulerResolver motionSchedulerResolver;
+        private Vector3Parameters parameters;
 
         public BindToPosition()
         {
         }
 
-        public BindToPosition(
-            TransformResolver targetResolver,
-            Vector3Resolver fromResolver,
-            Vector3Resolver toResolver,
-            FloatResolver durationResolver,
-            FloatResolver delayResolver,
-            IntResolver loopCountResolver,
-            MotionSchedulerResolver motionSchedulerResolver,
-            Ease ease
-            )
+        public BindToPosition(TransformResolver targetResolver, Vector3Parameters parameters)
         {
             this.targetResolver = targetResolver;
-            this.fromResolver = fromResolver;
-            this.toResolver = toResolver;
-            this.durationResolver = durationResolver;
-            this.delayResolver = delayResolver;
-            this.loopCountResolver = loopCountResolver;
-            this.motionSchedulerResolver = motionSchedulerResolver;
-            this.ease = ease;
+            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -98,24 +132,7 @@ namespace HK.UnitySequencerSystem.LitMotion
 #endif
         {
             var target = this.targetResolver.Resolve(container);
-            var motion = LMotion.Create(
-                    fromResolver.Resolve(container),
-                    toResolver.Resolve(container),
-                    durationResolver.Resolve(container)
-                    )
-                .WithEase(ease);
-            if (delayResolver != null)
-            {
-                motion = motion.WithDelay(delayResolver.Resolve(container));
-            }
-            if (loopCountResolver != null)
-            {
-                motion = motion.WithLoops(loopCountResolver.Resolve(container));
-            }
-            if (motionSchedulerResolver != null)
-            {
-                motion = motion.WithScheduler(motionSchedulerResolver.Resolve(container));
-            }
+            var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
             await motion.BindToPosition(target).ToUniTask(cancellationToken: cancellationToken);
 #else
@@ -132,70 +149,19 @@ namespace HK.UnitySequencerSystem.LitMotion
         [SubclassSelector]
 #endif
         [SerializeReference]
-        private TransformResolver targetResolver;
+        public TransformResolver targetResolver;
 
         [SerializeField]
-        private Ease ease;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private Vector3Resolver fromResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private Vector3Resolver toResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private FloatResolver durationResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private FloatResolver delayResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private IntResolver loopCountResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private MotionSchedulerResolver motionSchedulerResolver;
+        private Vector3Parameters parameters;
 
         public BindToLocalPosition()
         {
         }
 
-        public BindToLocalPosition(
-            TransformResolver targetResolver,
-            Vector3Resolver fromResolver,
-            Vector3Resolver toResolver,
-            FloatResolver durationResolver,
-            FloatResolver delayResolver,
-            IntResolver loopCountResolver,
-            MotionSchedulerResolver motionSchedulerResolver,
-            Ease ease
-            )
+        public BindToLocalPosition(TransformResolver targetResolver, Vector3Parameters parameters)
         {
             this.targetResolver = targetResolver;
-            this.fromResolver = fromResolver;
-            this.toResolver = toResolver;
-            this.durationResolver = durationResolver;
-            this.delayResolver = delayResolver;
-            this.loopCountResolver = loopCountResolver;
-            this.motionSchedulerResolver = motionSchedulerResolver;
-            this.ease = ease;
+            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -205,28 +171,11 @@ namespace HK.UnitySequencerSystem.LitMotion
 #endif
         {
             var target = this.targetResolver.Resolve(container);
-            var motion = LMotion.Create(
-                    fromResolver.Resolve(container),
-                    toResolver.Resolve(container),
-                    durationResolver.Resolve(container)
-                    )
-                .WithEase(ease);
-            if (delayResolver != null)
-            {
-                motion = motion.WithDelay(delayResolver.Resolve(container));
-            }
-            if (loopCountResolver != null)
-            {
-                motion = motion.WithLoops(loopCountResolver.Resolve(container));
-            }
-            if (motionSchedulerResolver != null)
-            {
-                motion = motion.WithScheduler(motionSchedulerResolver.Resolve(container));
-            }
+            var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
-            await motion.BindToLocalPosition(target).ToUniTask(cancellationToken: cancellationToken);
+            await motion.BindToPosition(target).ToUniTask(cancellationToken: cancellationToken);
 #else
-            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalPosition(target).ToYieldInteraction());
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToPosition(target).ToYieldInteraction());
 #endif
         }
     }
@@ -239,70 +188,19 @@ namespace HK.UnitySequencerSystem.LitMotion
         [SubclassSelector]
 #endif
         [SerializeReference]
-        private TransformResolver targetResolver;
+        public TransformResolver targetResolver;
 
         [SerializeField]
-        private Ease ease;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private Vector3Resolver fromResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private Vector3Resolver toResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private FloatResolver durationResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private FloatResolver delayResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private IntResolver loopCountResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private MotionSchedulerResolver motionSchedulerResolver;
+        private Vector3Parameters parameters;
 
         public BindToEulerAngles()
         {
         }
 
-        public BindToEulerAngles(
-            TransformResolver targetResolver,
-            Vector3Resolver fromResolver,
-            Vector3Resolver toResolver,
-            FloatResolver durationResolver,
-            FloatResolver delayResolver,
-            IntResolver loopCountResolver,
-            MotionSchedulerResolver motionSchedulerResolver,
-            Ease ease
-            )
+        public BindToEulerAngles(TransformResolver targetResolver, Vector3Parameters parameters)
         {
             this.targetResolver = targetResolver;
-            this.fromResolver = fromResolver;
-            this.toResolver = toResolver;
-            this.durationResolver = durationResolver;
-            this.delayResolver = delayResolver;
-            this.loopCountResolver = loopCountResolver;
-            this.motionSchedulerResolver = motionSchedulerResolver;
-            this.ease = ease;
+            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -312,24 +210,7 @@ namespace HK.UnitySequencerSystem.LitMotion
 #endif
         {
             var target = this.targetResolver.Resolve(container);
-            var motion = LMotion.Create(
-                    fromResolver.Resolve(container),
-                    toResolver.Resolve(container),
-                    durationResolver.Resolve(container)
-                    )
-                .WithEase(ease);
-            if (delayResolver != null)
-            {
-                motion = motion.WithDelay(delayResolver.Resolve(container));
-            }
-            if (loopCountResolver != null)
-            {
-                motion = motion.WithLoops(loopCountResolver.Resolve(container));
-            }
-            if (motionSchedulerResolver != null)
-            {
-                motion = motion.WithScheduler(motionSchedulerResolver.Resolve(container));
-            }
+            var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
             await motion.BindToEulerAngles(target).ToUniTask(cancellationToken: cancellationToken);
 #else
@@ -346,70 +227,19 @@ namespace HK.UnitySequencerSystem.LitMotion
         [SubclassSelector]
 #endif
         [SerializeReference]
-        private TransformResolver targetResolver;
+        public TransformResolver targetResolver;
 
         [SerializeField]
-        private Ease ease;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private Vector3Resolver fromResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private Vector3Resolver toResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private FloatResolver durationResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private FloatResolver delayResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private IntResolver loopCountResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private MotionSchedulerResolver motionSchedulerResolver;
+        private Vector3Parameters parameters;
 
         public BindToLocalEulerAngles()
         {
         }
 
-        public BindToLocalEulerAngles(
-            TransformResolver targetResolver,
-            Vector3Resolver fromResolver,
-            Vector3Resolver toResolver,
-            FloatResolver durationResolver,
-            FloatResolver delayResolver,
-            IntResolver loopCountResolver,
-            MotionSchedulerResolver motionSchedulerResolver,
-            Ease ease
-            )
+        public BindToLocalEulerAngles(TransformResolver targetResolver, Vector3Parameters parameters)
         {
             this.targetResolver = targetResolver;
-            this.fromResolver = fromResolver;
-            this.toResolver = toResolver;
-            this.durationResolver = durationResolver;
-            this.delayResolver = delayResolver;
-            this.loopCountResolver = loopCountResolver;
-            this.motionSchedulerResolver = motionSchedulerResolver;
-            this.ease = ease;
+            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -419,24 +249,7 @@ namespace HK.UnitySequencerSystem.LitMotion
 #endif
         {
             var target = this.targetResolver.Resolve(container);
-            var motion = LMotion.Create(
-                    fromResolver.Resolve(container),
-                    toResolver.Resolve(container),
-                    durationResolver.Resolve(container)
-                    )
-                .WithEase(ease);
-            if (delayResolver != null)
-            {
-                motion = motion.WithDelay(delayResolver.Resolve(container));
-            }
-            if (loopCountResolver != null)
-            {
-                motion = motion.WithLoops(loopCountResolver.Resolve(container));
-            }
-            if (motionSchedulerResolver != null)
-            {
-                motion = motion.WithScheduler(motionSchedulerResolver.Resolve(container));
-            }
+            var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
             await motion.BindToLocalEulerAngles(target).ToUniTask(cancellationToken: cancellationToken);
 #else
@@ -453,70 +266,19 @@ namespace HK.UnitySequencerSystem.LitMotion
         [SubclassSelector]
 #endif
         [SerializeReference]
-        private TransformResolver targetResolver;
+        public TransformResolver targetResolver;
 
         [SerializeField]
-        private Ease ease;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private Vector3Resolver fromResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private Vector3Resolver toResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private FloatResolver durationResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private FloatResolver delayResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private IntResolver loopCountResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private MotionSchedulerResolver motionSchedulerResolver;
+        private Vector3Parameters parameters;
 
         public BindToLocalScale()
         {
         }
 
-        public BindToLocalScale(
-            TransformResolver targetResolver,
-            Vector3Resolver fromResolver,
-            Vector3Resolver toResolver,
-            FloatResolver durationResolver,
-            FloatResolver delayResolver,
-            IntResolver loopCountResolver,
-            MotionSchedulerResolver motionSchedulerResolver,
-            Ease ease
-            )
+        public BindToLocalScale(TransformResolver targetResolver, Vector3Parameters parameters)
         {
             this.targetResolver = targetResolver;
-            this.fromResolver = fromResolver;
-            this.toResolver = toResolver;
-            this.durationResolver = durationResolver;
-            this.delayResolver = delayResolver;
-            this.loopCountResolver = loopCountResolver;
-            this.motionSchedulerResolver = motionSchedulerResolver;
-            this.ease = ease;
+            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -526,24 +288,7 @@ namespace HK.UnitySequencerSystem.LitMotion
 #endif
         {
             var target = this.targetResolver.Resolve(container);
-            var motion = LMotion.Create(
-                    fromResolver.Resolve(container),
-                    toResolver.Resolve(container),
-                    durationResolver.Resolve(container)
-                    )
-                .WithEase(ease);
-            if (delayResolver != null)
-            {
-                motion = motion.WithDelay(delayResolver.Resolve(container));
-            }
-            if (loopCountResolver != null)
-            {
-                motion = motion.WithLoops(loopCountResolver.Resolve(container));
-            }
-            if (motionSchedulerResolver != null)
-            {
-                motion = motion.WithScheduler(motionSchedulerResolver.Resolve(container));
-            }
+            var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
             await motion.BindToLocalScale(target).ToUniTask(cancellationToken: cancellationToken);
 #else

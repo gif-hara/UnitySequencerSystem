@@ -13,7 +13,7 @@ namespace HK.UnitySequencerSystem.LitMotion
     /// <summary>
     /// <see cref="Transform"/>の状態を<see cref="LitMotion"/>で設定するシーケンス
     /// </summary>
-    [AddTypeMenu("LitMotion/BindTo Transform")]
+    [AddTypeMenu("LitMotion/Bind To Transform")]
     [Serializable]
     public sealed class LitMotionBindToTransform : ISequence
     {

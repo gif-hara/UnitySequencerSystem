@@ -102,6 +102,11 @@ namespace HK.UnitySequencerSystem.LitMotion
     {
     }
 
+    [Serializable]
+    public sealed class FloatParameters : Parameters<FloatResolver, float, NoOptions, FloatMotionAdapter>
+    {
+    }
+
     [AddTypeMenu("LitMotion/Bind To Position")]
     [Serializable]
     public sealed class BindToPosition : ISequence
@@ -293,6 +298,243 @@ namespace HK.UnitySequencerSystem.LitMotion
             await motion.BindToLocalScale(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalScale(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+    [AddTypeMenu("LitMotion/Bind To PositionX")]
+    [Serializable]
+    public sealed class BindToPositionX : ISequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public TransformResolver targetResolver;
+
+        [SerializeField]
+        private FloatParameters parameters;
+
+        public BindToPositionX()
+        {
+        }
+
+        public BindToPositionX(TransformResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            await motion.BindToPositionX(target).ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToPositionX(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+    [AddTypeMenu("LitMotion/Bind To PositionY")]
+    [Serializable]
+    public sealed class BindToPositionY : ISequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public TransformResolver targetResolver;
+
+        [SerializeField]
+        private FloatParameters parameters;
+
+        public BindToPositionY()
+        {
+        }
+
+        public BindToPositionY(TransformResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            await motion.BindToPositionY(target).ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToPositionY(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+    [AddTypeMenu("LitMotion/Bind To PositionZ")]
+    [Serializable]
+    public sealed class BindToPositionZ : ISequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public TransformResolver targetResolver;
+
+        [SerializeField]
+        private FloatParameters parameters;
+
+        public BindToPositionZ()
+        {
+        }
+
+        public BindToPositionZ(TransformResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            await motion.BindToPositionZ(target).ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToPositionZ(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+    [AddTypeMenu("LitMotion/Bind To Local PositionX")]
+    [Serializable]
+    public sealed class BindToLocalPositionX : ISequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public TransformResolver targetResolver;
+
+        [SerializeField]
+        private FloatParameters parameters;
+
+        public BindToLocalPositionX()
+        {
+        }
+
+        public BindToLocalPositionX(TransformResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            await motion.BindToLocalPositionX(target).ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalPositionX(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+    [AddTypeMenu("LitMotion/Bind To Local PositionY")]
+    [Serializable]
+    public sealed class BindToLocalPositionY : ISequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public TransformResolver targetResolver;
+
+        [SerializeField]
+        private FloatParameters parameters;
+
+        public BindToLocalPositionY()
+        {
+        }
+
+        public BindToLocalPositionY(TransformResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            await motion.BindToLocalPositionY(target).ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalPositionY(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+    [AddTypeMenu("LitMotion/Bind To Local PositionZ")]
+    [Serializable]
+    public sealed class BindToLocalPositionZ : ISequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public TransformResolver targetResolver;
+
+        [SerializeField]
+        private FloatParameters parameters;
+
+        public BindToLocalPositionZ()
+        {
+        }
+
+        public BindToLocalPositionZ(TransformResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            await motion.BindToLocalPositionZ(target).ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalPositionZ(target).ToYieldInteraction());
 #endif
         }
     }

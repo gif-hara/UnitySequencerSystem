@@ -42,28 +42,6 @@ namespace HK.UnitySequencerSystem
         }
 
         /// <summary>
-        /// シーケンスをループして実行する
-        /// </summary>
-        public async UniTask PlayLoopAsync(PlayerLoopTiming playerLoopTiming, CancellationToken cancellationToken)
-        {
-            try
-            {
-                while (!cancellationToken.IsCancellationRequested)
-                {
-                    foreach (var s in this.sequences)
-                    {
-                        await PlayAsync(s, cancellationToken);
-                    }
-                    await UniTask.Yield(playerLoopTiming, cancellationToken: cancellationToken);
-                }
-            }
-            catch (OperationCanceledException)
-            {
-                // Do nothing
-            }
-        }
-
-        /// <summary>
         /// シーケンスを実行する
         /// </summary>
         private UniTask PlayAsync(ISequence sequence, CancellationToken cancellationToken)

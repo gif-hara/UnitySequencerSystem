@@ -10,41 +10,41 @@ using System.Threading.Tasks;
 
 namespace HK.UnitySequencerSystem.Standard
 {
-    /// <summary>
-    /// シーケンスを非同期で実行するシーケンス
-    /// </summary>
-    [AddTypeMenu("Standard/Forget")]
-    [Serializable]
-    public sealed class Forget : ISequence
-    {
-#if USS_SUB_CLASS_SELECTOR_SUPPORT
+        /// <summary>
+        /// シーケンスを非同期で実行するシーケンス
+        /// </summary>
+        [AddTypeMenu("Standard/Forget")]
+        [Serializable]
+        public sealed class Forget : ISequence
+        {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
-        [SerializeReference]
-        private List<ISequence> sequences;
+                [SerializeReference]
+                private List<ISequence> sequences;
 
-        public Forget()
-        {
-        }
+                public Forget()
+                {
+                }
 
-        public Forget(List<ISequence> sequences)
-        {
-            this.sequences = sequences;
-        }
+                public Forget(List<ISequence> sequences)
+                {
+                        this.sequences = sequences;
+                }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+                public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
         public Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
-        {
+                {
 #if USS_SUPPORT_UNITASK
-            foreach (var sequence in sequences)
-            {
-                sequence.PlayAsync(container, cancellationToken).Forget();
-            }
+                        foreach (var sequence in sequences)
+                        {
+                                sequence.PlayAsync(container, cancellationToken).Forget();
+                        }
 
-            return UniTask.CompletedTask;
+                        return UniTask.CompletedTask;
 #else
             foreach (var sequence in sequences)
             {
@@ -53,6 +53,6 @@ namespace HK.UnitySequencerSystem.Standard
 
             return Task.CompletedTask;
 #endif
+                }
         }
-    }
 }

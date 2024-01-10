@@ -13,40 +13,40 @@ using System.Threading.Tasks;
 
 namespace HK.UnitySequencerSystem.Standard
 {
-    /// <summary>
-    /// シーケンスを実行し、どれかが完了したら終了するシーケンス
-    /// </summary>
-    [AddTypeMenu("Standard/When Any")]
-    [Serializable]
-    public sealed class WhenAny : ISequence
-    {
-#if USS_SUB_CLASS_SELECTOR_SUPPORT
+        /// <summary>
+        /// シーケンスを実行し、どれかが完了したら終了するシーケンス
+        /// </summary>
+        [AddTypeMenu("Standard/When Any")]
+        [Serializable]
+        public sealed class WhenAny : ISequence
+        {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
-        [SerializeReference]
-        private List<ISequence> sequences;
+                [SerializeReference]
+                private List<ISequence> sequences;
 
-        public WhenAny()
-        {
-        }
+                public WhenAny()
+                {
+                }
 
-        public WhenAny(List<ISequence> sequences)
-        {
-            this.sequences = sequences;
-        }
+                public WhenAny(List<ISequence> sequences)
+                {
+                        this.sequences = sequences;
+                }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+                public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
         public async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
-        {
+                {
 #if USS_SUPPORT_UNITASK
-            await UniTask.WhenAny(sequences.Select(s => s.PlayAsync(container, cancellationToken)));
+                        await UniTask.WhenAny(sequences.Select(s => s.PlayAsync(container, cancellationToken)));
 #else
             await Task.WhenAny(sequences.Select(s => s.PlayAsync(container, cancellationToken)));
 #endif
 
+                }
         }
-    }
 }

@@ -17,7 +17,7 @@ namespace HK.UnitySequencerSystem.Standard
         [Serializable]
         public sealed class ParticlePlay : ISequence
         {
-#if USS_SUB_CLASS_SELECTOR_SUPPORT
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
                 [SubclassSelector]
 #endif
                 [SerializeReference]
@@ -37,7 +37,7 @@ namespace HK.UnitySequencerSystem.Standard
                 }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+                public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
                 public Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
@@ -45,7 +45,7 @@ namespace HK.UnitySequencerSystem.Standard
                         var target = this.targetResolver.Resolve(container);
                         target.Play(withChildren);
 #if USS_SUPPORT_UNITASK
-            return UniTask.CompletedTask;
+                        return UniTask.CompletedTask;
 #else
                         return Task.CompletedTask;
 #endif

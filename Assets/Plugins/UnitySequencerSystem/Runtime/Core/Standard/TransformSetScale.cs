@@ -10,49 +10,49 @@ using System.Threading.Tasks;
 
 namespace HK.UnitySequencerSystem.Standard
 {
-    /// <summary>
-    /// <see cref="Transform"/>の大きさを設定するシーケンス
-    /// </summary>
-    [AddTypeMenu("Standard/Transform Set Scale")]
-    [Serializable]
-    public sealed class TransformSetScale : ISequence
-    {
-#if USS_SUB_CLASS_SELECTOR_SUPPORT
+        /// <summary>
+        /// <see cref="Transform"/>の大きさを設定するシーケンス
+        /// </summary>
+        [AddTypeMenu("Standard/Transform Set Scale")]
+        [Serializable]
+        public sealed class TransformSetScale : ISequence
+        {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
-        [SerializeReference]
-        private TransformResolver targetResolver;
+                [SerializeReference]
+                private TransformResolver targetResolver;
 
-#if USS_SUB_CLASS_SELECTOR_SUPPORT
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
-        [SerializeReference]
-        private Vector3Resolver scaleResolver;
+                [SerializeReference]
+                private Vector3Resolver scaleResolver;
 
-        public TransformSetScale()
-        {
-        }
+                public TransformSetScale()
+                {
+                }
 
-        public TransformSetScale(TransformResolver targetResolver, Vector3Resolver scaleResolver)
-        {
-            this.targetResolver = targetResolver;
-            this.scaleResolver = scaleResolver;
-        }
+                public TransformSetScale(TransformResolver targetResolver, Vector3Resolver scaleResolver)
+                {
+                        this.targetResolver = targetResolver;
+                        this.scaleResolver = scaleResolver;
+                }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+                public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
         public Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
-        {
-            var target = this.targetResolver.Resolve(container);
-            var scale = this.scaleResolver.Resolve(container);
-            target.localScale = scale;
+                {
+                        var target = this.targetResolver.Resolve(container);
+                        var scale = this.scaleResolver.Resolve(container);
+                        target.localScale = scale;
 #if USS_SUPPORT_UNITASK
-            return UniTask.CompletedTask;
+                        return UniTask.CompletedTask;
 #else
             return Task.CompletedTask;
 #endif
+                }
         }
-    }
 }

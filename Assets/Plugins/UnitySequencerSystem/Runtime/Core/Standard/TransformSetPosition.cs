@@ -17,13 +17,13 @@ namespace HK.UnitySequencerSystem.Standard
     [Serializable]
     public sealed class TransformSetPosition : ISequence
     {
-#if USS_SUB_CLASS_SELECTOR_SUPPORT
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
         [SerializeReference]
         private TransformResolver targetResolver;
 
-#if USS_SUB_CLASS_SELECTOR_SUPPORT
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
         [SerializeReference]

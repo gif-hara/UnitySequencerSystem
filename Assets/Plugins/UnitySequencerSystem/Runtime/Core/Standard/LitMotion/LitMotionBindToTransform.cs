@@ -1,4 +1,4 @@
-#if USS_LIT_MOTION_SUPPORT
+#if USS_SUPPORT_LIT_MOTION
 using System;
 using System.Threading;
 using HK.UnitySequencerSystem.Resolvers;
@@ -24,7 +24,7 @@ namespace HK.UnitySequencerSystem.LitMotion
     [Serializable]
     public sealed class LitMotionBindToTransform : ISequence
     {
-#if USS_SUB_CLASS_SELECTOR_SUPPORT
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
         [SerializeReference]
@@ -39,37 +39,37 @@ namespace HK.UnitySequencerSystem.LitMotion
         [SerializeField]
         private Ease ease;
 
-#if USS_SUB_CLASS_SELECTOR_SUPPORT
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
         [SerializeReference]
         private Vector3Resolver fromResolver;
 
-#if USS_SUB_CLASS_SELECTOR_SUPPORT
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
         [SerializeReference]
         private Vector3Resolver toResolver;
 
-#if USS_SUB_CLASS_SELECTOR_SUPPORT
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
         [SerializeReference]
         private FloatResolver durationResolver;
 
-#if USS_SUB_CLASS_SELECTOR_SUPPORT
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
         [SerializeReference]
         private FloatResolver delayResolver;
 
-#if USS_SUB_CLASS_SELECTOR_SUPPORT
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
         [SerializeReference]
         private IntResolver loopCountResolver;
 
-#if USS_SUB_CLASS_SELECTOR_SUPPORT
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
         [SerializeReference]

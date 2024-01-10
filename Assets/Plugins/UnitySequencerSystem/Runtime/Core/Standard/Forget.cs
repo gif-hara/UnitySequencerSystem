@@ -48,7 +48,7 @@ namespace HK.UnitySequencerSystem.Standard
 #else
             foreach (var sequence in sequences)
             {
-                sequence.PlayAsync(container, cancellationToken).Forget();
+                sequence.PlayAsync(container, cancellationToken);
             }
 
             return Task.CompletedTask;

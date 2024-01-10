@@ -14,38 +14,12 @@
       "dependencies": {},
       "hash": "5cc97c7f0085624b6ef57853d70b404440060cef"
     },
-    "com.hk.framework": {
-      "version": "https://github.com/gif-hara/Framework.unity.git?path=/Packages/HKFramework",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.cysharp.unitask": "2.3.3",
-        "com.cysharp.messagepipe": "1.7.4",
-        "com.unity.inputsystem": "1.6.1",
-        "com.unity.addressables": "1.21.14"
-      },
-      "hash": "76fc4cdd20cfb8f7e88b5f5c847d2b27108750c7"
-    },
     "com.mackysoft.serializereference-extensions": {
       "version": "https://github.com/mackysoft/Unity-SerializeReferenceExtensions.git?path=Assets/MackySoft/MackySoft.SerializeReferenceExtensions",
       "depth": 0,
       "source": "git",
       "dependencies": {},
       "hash": "afb30899439250596dbb6478d51ca1686fb55c39"
-    },
-    "com.unity.addressables": {
-      "version": "1.21.19",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.scriptablebuildpipeline": "1.21.21",
-        "com.unity.modules.assetbundle": "1.0.0",
-        "com.unity.modules.imageconversion": "1.0.0",
-        "com.unity.modules.jsonserialize": "1.0.0",
-        "com.unity.modules.unitywebrequest": "1.0.0",
-        "com.unity.modules.unitywebrequestassetbundle": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
     },
     "com.unity.collab-proxy": {
       "version": "2.2.0",
@@ -107,25 +81,9 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.inputsystem": {
-      "version": "1.7.0",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.modules.uielements": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.performance.profile-analyzer": {
       "version": "1.2.2",
       "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.scriptablebuildpipeline": {
-      "version": "1.21.21",
-      "depth": 2,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"

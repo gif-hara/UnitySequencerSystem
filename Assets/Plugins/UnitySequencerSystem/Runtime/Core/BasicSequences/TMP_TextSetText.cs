@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using HK.UnitySequencerSystem.Resolvers;
 using TMPro;
 using UnityEngine;
 
@@ -9,29 +10,31 @@ namespace HK.UnitySequencerSystem
     /// <summary>
     /// <see cref="TMP_Text"/>にテキストを設定するシーケンス
     /// </summary>
+    [AddTypeMenu("TMP_Text/SetText")]
     [Serializable]
     public sealed class TMP_TextSetText : ISequence
     {
-        [SerializeField]
-        private string targetName;
+        [SerializeReference, SubclassSelector]
+        private TMP_TextResolver targetResolver;
 
-        [SerializeField, Multiline]
-        private string text;
+        [SerializeReference, SubclassSelector]
+        private StringResolver textResolver;
 
         public TMP_TextSetText()
         {
         }
 
-        public TMP_TextSetText(string targetName, string text)
+        public TMP_TextSetText(TMP_TextResolver targetResolver, StringResolver textResolver)
         {
-            this.targetName = targetName;
-            this.text = text;
+            this.targetResolver = targetResolver;
+            this.textResolver = textResolver;
         }
 
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
-            var target = container.Resolve<TMP_Text>(this.targetName);
-            target.SetText(this.text);
+            var target = targetResolver.Resolve(container);
+            var text = textResolver.Resolve(container);
+            target.SetText(text);
             return UniTask.CompletedTask;
         }
     }

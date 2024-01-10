@@ -11,14 +11,18 @@ using UnityEngine;
 namespace HK.UnitySequencerSystem.LitMotion
 {
     /// <summary>
-    /// <see cref="Transform"/>の座標をLitMotionで設定するシーケンス
+    /// <see cref="Transform"/>の状態を<see cref="LitMotion"/>で設定するシーケンス
     /// </summary>
-    [AddTypeMenu("LitMotion/Transform Set Position")]
+    [AddTypeMenu("LitMotion/Bind Transform")]
     [Serializable]
-    public sealed class LitMotionTransformPosition : ISequence
+    public sealed class LitMotionBindTransform : ISequence
     {
+        
         [SerializeReference, SubclassSelector]
         private TransformResolver targetResolver;
+        
+        [SerializeField]
+        private ParameterType parameterType;
 
         [SerializeReference, SubclassSelector]
         private Vector3Resolver fromResolver;
@@ -49,17 +53,24 @@ namespace HK.UnitySequencerSystem.LitMotion
         [SerializeField]
         private CoordinateType coordinateType;
 
+        public enum ParameterType
+        {
+            Position,
+            Rotation,
+            Scale,
+        }
+        
         public enum CoordinateType
         {
             World,
             Local,
         }
 
-        public LitMotionTransformPosition()
+        public LitMotionBindTransform()
         {
         }
 
-        public LitMotionTransformPosition(
+        public LitMotionBindTransform(
             TransformResolver targetResolver,
             Vector3Resolver fromResolver,
             Vector3Resolver toResolver,
@@ -99,13 +110,24 @@ namespace HK.UnitySequencerSystem.LitMotion
             {
                 motion = motion.WithScheduler(motionSchedulerResolver.Resolve(container));
             }
-            switch (coordinateType)
+            switch (parameterType, coordinateType)
             {
-                case CoordinateType.World:
+                case (ParameterType.Position, CoordinateType.World):
                     await motion.BindToPosition(target);
                     break;
-                case CoordinateType.Local:
+                case (ParameterType.Position, CoordinateType.Local):
                     await motion.BindToLocalPosition(target);
+                    break;
+                case (ParameterType.Rotation, CoordinateType.World):
+                    await motion.BindToEulerAngles(target);
+                    break;
+                case (ParameterType.Rotation, CoordinateType.Local):
+                    await motion.BindToLocalEulerAngles(target);
+                    break;
+                case (ParameterType.Scale, CoordinateType.World):
+                    throw new ArgumentException("Scale is not supported in world coordinate");
+                case (ParameterType.Scale, CoordinateType.Local):
+                    await motion.BindToLocalScale(target);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

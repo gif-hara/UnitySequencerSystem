@@ -643,7 +643,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: USS_INPUT_SYSTEM_SUPPORT;USS_LIT_MOTION_SUPPORT;USS_SUB_CLASS_SELECTOR_SUPPORT
+    Standalone: USS_INPUT_SYSTEM_SUPPORT;USS_LIT_MOTION_SUPPORT;USS_SUB_CLASS_SELECTOR_SUPPORT;USS_UNI_TASK_SUPPORT
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

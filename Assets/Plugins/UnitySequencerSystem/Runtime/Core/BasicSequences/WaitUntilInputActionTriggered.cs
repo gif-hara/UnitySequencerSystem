@@ -1,3 +1,4 @@
+#if USS_INPUT_SYSTEM_SUPPORT
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
@@ -40,3 +41,4 @@ namespace HK.UnitySequencerSystem
         }
     }
 }
+#endif

@@ -5052,8 +5052,8 @@ Transform:
   m_GameObject: {fileID: 324719449}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8917934, y: 0, z: 0}
-  m_LocalScale: {x: 1.3599997, y: 1, z: 1}
+  m_LocalPosition: {x: 1.433821, y: 0, z: 0}
+  m_LocalScale: {x: 1.4199996, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -5331,106 +5331,104 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runOnceSequences:
-  - rid: 2598803633371611146
-  - rid: 2598803645485809667
-  runLoopSequences:
-  - rid: 2598803633371611154
-  - rid: 2598803633371611160
-  - rid: 2598803633371611164
+  - rid: 5254756519452082176
+  - rid: 5254756516522623011
+  runLoopSequences: []
   target: {fileID: 324719449}
   texts: []
   references:
     version: 2
     RefIds:
-    - rid: 2598803633371611146
-      type: {class: TransformSetPosition, ns: HK.UnitySequencerSystem, asm: UnitySequencerSystem}
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 5254756516522623011
+      type: {class: ParticlePlay, ns: HK.UnitySequencerSystem.Standard, asm: UnitySequencerSystem}
       data:
         targetResolver:
-          rid: 2598803633371611151
-        positionResolver:
-          rid: 2598803633371611153
-        coordinateType: 0
-    - rid: 2598803633371611151
-      type: {class: TransformResolver/NameTransform, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        name: Cube
-    - rid: 2598803633371611153
-      type: {class: Vector3Resolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: {x: 0, y: 0, z: 0}
-    - rid: 2598803633371611154
-      type: {class: TransformAddPosition, ns: HK.UnitySequencerSystem, asm: UnitySequencerSystem}
-      data:
-        targetResolver:
-          rid: 2598803633371611155
-        positionResolver:
-          rid: 2598803633371611156
-        deltaTimeResolver:
-          rid: 2598803633371611159
-        coordinateType: 0
-    - rid: 2598803633371611155
-      type: {class: TransformResolver/ReferenceTransform, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        target: {fileID: 324719453}
-    - rid: 2598803633371611156
-      type: {class: Vector3Resolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: {x: 1, y: 0, z: 0}
-    - rid: 2598803633371611159
-      type: {class: DeltaTimeResolver/UnityEngineUnscaledTime, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data: 
-    - rid: 2598803633371611160
-      type: {class: TransformAddRotation, ns: HK.UnitySequencerSystem, asm: UnitySequencerSystem}
-      data:
-        targetResolver:
-          rid: 2598803633371611161
-        rotationResolver:
-          rid: 2598803633371611162
-        deltaTimeResolver:
-          rid: 2598803633371611163
-        coordinateType: 0
-    - rid: 2598803633371611161
-      type: {class: TransformResolver/ReferenceTransform, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        target: {fileID: 324719453}
-    - rid: 2598803633371611162
-      type: {class: Vector3Resolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: {x: 360, y: 0, z: 0}
-    - rid: 2598803633371611163
-      type: {class: DeltaTimeResolver/UnityEngineDeltaTime, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data: 
-    - rid: 2598803633371611164
-      type: {class: TransformAddScale, ns: HK.UnitySequencerSystem, asm: UnitySequencerSystem}
-      data:
-        targetResolver:
-          rid: 2598803633371611165
-        scaleResolver:
-          rid: 2598803633371611166
-        deltaTimeResolver:
-          rid: 2598803633371611184
-    - rid: 2598803633371611165
-      type: {class: TransformResolver/ReferenceTransform, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        target: {fileID: 324719453}
-    - rid: 2598803633371611166
-      type: {class: Vector3Resolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: {x: 3, y: 0, z: 0}
-    - rid: 2598803633371611184
-      type: {class: DeltaTimeResolver/Func, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        name: MyDeltaTime
-    - rid: 2598803645485809667
-      type: {class: ParticlePlay, ns: HK.UnitySequencerSystem, asm: UnitySequencerSystem}
-      data:
-        targetResolver:
-          rid: 2598803645485809668
+          rid: 5254756516522623012
         withChildren: 1
-    - rid: 2598803645485809668
+    - rid: 5254756516522623012
       type: {class: ParticleSystemResolver/ReferenceParticleSystem, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         target: {fileID: 33416259}
+    - rid: 5254756519452082176
+      type: {class: WhenAll, ns: HK.UnitySequencerSystem.Standard, asm: UnitySequencerSystem}
+      data:
+        sequences:
+        - rid: 5254756519452082177
+        - rid: 5254756519452082178
+    - rid: 5254756519452082177
+      type: {class: LitMotionBindToTransform, ns: HK.UnitySequencerSystem.LitMotion, asm: UnitySequencerSystem}
+      data:
+        targetResolver:
+          rid: 5254756519452082179
+        parameterType: 0
+        fromResolver:
+          rid: 5254756519452082180
+        toResolver:
+          rid: 5254756519452082181
+        durationResolver:
+          rid: 5254756519452082182
+        delayResolver:
+          rid: -2
+        loopCountResolver:
+          rid: -2
+        motionSchedulerResolver:
+          rid: -2
+        ease: 0
+        coordinateType: 0
+    - rid: 5254756519452082178
+      type: {class: LitMotionBindToTransform, ns: HK.UnitySequencerSystem.LitMotion, asm: UnitySequencerSystem}
+      data:
+        targetResolver:
+          rid: 5254756519452082183
+        parameterType: 0
+        fromResolver:
+          rid: 5254756519452082184
+        toResolver:
+          rid: 5254756519452082185
+        durationResolver:
+          rid: 5254756519452082186
+        delayResolver:
+          rid: -2
+        loopCountResolver:
+          rid: -2
+        motionSchedulerResolver:
+          rid: -2
+        ease: 0
+        coordinateType: 0
+    - rid: 5254756519452082179
+      type: {class: TransformResolver/ReferenceTransform, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        target: {fileID: 324719453}
+    - rid: 5254756519452082180
+      type: {class: Vector3Resolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {x: 0, y: 0, z: 0}
+    - rid: 5254756519452082181
+      type: {class: Vector3Resolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {x: 3, y: 0, z: 0}
+    - rid: 5254756519452082182
+      type: {class: FloatResolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 1
+    - rid: 5254756519452082183
+      type: {class: TransformResolver/ReferenceTransform, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        target: {fileID: 1498627970}
+    - rid: 5254756519452082184
+      type: {class: Vector3Resolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {x: 0, y: 3, z: 0}
+    - rid: 5254756519452082185
+      type: {class: Vector3Resolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {x: 3, y: 0, z: 0}
+    - rid: 5254756519452082186
+      type: {class: FloatResolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 2
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -5728,6 +5726,111 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &1498627966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1498627970}
+  - component: {fileID: 1498627969}
+  - component: {fileID: 1498627968}
+  - component: {fileID: 1498627967}
+  m_Layer: 0
+  m_Name: Cube (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1498627967
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498627966}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1498627968
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498627966}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1498627969
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498627966}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1498627970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498627966}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.433821, y: 2.73, z: 0}
+  m_LocalScale: {x: 1.4199996, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -5736,5 +5839,6 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 717700357}
   - {fileID: 324719453}
+  - {fileID: 1498627970}
   - {fileID: 1044976721}
   - {fileID: 33416260}

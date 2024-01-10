@@ -51,10 +51,13 @@ public class Test : MonoBehaviour
     - [UniTask](https://github.com/Cysharp/UniTask)
     - [Unity-SerializeReferenceExtensions](https://github.com/mackysoft/Unity-SerializeReferenceExtensions)
     - TextMeshPro
-    - InputSystem
 ```
 https://github.com/gif-hara/UnitySequencerSystem.git?path=Assets/Plugins/UnitySequencerSystem
 ```
+
+## サポート
+- TODO
+  - InputSystem
 
 ## 基本機能
 - USSには基本的な機能として以下のシーケンスを用意しています（随時追加予定です）

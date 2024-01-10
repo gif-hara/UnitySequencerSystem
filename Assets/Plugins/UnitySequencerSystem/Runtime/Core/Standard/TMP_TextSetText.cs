@@ -15,10 +15,16 @@ namespace HK.UnitySequencerSystem.Standard
     [Serializable]
     public sealed class TMP_TextSetText : ISequence
     {
-        [SerializeReference, SubclassSelector]
+#if USS_SUB_CLASS_SELECTOR_SUPPORT
+        [SubclassSelector]
+#endif
+        [SerializeReference]
         private TMP_TextResolver targetResolver;
 
-        [SerializeReference, SubclassSelector]
+#if USS_SUB_CLASS_SELECTOR_SUPPORT
+        [SubclassSelector]
+#endif
+        [SerializeReference]
         private StringResolver textResolver;
 
         public TMP_TextSetText()

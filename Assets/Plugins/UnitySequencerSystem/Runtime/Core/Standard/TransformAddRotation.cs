@@ -13,13 +13,22 @@ namespace HK.UnitySequencerSystem.Standard
     [Serializable]
     public sealed class TransformAddRotation : ISequence
     {
-        [SerializeReference, SubclassSelector]
+#if USS_SUB_CLASS_SELECTOR_SUPPORT
+        [SubclassSelector]
+#endif
+        [SerializeReference]
         private TransformResolver targetResolver;
 
-        [SerializeReference, SubclassSelector]
+#if USS_SUB_CLASS_SELECTOR_SUPPORT
+        [SubclassSelector]
+#endif
+        [SerializeReference]
         private Vector3Resolver rotationResolver;
 
-        [SerializeReference, SubclassSelector]
+#if USS_SUB_CLASS_SELECTOR_SUPPORT
+        [SubclassSelector]
+#endif
+        [SerializeReference]
         private DeltaTimeResolver deltaTimeResolver;
 
         [SerializeField]

@@ -13,7 +13,10 @@ namespace HK.UnitySequencerSystem.Standard
     [Serializable]
     public sealed class ParticlePlay : ISequence
     {
-        [SerializeReference, SubclassSelector]
+#if USS_SUB_CLASS_SELECTOR_SUPPORT
+        [SubclassSelector]
+#endif
+        [SerializeReference]
         private ParticleSystemResolver targetResolver;
 
         [SerializeField]

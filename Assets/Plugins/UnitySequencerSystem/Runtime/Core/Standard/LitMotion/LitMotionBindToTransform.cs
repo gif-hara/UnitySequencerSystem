@@ -17,33 +17,48 @@ namespace HK.UnitySequencerSystem.LitMotion
     [Serializable]
     public sealed class LitMotionBindToTransform : ISequence
     {
-        
-        [SerializeReference, SubclassSelector]
+#if USS_SUB_CLASS_SELECTOR_SUPPORT
+        [SubclassSelector]
+#endif
+        [SerializeReference]
         private TransformResolver targetResolver;
         
         [SerializeField]
         private ParameterType parameterType;
 
-        [SerializeReference, SubclassSelector]
+#if USS_SUB_CLASS_SELECTOR_SUPPORT
+        [SubclassSelector]
+#endif
+        [SerializeReference]
         private Vector3Resolver fromResolver;
         
+#if USS_SUB_CLASS_SELECTOR_SUPPORT
         [SubclassSelector]
+#endif
         [SerializeReference]
         private Vector3Resolver toResolver;
         
+#if USS_SUB_CLASS_SELECTOR_SUPPORT
         [SubclassSelector]
+#endif
         [SerializeReference]
         private FloatResolver durationResolver;
 
+#if USS_SUB_CLASS_SELECTOR_SUPPORT
         [SubclassSelector]
+#endif
         [SerializeReference]
         private FloatResolver delayResolver;
         
+#if USS_SUB_CLASS_SELECTOR_SUPPORT
         [SubclassSelector]
+#endif
         [SerializeReference]
         private IntResolver loopCountResolver;
         
+#if USS_SUB_CLASS_SELECTOR_SUPPORT
         [SubclassSelector]
+#endif
         [SerializeReference]
         private MotionSchedulerResolver motionSchedulerResolver;
 

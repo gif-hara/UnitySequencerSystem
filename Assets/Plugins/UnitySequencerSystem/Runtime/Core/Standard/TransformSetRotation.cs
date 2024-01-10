@@ -13,10 +13,16 @@ namespace HK.UnitySequencerSystem.Standard
     [Serializable]
     public sealed class TransformSetRotation : ISequence
     {
-        [SerializeReference, SubclassSelector]
+#if USS_SUB_CLASS_SELECTOR_SUPPORT
+        [SubclassSelector]
+#endif
+        [SerializeReference]
         private TransformResolver targetResolver;
 
-        [SerializeReference, SubclassSelector]
+#if USS_SUB_CLASS_SELECTOR_SUPPORT
+        [SubclassSelector]
+#endif
+        [SerializeReference]
         private Vector3Resolver rotationResolver;
 
         [SerializeField]

@@ -1,8 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using Cysharp.Threading.Tasks;
 using UnityEngine.Assertions;
+#if USS_UNI_TASK_SUPPORT
+using Cysharp.Threading.Tasks;
+#else
+using System.Threading.Tasks;
+#endif
+
 
 namespace HK.UnitySequencerSystem
 {
@@ -26,28 +31,23 @@ namespace HK.UnitySequencerSystem
         /// <summary>
         /// シーケンスを実行する
         /// </summary>
+#if USS_UNI_TASK_SUPPORT
         public async UniTask PlayAsync(CancellationToken cancellationToken)
+#else
+        public async Task PlayAsync(CancellationToken cancellationToken)
+#endif
         {
             try
             {
-                foreach (var s in this.sequences)
+                foreach (var sequence in this.sequences)
                 {
-                    await PlayAsync(s, cancellationToken);
+                    await sequence.PlayAsync(this.container, cancellationToken);
                 }
             }
             catch (OperationCanceledException)
             {
                 // Do nothing
             }
-        }
-
-        /// <summary>
-        /// シーケンスを実行する
-        /// </summary>
-        private UniTask PlayAsync(ISequence sequence, CancellationToken cancellationToken)
-        {
-            Assert.IsNotNull(sequence, $"[{nameof(Sequencer)}] {nameof(sequence)} is null");
-            return sequence.PlayAsync(this.container, cancellationToken);
         }
     }
 }

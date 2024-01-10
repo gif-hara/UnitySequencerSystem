@@ -1,7 +1,11 @@
 using System;
 using System.Threading;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
+#if USS_UNI_TASK_SUPPORT
+using Cysharp.Threading.Tasks;
+#else
+using System.Threading.Tasks;
+#endif
 
 namespace HK.UnitySequencerSystem.Standard
 {
@@ -24,9 +28,16 @@ namespace HK.UnitySequencerSystem.Standard
             this.seconds = seconds;
         }
 
+#if USS_UNI_TASK_SUPPORT
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
             return UniTask.Delay(TimeSpan.FromSeconds(this.seconds), cancellationToken: cancellationToken);
         }
+#else
+        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        {
+            return Task.Delay(TimeSpan.FromSeconds(this.seconds), cancellationToken: cancellationToken);
+        }
+#endif
     }
 }

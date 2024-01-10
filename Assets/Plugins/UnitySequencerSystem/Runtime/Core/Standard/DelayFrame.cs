@@ -1,7 +1,8 @@
+#if USS_UNI_TASK_SUPPORT
 using System;
 using System.Threading;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 namespace HK.UnitySequencerSystem.Standard
 {
@@ -30,3 +31,4 @@ namespace HK.UnitySequencerSystem.Standard
         }
     }
 }
+#endif

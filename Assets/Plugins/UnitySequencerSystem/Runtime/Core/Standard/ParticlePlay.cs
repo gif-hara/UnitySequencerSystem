@@ -1,8 +1,12 @@
 using System;
 using System.Threading;
-using Cysharp.Threading.Tasks;
 using HK.UnitySequencerSystem.Resolvers;
 using UnityEngine;
+#if USS_UNI_TASK_SUPPORT
+using Cysharp.Threading.Tasks;
+#else
+using System.Threading.Tasks;
+#endif
 
 namespace HK.UnitySequencerSystem.Standard
 {
@@ -32,11 +36,19 @@ namespace HK.UnitySequencerSystem.Standard
             this.withChildren = withChildren;
         }
 
+#if USS_UNI_TASK_SUPPORT
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
         {
             var target = this.targetResolver.Resolve(container);
             target.Play(withChildren);
+#if USS_UNI_TASK_SUPPORT
             return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
         }
     }
 }

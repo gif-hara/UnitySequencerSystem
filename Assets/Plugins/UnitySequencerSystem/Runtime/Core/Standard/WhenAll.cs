@@ -1,8 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
+#if USS_UNI_TASK_SUPPORT
+using Cysharp.Threading.Tasks;
+#else
+using System.Threading.Tasks;
+#endif
 
 namespace HK.UnitySequencerSystem.Standard
 {

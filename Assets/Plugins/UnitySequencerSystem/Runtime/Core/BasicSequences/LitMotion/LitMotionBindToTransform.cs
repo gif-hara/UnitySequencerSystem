@@ -15,7 +15,7 @@ namespace HK.UnitySequencerSystem.LitMotion
     /// </summary>
     [AddTypeMenu("LitMotion/Bind Transform")]
     [Serializable]
-    public sealed class LitMotionBindTransform : ISequence
+    public sealed class LitMotionBindToTransform : ISequence
     {
         
         [SerializeReference, SubclassSelector]

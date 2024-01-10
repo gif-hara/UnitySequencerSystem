@@ -25,7 +25,13 @@ namespace HK.UnitySequencerSystem.LitMotion
         
         [SerializeField]
         private ParameterType parameterType;
+        
+        [SerializeField]
+        private CoordinateType coordinateType;
 
+        [SerializeField]
+        private Ease ease;
+        
 #if USS_SUB_CLASS_SELECTOR_SUPPORT
         [SubclassSelector]
 #endif
@@ -61,13 +67,7 @@ namespace HK.UnitySequencerSystem.LitMotion
 #endif
         [SerializeReference]
         private MotionSchedulerResolver motionSchedulerResolver;
-
-        [SerializeField]
-        private Ease ease;
-
-        [SerializeField]
-        private CoordinateType coordinateType;
-
+        
         public enum ParameterType
         {
             Position,

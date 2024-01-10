@@ -72,19 +72,25 @@ namespace HK.UnitySequencerSystem.LitMotion
 
         public LitMotionBindTransform(
             TransformResolver targetResolver,
+            ParameterType parameterType,
             Vector3Resolver fromResolver,
             Vector3Resolver toResolver,
             FloatResolver durationResolver,
             FloatResolver delayResolver,
+            IntResolver loopCountResolver,
+            MotionSchedulerResolver motionSchedulerResolver,
             Ease ease,
             CoordinateType coordinateType
             )
         {
             this.targetResolver = targetResolver;
+            this.parameterType = parameterType;
             this.fromResolver = fromResolver;
             this.toResolver = toResolver;
             this.durationResolver = durationResolver;
             this.delayResolver = delayResolver;
+            this.loopCountResolver = loopCountResolver;
+            this.motionSchedulerResolver = motionSchedulerResolver;
             this.ease = ease;
             this.coordinateType = coordinateType;
         }

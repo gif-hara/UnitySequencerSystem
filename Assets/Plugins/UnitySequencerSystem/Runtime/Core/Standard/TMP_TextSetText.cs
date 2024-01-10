@@ -6,7 +6,7 @@ using HK.UnitySequencerSystem.Resolvers;
 using TMPro;
 using UnityEngine;
 
-namespace HK.UnitySequencerSystem
+namespace HK.UnitySequencerSystem.Standard
 {
     /// <summary>
     /// <see cref="TMP_Text"/>にテキストを設定するシーケンス

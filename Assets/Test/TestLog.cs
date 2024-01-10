@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using HK.UnitySequencerSystem;
+using HK.UnitySequencerSystem.Standard;
 using UnityEngine;
 
 public class TestLog : MonoBehaviour

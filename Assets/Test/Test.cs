@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using HK.UnitySequencerSystem.Standard;
 using TMPro;
 using UnityEngine;
 

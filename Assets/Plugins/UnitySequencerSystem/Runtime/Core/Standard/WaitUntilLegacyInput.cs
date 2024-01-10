@@ -3,7 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace HK.UnitySequencerSystem
+namespace HK.UnitySequencerSystem.Standard
 {
     /// <summary>
     /// キー入力を待機するシーケンス

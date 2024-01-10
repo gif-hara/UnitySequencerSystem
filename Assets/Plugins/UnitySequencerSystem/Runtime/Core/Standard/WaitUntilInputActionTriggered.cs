@@ -5,7 +5,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace HK.UnitySequencerSystem
+namespace HK.UnitySequencerSystem.Standard
 {
     /// <summary>
     /// <see cref="InputAction"/>のトリガーを待機するシーケンス

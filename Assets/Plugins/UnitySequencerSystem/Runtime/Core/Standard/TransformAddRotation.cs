@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 using HK.UnitySequencerSystem.Resolvers;
 using UnityEngine;
 
-namespace HK.UnitySequencerSystem
+namespace HK.UnitySequencerSystem.Standard
 {
     /// <summary>
     /// <see cref="Transform"/>の回転を加算するシーケンス

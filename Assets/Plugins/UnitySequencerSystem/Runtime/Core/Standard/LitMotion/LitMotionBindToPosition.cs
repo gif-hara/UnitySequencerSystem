@@ -6,6 +6,8 @@ using HK.UnitySequencerSystem.Resolvers.LitMotion;
 using LitMotion;
 using LitMotion.Extensions;
 using UnityEngine;
+using HK.UnitySequencerSystem.Core;
+
 #if USS_SUPPORT_UNITASK
 using Cysharp.Threading.Tasks;
 #else
@@ -117,7 +119,7 @@ namespace HK.UnitySequencerSystem.LitMotion
             {
                 motion = motion.WithScheduler(motionSchedulerResolver.Resolve(container));
             }
-            await motion.BindToPosition(target).ToUniTask(cancellationToken);
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToPosition(target).ToYieldInteraction());
         }
     }
 }

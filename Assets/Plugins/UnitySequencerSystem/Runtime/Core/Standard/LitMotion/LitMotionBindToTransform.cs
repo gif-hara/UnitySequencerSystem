@@ -6,6 +6,8 @@ using HK.UnitySequencerSystem.Resolvers.LitMotion;
 using LitMotion;
 using LitMotion.Extensions;
 using UnityEngine;
+using HK.UnitySequencerSystem.Core;
+
 #if USS_SUPPORT_UNITASK
 using Cysharp.Threading.Tasks;
 #else
@@ -140,6 +142,8 @@ namespace HK.UnitySequencerSystem.LitMotion
             {
                 motion = motion.WithScheduler(motionSchedulerResolver.Resolve(container));
             }
+
+#if USS_UNI_TASK_SUPPORT
             switch (parameterType, coordinateType)
             {
                 case (ParameterType.Position, CoordinateType.World):
@@ -162,6 +166,30 @@ namespace HK.UnitySequencerSystem.LitMotion
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+#else
+            switch (parameterType, coordinateType)
+            {
+                case (ParameterType.Position, CoordinateType.World):
+                    await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToPosition(target).ToYieldInteraction());
+                    break;
+                case (ParameterType.Position, CoordinateType.Local):
+                    await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalPosition(target).ToYieldInteraction());
+                    break;
+                case (ParameterType.Rotation, CoordinateType.World):
+                    await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToEulerAngles(target).ToYieldInteraction());
+                    break;
+                case (ParameterType.Rotation, CoordinateType.Local):
+                    await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalEulerAngles(target).ToYieldInteraction());
+                    break;
+                case (ParameterType.Scale, CoordinateType.World):
+                    throw new ArgumentException("Scale is not supported in world coordinate");
+                case (ParameterType.Scale, CoordinateType.Local):
+                    await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalScale(target).ToYieldInteraction());
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+#endif
         }
     }
 }

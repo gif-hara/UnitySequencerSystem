@@ -31,6 +31,11 @@
             "name": "com.mackysoft.serializereference-extensions",
             "expression": "",
             "define": "USS_SUPPORT_SUB_CLASS_SELECTOR"
+        },
+        {
+            "name": "com.unity.inputsystem",
+            "expression": "",
+            "define": "USS_SUPPORT_INPUT_SYSTEM"
         }
     ],
     "noEngineReferences": false

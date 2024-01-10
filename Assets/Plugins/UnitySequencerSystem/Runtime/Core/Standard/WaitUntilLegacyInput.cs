@@ -1,6 +1,10 @@
 using System;
 using System.Threading;
 using UnityEngine;
+using HK.UnitySequencerSystem.Core;
+using System.Collections;
+
+
 #if USS_UNI_TASK_SUPPORT
 using Cysharp.Threading.Tasks;
 #else
@@ -48,7 +52,15 @@ namespace HK.UnitySequencerSystem.Standard
 #if USS_UNI_TASK_SUPPORT
             return UniTask.WaitUntil(IsPushed, cancellationToken: cancellationToken);
 #else
-            return Task.Run(() => IsPushed(), cancellationToken);
+
+            IEnumerator WaitUntil()
+            {
+                while (!IsPushed())
+                {
+                    yield return null;
+                }
+            }
+            return MainThreadDispatcher.Instance.RunCoroutineAsTask(WaitUntil());
 #endif
         }
 

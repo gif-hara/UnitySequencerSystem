@@ -28,6 +28,29 @@ namespace HK.UnitySequencerSystem
 
             namedData.Add(name, data);
         }
+        
+        public void RegisterOrReplace<T>(T data)
+        {
+            if (this.data.ContainsKey(typeof(T)))
+            {
+                this.data[typeof(T)] = data;
+            }
+            else
+            {
+                this.data.Add(typeof(T), data);
+            }
+        }
+        
+        public void RegisterOrReplace<T>(string name, T data)
+        {
+            if (!this.namedData.TryGetValue(typeof(T), out var namedData))
+            {
+                namedData = new Dictionary<string, object>();
+                this.namedData.Add(typeof(T), namedData);
+            }
+
+            namedData[name] = data;
+        }
 
         public T Resolve<T>()
         {

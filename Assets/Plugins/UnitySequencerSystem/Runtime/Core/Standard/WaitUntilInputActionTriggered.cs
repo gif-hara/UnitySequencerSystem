@@ -7,7 +7,7 @@ using System.Collections;
 using HK.UnitySequencerSystem.Core;
 
 
-#if USS_UNI_TASK_SUPPORT
+#if USS_SUPPORT_UNITASK
 using Cysharp.Threading.Tasks;
 #else
 using System.Threading.Tasks;
@@ -25,7 +25,7 @@ namespace HK.UnitySequencerSystem.Standard
         [SerializeField]
         private InputActionReference inputActionReference;
 
-#if USS_UNI_TASK_SUPPORT
+#if USS_SUPPORT_UNITASK
         [SerializeField]
         private PlayerLoopTiming playerLoopTiming = PlayerLoopTiming.Update;
 #endif
@@ -34,7 +34,7 @@ namespace HK.UnitySequencerSystem.Standard
         {
         }
 
-#if USS_UNI_TASK_SUPPORT
+#if USS_SUPPORT_UNITASK
         public WaitUntilInputActionTriggered(InputActionReference inputActionReference, PlayerLoopTiming playerLoopTiming = PlayerLoopTiming.Update)
         {
             this.inputActionReference = inputActionReference;
@@ -48,14 +48,14 @@ namespace HK.UnitySequencerSystem.Standard
 #endif
 
 
-#if USS_UNI_TASK_SUPPORT
+#if USS_SUPPORT_UNITASK
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
         public Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             inputActionReference.action.Enable();
-#if USS_UNI_TASK_SUPPORT
+#if USS_SUPPORT_UNITASK
             return UniTask.WaitUntil(IsPushed, timing: playerLoopTiming, cancellationToken: cancellationToken);
 #else
             IEnumerator WaitUntil()

@@ -1,5 +1,5 @@
 using System.Threading;
-#if USS_UNI_TASK_SUPPORT
+#if USS_SUPPORT_UNITASK
 using Cysharp.Threading.Tasks;
 #else
 using System.Threading.Tasks;
@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace HK.UnitySequencerSystem
 {
-    /// <summary>
-    /// シーケンスを表すインターフェイス
-    /// </summary>
-    public interface ISequence
-    {
         /// <summary>
-        /// シーケンスを再生する
+        /// シーケンスを表すインターフェイス
         /// </summary>
-#if USS_UNI_TASK_SUPPORT
+        public interface ISequence
+        {
+                /// <summary>
+                /// シーケンスを再生する
+                /// </summary>
+#if USS_SUPPORT_UNITASK
         UniTask PlayAsync(Container container, CancellationToken cancellationToken);
 #else
-        Task PlayAsync(Container container, CancellationToken cancellationToken);
+                Task PlayAsync(Container container, CancellationToken cancellationToken);
 #endif
-    }
+        }
 }

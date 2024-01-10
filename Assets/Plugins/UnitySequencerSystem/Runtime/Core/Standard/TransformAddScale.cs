@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using HK.UnitySequencerSystem.Resolvers;
 using UnityEngine;
-#if USS_UNI_TASK_SUPPORT
+#if USS_SUPPORT_UNITASK
 using Cysharp.Threading.Tasks;
 #else
 using System.Threading.Tasks;
@@ -50,7 +50,7 @@ namespace HK.UnitySequencerSystem.Standard
             this.deltaTimeResolver = deltaTimeResolver;
         }
 
-#if USS_UNI_TASK_SUPPORT
+#if USS_SUPPORT_UNITASK
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
         public Task PlayAsync(Container container, CancellationToken cancellationToken)
@@ -60,7 +60,7 @@ namespace HK.UnitySequencerSystem.Standard
             var scale = this.scaleResolver.Resolve(container);
             var deltaTime = this.deltaTimeResolver.Resolve(container);
             target.localScale += scale * deltaTime;
-#if USS_UNI_TASK_SUPPORT
+#if USS_SUPPORT_UNITASK
             return UniTask.CompletedTask;
 #else
             return Task.CompletedTask;

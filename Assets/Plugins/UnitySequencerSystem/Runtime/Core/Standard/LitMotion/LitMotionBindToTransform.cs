@@ -6,7 +6,7 @@ using HK.UnitySequencerSystem.Resolvers.LitMotion;
 using LitMotion;
 using LitMotion.Extensions;
 using UnityEngine;
-#if USS_UNI_TASK_SUPPORT
+#if USS_SUPPORT_UNITASK
 using Cysharp.Threading.Tasks;
 #else
 using System.Threading.Tasks;
@@ -115,7 +115,7 @@ namespace HK.UnitySequencerSystem.LitMotion
             this.coordinateType = coordinateType;
         }
 
-#if USS_UNI_TASK_SUPPORT
+#if USS_SUPPORT_UNITASK
         public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
         public async Task PlayAsync(Container container, CancellationToken cancellationToken)

@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using HK.UnitySequencerSystem.Resolvers;
 using UnityEngine;
-#if USS_UNI_TASK_SUPPORT
+#if USS_SUPPORT_UNITASK
 using Cysharp.Threading.Tasks;
 #else
 using System.Threading.Tasks;
@@ -40,7 +40,7 @@ namespace HK.UnitySequencerSystem.Standard
             this.stopBehavior = stopBehavior;
         }
 
-#if USS_UNI_TASK_SUPPORT
+#if USS_SUPPORT_UNITASK
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
         public Task PlayAsync(Container container, CancellationToken cancellationToken)
@@ -48,7 +48,7 @@ namespace HK.UnitySequencerSystem.Standard
         {
             var target = this.targetResolver.Resolve(container);
             target.Stop(withChildren, stopBehavior);
-#if USS_UNI_TASK_SUPPORT
+#if USS_SUPPORT_UNITASK
             return UniTask.CompletedTask;
 #else
             return Task.CompletedTask;

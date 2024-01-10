@@ -5,7 +5,7 @@ using HK.UnitySequencerSystem.Core;
 using System.Collections;
 
 
-#if USS_UNI_TASK_SUPPORT
+#if USS_SUPPORT_UNITASK
 using Cysharp.Threading.Tasks;
 #else
 using System.Threading.Tasks;
@@ -43,13 +43,13 @@ namespace HK.UnitySequencerSystem.Standard
             this.keyCode = keyCode;
         }
 
-#if USS_UNI_TASK_SUPPORT
+#if USS_SUPPORT_UNITASK
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
         public Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
-#if USS_UNI_TASK_SUPPORT
+#if USS_SUPPORT_UNITASK
             return UniTask.WaitUntil(IsPushed, cancellationToken: cancellationToken);
 #else
             IEnumerator WaitUntil()

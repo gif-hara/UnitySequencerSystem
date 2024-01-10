@@ -5,7 +5,7 @@ using System.Collections;
 using HK.UnitySequencerSystem.Core;
 
 
-#if USS_UNI_TASK_SUPPORT
+#if USS_SUPPORT_UNITASK
 using Cysharp.Threading.Tasks;
 #else
 using System.Threading.Tasks;
@@ -32,13 +32,13 @@ namespace HK.UnitySequencerSystem.Standard
             this.frames = frames;
         }
 
-#if USS_UNI_TASK_SUPPORT
+#if USS_SUPPORT_UNITASK
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
         public Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
-#if USS_UNI_TASK_SUPPORT
+#if USS_SUPPORT_UNITASK
             return UniTask.DelayFrame(this.frames, cancellationToken: cancellationToken);
 #else
             IEnumerator DelayFrame()

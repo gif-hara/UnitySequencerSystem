@@ -8,6 +8,7 @@ namespace HK.UnitySequencerSystem
     /// <summary>
     /// 指定したフレーム待機するシーケンス
     /// </summary>
+    [AddTypeMenu("Standard/Delay Frame")]
     [Serializable]
     public sealed class DelayFrame : ISequence
     {

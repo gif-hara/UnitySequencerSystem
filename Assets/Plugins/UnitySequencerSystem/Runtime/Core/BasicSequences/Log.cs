@@ -8,6 +8,7 @@ namespace HK.UnitySequencerSystem
     /// <summary>
     /// ログを出力するシーケンス
     /// </summary>
+    [AddTypeMenu("Standard/Log")]
     [Serializable]
     public sealed class Log : ISequence
     {

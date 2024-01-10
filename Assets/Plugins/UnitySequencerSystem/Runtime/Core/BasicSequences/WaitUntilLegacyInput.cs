@@ -8,6 +8,7 @@ namespace HK.UnitySequencerSystem
     /// <summary>
     /// キー入力を待機するシーケンス
     /// </summary>
+    [AddTypeMenu("Standard/WaitUntil LegacyInput")]
     [Serializable]
     public sealed class WaitUntilLegacyInput : ISequence
     {

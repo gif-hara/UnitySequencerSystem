@@ -8,6 +8,7 @@ namespace HK.UnitySequencerSystem
     /// <summary>
     /// 指定した秒数待機するシーケンス
     /// </summary>
+    [AddTypeMenu("Standard/Delay")]
     [Serializable]
     public sealed class Delay : ISequence
     {

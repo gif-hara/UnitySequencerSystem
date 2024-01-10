@@ -9,7 +9,7 @@ namespace HK.UnitySequencerSystem
     /// <summary>
     /// <see cref="ParticleSystem"/>を再生するシーケンス
     /// </summary>
-    [AddTypeMenu("Particle/Play")]
+    [AddTypeMenu("Standard/Particle Play")]
     [Serializable]
     public sealed class ParticlePlay : ISequence
     {

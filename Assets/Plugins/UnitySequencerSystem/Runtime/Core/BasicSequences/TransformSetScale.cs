@@ -9,7 +9,7 @@ namespace HK.UnitySequencerSystem
     /// <summary>
     /// <see cref="Transform"/>の大きさを設定するシーケンス
     /// </summary>
-    [AddTypeMenu("Transform/SetScale")]
+    [AddTypeMenu("Standard/Transform Set Scale")]
     [Serializable]
     public sealed class TransformSetScale : ISequence
     {

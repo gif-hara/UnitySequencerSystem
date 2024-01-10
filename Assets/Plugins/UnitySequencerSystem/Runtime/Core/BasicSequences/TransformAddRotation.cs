@@ -9,7 +9,7 @@ namespace HK.UnitySequencerSystem
     /// <summary>
     /// <see cref="Transform"/>の回転を加算するシーケンス
     /// </summary>
-    [AddTypeMenu("Transform/AddRotation")]
+    [AddTypeMenu("Standard/Transform Add Rotation")]
     [Serializable]
     public sealed class TransformAddRotation : ISequence
     {

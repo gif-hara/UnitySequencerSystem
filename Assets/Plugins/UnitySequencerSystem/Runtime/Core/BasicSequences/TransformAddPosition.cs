@@ -9,7 +9,7 @@ namespace HK.UnitySequencerSystem
     /// <summary>
     /// <see cref="Transform"/>の座標を加算するシーケンス
     /// </summary>
-    [AddTypeMenu("Transform/AddPosition")]
+    [AddTypeMenu("Standard/Transform Add Position")]
     [Serializable]
     public sealed class TransformAddPosition : ISequence
     {

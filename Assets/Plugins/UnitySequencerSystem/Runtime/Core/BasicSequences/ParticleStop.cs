@@ -9,7 +9,7 @@ namespace HK.UnitySequencerSystem
     /// <summary>
     /// <see cref="ParticleSystem"/>を停止するシーケンス
     /// </summary>
-    [AddTypeMenu("Particle/Stop")]
+    [AddTypeMenu("Standard/Particle Stop")]
     [Serializable]
     public sealed class ParticleStop : ISequence
     {

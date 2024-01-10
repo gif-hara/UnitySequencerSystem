@@ -8,6 +8,7 @@ namespace HK.UnitySequencerSystem
     /// <summary>
     /// <see cref="GameObject"/>を破棄するシーケンス
     /// </summary>
+    [AddTypeMenu("Standard/GameObject Destroy")]
     [Serializable]
     public sealed class GameObjectDestroy : ISequence
     {

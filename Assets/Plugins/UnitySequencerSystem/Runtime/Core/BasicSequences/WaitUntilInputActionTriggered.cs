@@ -10,6 +10,7 @@ namespace HK.UnitySequencerSystem
     /// <summary>
     /// <see cref="InputAction"/>のトリガーを待機するシーケンス
     /// </summary>
+    [AddTypeMenu("Standard/WaitUntil InputActionTriggered")]
     [Serializable]
     public sealed class WaitUntilInputActionTriggered : ISequence
     {

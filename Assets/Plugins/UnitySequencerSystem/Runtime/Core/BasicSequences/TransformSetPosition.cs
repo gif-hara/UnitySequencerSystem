@@ -9,7 +9,7 @@ namespace HK.UnitySequencerSystem
     /// <summary>
     /// <see cref="Transform"/>の座標を設定するシーケンス
     /// </summary>
-    [AddTypeMenu("Transform/SetPosition")]
+    [AddTypeMenu("Standard/Transform Set Position")]
     [Serializable]
     public sealed class TransformSetPosition : ISequence
     {

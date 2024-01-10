@@ -11,7 +11,7 @@ namespace HK.UnitySequencerSystem
     /// <summary>
     /// <see cref="TMP_Text"/>にテキストを設定するシーケンス
     /// </summary>
-    [AddTypeMenu("TMP_Text/SetText")]
+    [AddTypeMenu("Standard/TMP_Text SetText")]
     [Serializable]
     public sealed class TMP_TextSetText : ISequence
     {

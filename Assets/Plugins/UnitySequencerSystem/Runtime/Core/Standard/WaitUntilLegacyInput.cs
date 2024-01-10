@@ -52,7 +52,6 @@ namespace HK.UnitySequencerSystem.Standard
 #if USS_UNI_TASK_SUPPORT
             return UniTask.WaitUntil(IsPushed, cancellationToken: cancellationToken);
 #else
-
             IEnumerator WaitUntil()
             {
                 while (!IsPushed())

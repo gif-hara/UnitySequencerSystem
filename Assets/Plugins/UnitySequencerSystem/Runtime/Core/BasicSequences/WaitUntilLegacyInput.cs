@@ -37,22 +37,18 @@ namespace HK.UnitySequencerSystem
 
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
-            return UniTask.WaitUntil(() => IsPushed(), cancellationToken: cancellationToken);
+            return UniTask.WaitUntil(IsPushed, cancellationToken: cancellationToken);
         }
 
         private bool IsPushed()
         {
-            switch (this.keyPushType)
+            return this.keyPushType switch
             {
-                case InputKeyType.Down:
-                    return Input.GetKeyDown(this.keyCode);
-                case InputKeyType.Up:
-                    return Input.GetKeyUp(this.keyCode);
-                case InputKeyType.Press:
-                    return Input.GetKey(this.keyCode);
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+                InputKeyType.Down => Input.GetKeyDown(this.keyCode),
+                InputKeyType.Up => Input.GetKeyUp(this.keyCode),
+                InputKeyType.Press => Input.GetKey(this.keyCode),
+                _ => throw new ArgumentOutOfRangeException()
+            };
         }
     }
 }

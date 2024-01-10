@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+#if USS_SUPPORT_UNITASK
 using Cysharp.Threading.Tasks;
-using HK.UnitySequencerSystem.Standard;
+#endif
 using TMPro;
 using UnityEngine;
 

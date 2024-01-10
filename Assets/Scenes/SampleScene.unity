@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4465788, g: 0.49641287, b: 0.5748173, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5331,102 +5331,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runOnceSequences:
-  - rid: 5254756519452082176
-  - rid: 5254756516522623011
-  runLoopSequences: []
-  target: {fileID: 324719449}
+  - rid: 2598803724019695673
+  - rid: 2598803724019695634
+  target: {fileID: 1498627966}
   texts: []
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 5254756516522623011
-      type: {class: ParticlePlay, ns: HK.UnitySequencerSystem.Standard, asm: UnitySequencerSystem}
+    - rid: 2598803724019695634
+      type: {class: Log, ns: HK.UnitySequencerSystem.Standard, asm: UnitySequencerSystem}
+      data:
+        message: OK
+    - rid: 2598803724019695673
+      type: {class: BindToPositionY, ns: HK.UnitySequencerSystem.LitMotion, asm: UnitySequencerSystem}
       data:
         targetResolver:
-          rid: 5254756516522623012
-        withChildren: 1
-    - rid: 5254756516522623012
-      type: {class: ParticleSystemResolver/ReferenceParticleSystem, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        target: {fileID: 33416259}
-    - rid: 5254756519452082176
-      type: {class: WhenAll, ns: HK.UnitySequencerSystem.Standard, asm: UnitySequencerSystem}
-      data:
-        sequences:
-        - rid: 5254756519452082177
-        - rid: 5254756519452082178
-    - rid: 5254756519452082177
-      type: {class: LitMotionBindToTransform, ns: HK.UnitySequencerSystem.LitMotion, asm: UnitySequencerSystem}
-      data:
-        targetResolver:
-          rid: 5254756519452082179
-        parameterType: 0
-        fromResolver:
-          rid: 5254756519452082180
-        toResolver:
-          rid: 5254756519452082181
-        durationResolver:
-          rid: 5254756519452082182
-        delayResolver:
-          rid: -2
-        loopCountResolver:
-          rid: -2
-        motionSchedulerResolver:
-          rid: -2
-        ease: 0
-        coordinateType: 0
-    - rid: 5254756519452082178
-      type: {class: LitMotionBindToTransform, ns: HK.UnitySequencerSystem.LitMotion, asm: UnitySequencerSystem}
-      data:
-        targetResolver:
-          rid: 5254756519452082183
-        parameterType: 0
-        fromResolver:
-          rid: 5254756519452082184
-        toResolver:
-          rid: 5254756519452082185
-        durationResolver:
-          rid: 5254756519452082186
-        delayResolver:
-          rid: -2
-        loopCountResolver:
-          rid: -2
-        motionSchedulerResolver:
-          rid: -2
-        ease: 0
-        coordinateType: 0
-    - rid: 5254756519452082179
+          rid: 2598803724019695674
+        parameters:
+          fromResolver:
+            rid: 2598803724019695675
+          toResolver:
+            rid: 2598803724019695676
+          durationResolver:
+            rid: 2598803724019695677
+          delayResolver:
+            rid: -2
+          loopCountResolver:
+            rid: 2598803724019695678
+          loopType: 0
+          motionSchedulerResolver:
+            rid: -2
+          ease: 0
+          ignoreTimeScale: 1
+    - rid: 2598803724019695674
       type: {class: TransformResolver/ReferenceTransform, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         target: {fileID: 324719453}
-    - rid: 5254756519452082180
-      type: {class: Vector3Resolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+    - rid: 2598803724019695675
+      type: {class: FloatResolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: {x: 0, y: 0, z: 0}
-    - rid: 5254756519452082181
-      type: {class: Vector3Resolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+        value: 0
+    - rid: 2598803724019695676
+      type: {class: FloatResolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: {x: 3, y: 0, z: 0}
-    - rid: 5254756519452082182
+        value: 2
+    - rid: 2598803724019695677
       type: {class: FloatResolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 1
-    - rid: 5254756519452082183
-      type: {class: TransformResolver/ReferenceTransform, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        target: {fileID: 1498627970}
-    - rid: 5254756519452082184
-      type: {class: Vector3Resolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: {x: 0, y: 3, z: 0}
-    - rid: 5254756519452082185
-      type: {class: Vector3Resolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: {x: 3, y: 0, z: 0}
-    - rid: 5254756519452082186
-      type: {class: FloatResolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+    - rid: 2598803724019695678
+      type: {class: IntResolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: 2
 --- !u!1 &963194225

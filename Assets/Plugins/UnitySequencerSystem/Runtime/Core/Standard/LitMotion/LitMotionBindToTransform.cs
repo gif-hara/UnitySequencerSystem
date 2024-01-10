@@ -27,28 +27,28 @@ namespace HK.UnitySequencerSystem.LitMotion
 #endif
         [SerializeReference]
         private TransformResolver targetResolver;
-        
+
         [SerializeField]
         private ParameterType parameterType;
-        
+
         [SerializeField]
         private CoordinateType coordinateType;
 
         [SerializeField]
         private Ease ease;
-        
+
 #if USS_SUB_CLASS_SELECTOR_SUPPORT
         [SubclassSelector]
 #endif
         [SerializeReference]
         private Vector3Resolver fromResolver;
-        
+
 #if USS_SUB_CLASS_SELECTOR_SUPPORT
         [SubclassSelector]
 #endif
         [SerializeReference]
         private Vector3Resolver toResolver;
-        
+
 #if USS_SUB_CLASS_SELECTOR_SUPPORT
         [SubclassSelector]
 #endif
@@ -60,26 +60,26 @@ namespace HK.UnitySequencerSystem.LitMotion
 #endif
         [SerializeReference]
         private FloatResolver delayResolver;
-        
+
 #if USS_SUB_CLASS_SELECTOR_SUPPORT
         [SubclassSelector]
 #endif
         [SerializeReference]
         private IntResolver loopCountResolver;
-        
+
 #if USS_SUB_CLASS_SELECTOR_SUPPORT
         [SubclassSelector]
 #endif
         [SerializeReference]
         private MotionSchedulerResolver motionSchedulerResolver;
-        
+
         public enum ParameterType
         {
             Position,
             Rotation,
             Scale,
         }
-        
+
         public enum CoordinateType
         {
             World,
@@ -115,7 +115,11 @@ namespace HK.UnitySequencerSystem.LitMotion
             this.coordinateType = coordinateType;
         }
 
+#if USS_UNI_TASK_SUPPORT
         public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
         {
             var target = this.targetResolver.Resolve(container);
             var motion = LMotion.Create(
@@ -124,15 +128,15 @@ namespace HK.UnitySequencerSystem.LitMotion
                     durationResolver.Resolve(container)
                     )
                 .WithEase(ease);
-            if(delayResolver != null)
+            if (delayResolver != null)
             {
                 motion = motion.WithDelay(delayResolver.Resolve(container));
             }
-            if(loopCountResolver != null)
+            if (loopCountResolver != null)
             {
                 motion = motion.WithLoops(loopCountResolver.Resolve(container));
             }
-            if(motionSchedulerResolver != null)
+            if (motionSchedulerResolver != null)
             {
                 motion = motion.WithScheduler(motionSchedulerResolver.Resolve(container));
             }

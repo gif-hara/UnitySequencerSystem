@@ -40,11 +40,19 @@ namespace HK.UnitySequencerSystem.Standard
             this.stopBehavior = stopBehavior;
         }
 
+#if USS_UNI_TASK_SUPPORT
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
         {
             var target = this.targetResolver.Resolve(container);
             target.Stop(withChildren, stopBehavior);
+#if USS_UNI_TASK_SUPPORT
             return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
         }
     }
 }

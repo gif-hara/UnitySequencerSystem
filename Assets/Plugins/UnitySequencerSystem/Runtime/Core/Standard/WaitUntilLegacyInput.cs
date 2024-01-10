@@ -39,9 +39,17 @@ namespace HK.UnitySequencerSystem.Standard
             this.keyCode = keyCode;
         }
 
+#if USS_UNI_TASK_SUPPORT
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
         {
+#if USS_UNI_TASK_SUPPORT
             return UniTask.WaitUntil(IsPushed, cancellationToken: cancellationToken);
+#else
+            return Task.Run(() => IsPushed(), cancellationToken);
+#endif
         }
 
         private bool IsPushed()

@@ -28,10 +28,18 @@ namespace HK.UnitySequencerSystem.Standard
             this.message = message;
         }
 
+#if USS_UNI_TASK_SUPPORT
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
         {
             Debug.Log(this.message);
+#if USS_UNI_TASK_SUPPORT
             return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
         }
     }
 }

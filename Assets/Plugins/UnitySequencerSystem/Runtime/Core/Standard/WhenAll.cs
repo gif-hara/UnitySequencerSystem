@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using System.Linq;
+
 #if USS_UNI_TASK_SUPPORT
 using Cysharp.Threading.Tasks;
 #else
@@ -32,9 +34,17 @@ namespace HK.UnitySequencerSystem.Standard
             this.sequences = sequences;
         }
 
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#if USS_UNI_TASK_SUPPORT
+        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
         {
+#if USS_UNI_TASK_SUPPORT
             await UniTask.WhenAll(sequences.Select(s => s.PlayAsync(container, cancellationToken)));
+#else
+            await Task.WhenAll(sequences.Select(s => s.PlayAsync(container, cancellationToken)));
+#endif
         }
     }
 }

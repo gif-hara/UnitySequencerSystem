@@ -34,7 +34,11 @@ namespace HK.UnitySequencerSystem
             }
             container.Register("MyDeltaTime", new Func<float>(() => 0.01f));
             var runOnceSequencer = new Sequencer(container, this.runOnceSequences);
-            runOnceSequencer.PlayAsync(scope.Token).Forget();
+#if USS_UNI_TASK_SUPPORT
+            await runOnceSequencer.PlayAsync(scope.Token);
+#else         
+            await runOnceSequencer.PlayAsync(scope.Token);
+#endif
         }
     }
 }

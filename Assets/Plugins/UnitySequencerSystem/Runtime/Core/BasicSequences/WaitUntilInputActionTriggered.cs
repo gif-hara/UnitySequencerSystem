@@ -33,7 +33,7 @@ namespace HK.UnitySequencerSystem
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
             inputActionReference.action.Enable();
-            return UniTask.WaitUntil(() => IsPushed(), timing: playerLoopTiming, cancellationToken: cancellationToken);
+            return UniTask.WaitUntil(IsPushed, timing: playerLoopTiming, cancellationToken: cancellationToken);
         }
 
         private bool IsPushed()

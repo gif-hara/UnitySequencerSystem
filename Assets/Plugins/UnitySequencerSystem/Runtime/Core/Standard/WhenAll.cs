@@ -35,7 +35,7 @@ namespace HK.UnitySequencerSystem.Standard
         }
 
 #if USS_UNI_TASK_SUPPORT
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
         public async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif

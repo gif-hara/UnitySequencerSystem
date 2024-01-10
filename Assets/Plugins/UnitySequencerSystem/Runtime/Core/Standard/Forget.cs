@@ -38,15 +38,21 @@ namespace HK.UnitySequencerSystem.Standard
         public Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
+#if USS_UNI_TASK_SUPPORT
             foreach (var sequence in sequences)
             {
-#if USS_UNI_TASK_SUPPORT
                 sequence.PlayAsync(container, cancellationToken).Forget();
-#else
-                sequence.PlayAsync(container, cancellationToken);
-#endif
             }
+
+            return UniTask.CompletedTask;
+#else
+            foreach (var sequence in sequences)
+            {
+                sequence.PlayAsync(container, cancellationToken).Forget();
+            }
+
             return Task.CompletedTask;
+#endif
         }
     }
 }

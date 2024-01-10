@@ -21,6 +21,16 @@
             "name": "com.cysharp.unitask",
             "expression": "",
             "define": "USS_SUPPORT_UNITASK"
+        },
+        {
+            "name": "com.annulusgames.lit-motion",
+            "expression": "",
+            "define": "USS_SUPPORT_LIT_MOTION"
+        },
+        {
+            "name": "com.mackysoft.serializereference-extensions",
+            "expression": "",
+            "define": "USS_SUPPORT_SUB_CLASS_SELECTOR"
         }
     ],
     "noEngineReferences": false

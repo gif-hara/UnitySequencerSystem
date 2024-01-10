@@ -134,21 +134,21 @@ namespace HK.UnitySequencerSystem.LitMotion
             switch (parameterType, coordinateType)
             {
                 case (ParameterType.Position, CoordinateType.World):
-                    await motion.BindToPosition(target);
+                    await motion.BindToPosition(target).ToUniTask(cancellationToken);
                     break;
                 case (ParameterType.Position, CoordinateType.Local):
-                    await motion.BindToLocalPosition(target);
+                    await motion.BindToLocalPosition(target).ToUniTask(cancellationToken);
                     break;
                 case (ParameterType.Rotation, CoordinateType.World):
-                    await motion.BindToEulerAngles(target);
+                    await motion.BindToEulerAngles(target).ToUniTask(cancellationToken);
                     break;
                 case (ParameterType.Rotation, CoordinateType.Local):
-                    await motion.BindToLocalEulerAngles(target);
+                    await motion.BindToLocalEulerAngles(target).ToUniTask(cancellationToken);
                     break;
                 case (ParameterType.Scale, CoordinateType.World):
                     throw new ArgumentException("Scale is not supported in world coordinate");
                 case (ParameterType.Scale, CoordinateType.Local):
-                    await motion.BindToLocalScale(target);
+                    await motion.BindToLocalScale(target).ToUniTask(cancellationToken);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

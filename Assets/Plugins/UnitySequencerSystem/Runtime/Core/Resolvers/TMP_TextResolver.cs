@@ -1,3 +1,4 @@
+#if USS_TMP_SUPPORT
 using System;
 using TMPro;
 using UnityEngine;
@@ -33,3 +34,4 @@ namespace HK.UnitySequencerSystem.Resolvers
         }
     }
 }
+#endif

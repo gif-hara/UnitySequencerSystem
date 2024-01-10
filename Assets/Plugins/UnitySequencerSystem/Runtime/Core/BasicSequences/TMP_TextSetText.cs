@@ -1,3 +1,4 @@
+#if USS_TMP_SUPPORT
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
@@ -39,3 +40,4 @@ namespace HK.UnitySequencerSystem
         }
     }
 }
+#endif

@@ -5330,12 +5330,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a4b32332492b3418be4c4d4980fc45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runOnceSequences: []
-  target: {fileID: 1498627966}
+  runOnceSequences:
+  - rid: 2598803746927149056
+  - rid: 2598803746927149069
+  target: {fileID: 324719449}
   texts: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 2598803746927149056
+      type: {class: Forget, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        sequencesResolver:
+          rid: 2598803746927149078
+    - rid: 2598803746927149069
+      type: {class: Log, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        message: OK
+    - rid: 2598803746927149078
+      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {fileID: 11400000, guid: f743437ff137826469ee28fe3a519f16, type: 2}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

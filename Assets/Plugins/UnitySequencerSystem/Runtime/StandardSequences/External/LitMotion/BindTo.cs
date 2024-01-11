@@ -753,5 +753,215 @@ namespace UnitySequencerSystem.LitMotion
 #endif
         }
     }
+
+    [AddTypeMenu("LitMotion/Bind To Euler AnglesX")]
+    [Serializable]
+    public sealed class BindToEulerAnglesX : ISequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public TransformResolver targetResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public FloatParameters parameters;
+
+        public BindToEulerAnglesX()
+        {
+        }
+
+        public BindToEulerAnglesX(TransformResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            await motion.BindToEulerAnglesX(target).ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToEulerAnglesX(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+    [AddTypeMenu("LitMotion/Bind To Euler AnglesY")]
+    [Serializable]
+    public sealed class BindToEulerAnglesY : ISequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public TransformResolver targetResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public FloatParameters parameters;
+
+        public BindToEulerAnglesY()
+        {
+        }
+
+        public BindToEulerAnglesY(TransformResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            await motion.BindToEulerAnglesY(target).ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToEulerAnglesY(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+    [AddTypeMenu("LitMotion/Bind To Euler AnglesZ")]
+    [Serializable]
+    public sealed class BindToEulerAnglesZ : ISequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public TransformResolver targetResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public FloatParameters parameters;
+
+        public BindToEulerAnglesZ()
+        {
+        }
+
+        public BindToEulerAnglesZ(TransformResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            await motion.BindToEulerAnglesZ(target).ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToEulerAnglesZ(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+    [AddTypeMenu("LitMotion/Bind To Local Euler AnglesX")]
+    [Serializable]
+    public sealed class BindToLocalEulerAnglesX : ISequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public TransformResolver targetResolver;
+        
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public FloatParameters parameters;
+
+        public BindToLocalEulerAnglesX()
+        {
+        }
+
+        public BindToLocalEulerAnglesX(TransformResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK            
+            await motion.BindToLocalEulerAnglesX(target).ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalEulerAnglesX(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+    [AddTypeMenu("LitMotion/Bind To Local Euler AnglesY")]
+    [Serializable]
+    public sealed class BindToLocalEulerAnglesY : ISequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public TransformResolver targetResolver;
+        
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public FloatParameters parameters;
+
+        public BindToLocalEulerAnglesY()
+        {
+        }
+
+        public BindToLocalEulerAnglesY(TransformResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK            
+            await motion.BindToLocalEulerAnglesY(target).ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalEulerAnglesY(target).ToYieldInteraction());
+#endif
+        }
+    }
 }
 #endif

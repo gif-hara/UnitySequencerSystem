@@ -36,6 +36,11 @@
             "name": "com.unity.inputsystem",
             "expression": "",
             "define": "USS_SUPPORT_INPUT_SYSTEM"
+        },
+        {
+            "name": "com.unity.textmeshpro",
+            "expression": "",
+            "define": "USS_TMP_SUPPORT"
         }
     ],
     "noEngineReferences": false

@@ -3,6 +3,7 @@ using System;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnitySequencerSystem.Resolvers;
 #if USS_SUPPORT_UNITASK
 using Cysharp.Threading.Tasks;
 #else
@@ -12,6 +13,45 @@ using System.Collections;
 
 namespace UnitySequencerSystem.StandardSequences
 {
+    [AddTypeMenu("Standard/WaitUntil")]
+    [Serializable]
+    public sealed class WaitUntil : ISequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private BoolResolver conditionResolver;
+
+        public WaitUntil()
+        {
+        }
+
+        public WaitUntil(BoolResolver conditionResolver)
+        {
+            this.conditionResolver = conditionResolver;
+        }
+
+    #if USS_SUPPORT_UNITASK
+        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+#if USS_SUPPORT_UNITASK
+            return UniTask.WaitUntil(() => conditionResolver.Resolve(container), cancellationToken: cancellationToken);
+#else
+            IEnumerator WaitUntil()
+            {
+                while (!conditionResolver.Resolve(container))
+                {
+                    yield return null;
+                }
+            }
+            return MainThreadDispatcher.Instance.RunCoroutineAsTask(WaitUntil());
+#endif
+        }
+    }
     /// <summary>
     /// キー入力を待機するシーケンス
     /// </summary>

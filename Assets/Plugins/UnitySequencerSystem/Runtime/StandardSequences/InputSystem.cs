@@ -1,3 +1,4 @@
+#if USS_SUPPORT_INPUT_SYSTEM
 using System;
 using System.Threading;
 using UnityEngine;
@@ -20,10 +21,7 @@ namespace UnitySequencerSystem.StandardSequences
     [Serializable]
     public sealed class InputActionReadValueVector2 : ISequence
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
+        [SerializeField]
         private InputActionReference inputActionReference;
 
         [SerializeField]
@@ -44,6 +42,7 @@ namespace UnitySequencerSystem.StandardSequences
         public Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
+            inputActionReference.action.Enable();
             var value = inputActionReference.action.ReadValue<Vector2>();
             container.RegisterOrReplace(vector2Name, value);
 #if USS_SUPPORT_UNITASK
@@ -54,3 +53,4 @@ namespace UnitySequencerSystem.StandardSequences
         }
     }
 }
+#endif

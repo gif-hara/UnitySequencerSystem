@@ -11,7 +11,7 @@ using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
 #endif
 
-namespace UnitySequencerSystem.Standard
+namespace UnitySequencerSystem.StandardSequences
 {
     /// <summary>
     /// キー入力を待機するシーケンス

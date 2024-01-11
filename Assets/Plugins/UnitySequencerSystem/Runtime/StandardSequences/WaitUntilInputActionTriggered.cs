@@ -11,7 +11,7 @@ using System.Collections;
 using UnitySequencerSystem.Core;
 #endif
 
-namespace UnitySequencerSystem.Standard
+namespace UnitySequencerSystem.StandardSequences
 {
     /// <summary>
     /// <see cref="InputAction"/>のトリガーを待機するシーケンス

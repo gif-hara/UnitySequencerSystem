@@ -10,7 +10,7 @@ using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
 #endif
 
-namespace UnitySequencerSystem.Standard
+namespace UnitySequencerSystem.StandardSequences
 {
         /// <summary>
         /// シーケンスを実行し、全てのシーケンスが完了したら完了するシーケンス

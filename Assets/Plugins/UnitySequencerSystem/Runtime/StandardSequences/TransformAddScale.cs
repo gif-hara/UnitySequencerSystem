@@ -8,7 +8,7 @@ using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
 #endif
 
-namespace UnitySequencerSystem.Standard
+namespace UnitySequencerSystem.StandardSequences
 {
     /// <summary>
     /// Represents a sequence that adds scale to a target <see cref="Transform"/>.

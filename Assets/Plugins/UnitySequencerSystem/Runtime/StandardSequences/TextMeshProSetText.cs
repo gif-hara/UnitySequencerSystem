@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 #endif
 
 
-namespace UnitySequencerSystem.Standard
+namespace UnitySequencerSystem.StandardSequences
 {
     /// <summary>
     /// <see cref="TMP_Text"/>にテキストを設定するシーケンス

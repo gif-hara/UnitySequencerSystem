@@ -8,7 +8,7 @@ using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
 #endif
 
-namespace UnitySequencerSystem.Standard
+namespace UnitySequencerSystem.StandardSequences
 {
         /// <summary>
         /// <see cref="Transform"/>の大きさを設定するシーケンス

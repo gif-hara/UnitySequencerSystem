@@ -889,7 +889,7 @@ namespace UnitySequencerSystem.LitMotion
 #endif
         [SerializeReference]
         public TransformResolver targetResolver;
-        
+
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
@@ -931,7 +931,7 @@ namespace UnitySequencerSystem.LitMotion
 #endif
         [SerializeReference]
         public TransformResolver targetResolver;
-        
+
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
@@ -960,6 +960,49 @@ namespace UnitySequencerSystem.LitMotion
             await motion.BindToLocalEulerAnglesY(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalEulerAnglesY(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+    [AddTypeMenu("LitMotion/Bind To Local Euler AnglesZ")]
+    [Serializable]
+    public sealed class BindToLocalEulerAnglesZ : ISequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public TransformResolver targetResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public FloatParameters parameters;
+
+        public BindToLocalEulerAnglesZ()
+        {
+        }
+
+        public BindToLocalEulerAnglesZ(TransformResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+    
+        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            await motion.BindToLocalEulerAnglesZ(target).ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalEulerAnglesZ(target).ToYieldInteraction());
 #endif
         }
     }

@@ -1,10 +1,12 @@
 using System;
 using System.Threading;
 using UnityEngine;
+
 #if USS_SUPPORT_UNITASK
 using Cysharp.Threading.Tasks;
 #else
 using System.Threading.Tasks;
+using System.Collections;
 #endif
 
 namespace UnitySequencerSystem.StandardSequences

@@ -106,6 +106,11 @@ namespace UnitySequencerSystem.LitMotion
     {
     }
 
+    [Serializable]
+    public sealed class QuaternionParameters : Parameters<QuaternionResolver, Quaternion, NoOptions, QuaternionMotionAdapter>
+    {
+    }
+
     [AddTypeMenu("LitMotion/Bind To Position")]
     [Serializable]
     public sealed class BindToPosition : ISequence
@@ -534,6 +539,217 @@ namespace UnitySequencerSystem.LitMotion
             await motion.BindToLocalPositionZ(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalPositionZ(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+    [AddTypeMenu("LitMotion/Bind To Rotation")]
+    [Serializable]
+    public sealed class BindToRotation : ISequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public TransformResolver targetResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public QuaternionParameters parameters;
+
+        public BindToRotation()
+        {
+        }
+
+        public BindToRotation(TransformResolver targetResolver, QuaternionParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            await motion.BindToRotation(target).ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToRotation(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+    [AddTypeMenu("LitMotion/Bind To Local Rotation")]
+    [Serializable]
+    public sealed class BindToLocalRotation : ISequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public TransformResolver targetResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public QuaternionParameters parameters;
+
+        public BindToLocalRotation()
+        {
+        }
+
+        public BindToLocalRotation(TransformResolver targetResolver, QuaternionParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            await motion.BindToLocalRotation(target).ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalRotation(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+    [AddTypeMenu("LitMotion/Bind To Local ScaleX")]
+    [Serializable]
+    public sealed class BindToLocalScaleX : ISequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public TransformResolver targetResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public FloatParameters parameters;
+
+        public BindToLocalScaleX()
+        {
+        }
+
+        public BindToLocalScaleX(TransformResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            await motion.BindToLocalScaleX(target).ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalScaleX(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+    [AddTypeMenu("LitMotion/Bind To Local ScaleY")]
+    [Serializable]
+    public sealed class BindToLocalScaleY : ISequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public TransformResolver targetResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public FloatParameters parameters;
+
+        public BindToLocalScaleY()
+        {
+        }
+
+        public BindToLocalScaleY(TransformResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            await motion.BindToLocalScaleY(target).ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalScaleY(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+    [AddTypeMenu("LitMotion/Bind To Local ScaleZ")]
+    [Serializable]
+    public sealed class BindToLocalScaleZ : ISequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public TransformResolver targetResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public FloatParameters parameters;
+
+        public BindToLocalScaleZ()
+        {
+        }
+
+        public BindToLocalScaleZ(TransformResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            await motion.BindToLocalScaleZ(target).ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalScaleZ(target).ToYieldInteraction());
 #endif
         }
     }

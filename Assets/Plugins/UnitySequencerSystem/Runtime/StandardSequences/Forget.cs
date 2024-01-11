@@ -1,7 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnitySequencerSystem.Resolvers;
+
 #if USS_SUPPORT_UNITASK
 using Cysharp.Threading.Tasks;
 #else
@@ -21,15 +22,15 @@ namespace UnitySequencerSystem.StandardSequences
         [SubclassSelector]
 #endif
         [SerializeReference]
-        private List<ISequence> sequences;
+        private SequencesResolver sequencesResolver;
 
         public Forget()
         {
         }
 
-        public Forget(List<ISequence> sequences)
+        public Forget(SequencesResolver sequencesResolver)
         {
-            this.sequences = sequences;
+            this.sequencesResolver = sequencesResolver;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -38,6 +39,7 @@ namespace UnitySequencerSystem.StandardSequences
         public Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
+            var sequences = sequencesResolver.Resolve(container);
 #if USS_SUPPORT_UNITASK
             foreach (var sequence in sequences)
             {

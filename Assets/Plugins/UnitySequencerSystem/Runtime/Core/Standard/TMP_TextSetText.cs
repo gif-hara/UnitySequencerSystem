@@ -1,10 +1,15 @@
 #if USS_TMP_SUPPORT
 using System;
 using System.Threading;
-using Cysharp.Threading.Tasks;
 using HK.UnitySequencerSystem.Resolvers;
 using TMPro;
 using UnityEngine;
+#if USS_SUPPORT_UNITASK
+using Cysharp.Threading.Tasks;
+#else
+using System.Threading.Tasks;
+#endif
+
 
 namespace HK.UnitySequencerSystem.Standard
 {

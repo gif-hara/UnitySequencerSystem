@@ -16,9 +16,9 @@ namespace HK.UnitySequencerSystem.Standard
     /// <summary>
     /// <see cref="TMP_Text"/>にテキストを設定するシーケンス
     /// </summary>
-    [AddTypeMenu("Standard/TMP_Text SetText")]
+    [AddTypeMenu("Standard/TextMeshPro Set Text")]
     [Serializable]
-    public sealed class TMP_TextSetText : ISequence
+    public sealed class TextMeshProSetText : ISequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -32,11 +32,11 @@ namespace HK.UnitySequencerSystem.Standard
         [SerializeReference]
         private StringResolver textResolver;
 
-        public TMP_TextSetText()
+        public TextMeshProSetText()
         {
         }
 
-        public TMP_TextSetText(TMP_TextResolver targetResolver, StringResolver textResolver)
+        public TextMeshProSetText(TMP_TextResolver targetResolver, StringResolver textResolver)
         {
             this.targetResolver = targetResolver;
             this.textResolver = textResolver;

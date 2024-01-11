@@ -14,9 +14,7 @@ namespace UnitySequencerSystem
     /// </summary>
     public class Test : MonoBehaviour
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
-#endif
         [SerializeReference]
         private List<ISequence> runOnceSequences = default;
 
@@ -26,10 +24,11 @@ namespace UnitySequencerSystem
         [SerializeField]
         private List<TMP_Text> texts = default;
 
-        private CancellationTokenSource scope = new();
+        private CancellationTokenSource scope;
 
         async void Start()
         {
+            this.scope = CancellationTokenSource.CreateLinkedTokenSource(this.destroyCancellationToken);
             var container = new Container();
             container.Register(target.name, target.transform);
             foreach (var t in this.texts)
@@ -38,11 +37,7 @@ namespace UnitySequencerSystem
             }
             container.Register("MyDeltaTime", new Func<float>(() => 0.01f));
             var runOnceSequencer = new Sequencer(container, this.runOnceSequences);
-#if USS_SUPPORT_UNITASK
             await runOnceSequencer.PlayAsync(scope.Token);
-#else         
-            await runOnceSequencer.PlayAsync(scope.Token);
-#endif
         }
     }
 }

@@ -5331,26 +5331,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runOnceSequences:
-  - rid: 2598803746927149056
-  - rid: 2598803746927149069
+  - rid: 2598803748086087680
   target: {fileID: 324719449}
   texts: []
   references:
     version: 2
     RefIds:
-    - rid: 2598803746927149056
-      type: {class: Forget, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+    - rid: 2598803748086087680
+      type: {class: Update, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
       data:
         sequencesResolver:
-          rid: 2598803746927149078
-    - rid: 2598803746927149069
-      type: {class: Log, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+          rid: 2598803748086087681
+        playerLoopTiming: 8
+    - rid: 2598803748086087681
+      type: {class: SequencesResolver/List, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        message: OK
-    - rid: 2598803746927149078
-      type: {class: SequencesResolver/ScriptableObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+        value:
+        - rid: 2598803748086087683
+        - rid: 2598803748086087684
+        - rid: 2598803748086087686
+    - rid: 2598803748086087683
+      type: {class: InputActionReadValueVector2, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
       data:
-        value: {fileID: 11400000, guid: f743437ff137826469ee28fe3a519f16, type: 2}
+        inputActionReference: {fileID: 5634926967887738952, guid: 605fe3ce988f2ed49b9fab56a90b0193, type: 3}
+        vector2Name: Move
+    - rid: 2598803748086087684
+      type: {class: Vector2ToVector3, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        vector2Resolver:
+          rid: 2598803748086087685
+        axisX: 0
+        axisY: 1
+        axisZ: 2
+        vector3Name: Move
+    - rid: 2598803748086087685
+      type: {class: Vector2Resolver/NameVector2, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: Move
+    - rid: 2598803748086087686
+      type: {class: TransformAddPosition, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        targetResolver:
+          rid: 2598803748086087687
+        positionResolver:
+          rid: 2598803748086087688
+        deltaTimeResolver:
+          rid: 2598803748086087689
+    - rid: 2598803748086087687
+      type: {class: TransformResolver/ReferenceTransform, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        target: {fileID: 324719453}
+    - rid: 2598803748086087688
+      type: {class: Vector3Resolver/NameVector3, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: Move
+    - rid: 2598803748086087689
+      type: {class: DeltaTimeResolver/UnityEngineDeltaTime, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

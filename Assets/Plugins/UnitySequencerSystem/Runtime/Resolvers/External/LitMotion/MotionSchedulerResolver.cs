@@ -1,3 +1,4 @@
+#if USS_SUPPORT_LIT_MOTION
 using System;
 using LitMotion;
 
@@ -44,3 +45,4 @@ namespace UnitySequencerSystem.Resolvers.LitMotion
         }
     }
 }
+#endif

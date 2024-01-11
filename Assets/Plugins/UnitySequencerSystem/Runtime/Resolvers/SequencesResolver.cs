@@ -12,7 +12,10 @@ namespace UnitySequencerSystem.Resolvers
         [Serializable]
         public sealed class List : SequencesResolver
         {
-            [SerializeField]
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+            [SubclassSelector]
+#endif
+            [SerializeReference]
             private List<ISequence> value;
 
             public override List<ISequence> Resolve(Container container)

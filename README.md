@@ -16,7 +16,7 @@
 - 下記コードのようにシーケンス、コンテナ、シーケンサを定義することで実行が可能です。
 ```csharp
 using System.Collections.Generic;
-using HK.UnitySequencerSystem;
+using UnitySequencerSystem;
 using UnityEngine;
 
 public class Test : MonoBehaviour
@@ -66,7 +66,7 @@ https://github.com/gif-hara/UnitySequencerSystem.git?path=Assets/Plugins/UnitySe
 - 与えられた文字列を`Debug.Log`に出力します。
 ```csharp
 using System.Collections.Generic;
-using HK.UnitySequencerSystem;
+using UnitySequencerSystem;
 using UnityEngine;
 
 public class TestLog : MonoBehaviour
@@ -88,7 +88,7 @@ public class TestLog : MonoBehaviour
 - 与えられた秒数待機します。
 ```csharp
 using System.Collections.Generic;
-using HK.UnitySequencerSystem;
+using UnitySequencerSystem;
 using UnityEngine;
 
 public class Test : MonoBehaviour

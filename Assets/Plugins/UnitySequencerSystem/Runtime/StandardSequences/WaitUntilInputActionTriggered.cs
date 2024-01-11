@@ -8,7 +8,6 @@ using Cysharp.Threading.Tasks;
 #else
 using System.Threading.Tasks;
 using System.Collections;
-using UnitySequencerSystem.Core;
 #endif
 
 namespace UnitySequencerSystem.StandardSequences

@@ -13,7 +13,6 @@ using LitMotion.Adapters;
 using Cysharp.Threading.Tasks;
 #else
 using System.Threading.Tasks;
-using UnitySequencerSystem.Core;
 #endif
 
 

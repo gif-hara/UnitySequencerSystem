@@ -16,7 +16,9 @@ namespace UnitySequencerSystem.StandardSequences
     /// <summary>
     /// <see cref="TMP_Text"/>にテキストを設定するシーケンス
     /// </summary>
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/TextMeshPro Set Text")]
+#endif
     [Serializable]
     public sealed class TextMeshProSetText : ISequence
     {

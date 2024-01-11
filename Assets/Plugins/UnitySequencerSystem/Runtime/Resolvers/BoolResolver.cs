@@ -7,7 +7,9 @@ namespace UnitySequencerSystem.Resolvers
     {
         public abstract bool Resolve(Container container);
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [AddTypeMenu("Constant")]
+#endif
         [Serializable]
         public sealed class Constant : BoolResolver
         {
@@ -20,7 +22,9 @@ namespace UnitySequencerSystem.Resolvers
             }
         }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [AddTypeMenu("Name")]
+#endif
         [Serializable]
         public sealed class Name : BoolResolver
         {
@@ -33,7 +37,9 @@ namespace UnitySequencerSystem.Resolvers
             }
         }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [AddTypeMenu("Func")]
+#endif
         [Serializable]
         public sealed class Func : BoolResolver
         {

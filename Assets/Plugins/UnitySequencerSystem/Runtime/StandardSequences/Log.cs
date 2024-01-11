@@ -9,10 +9,9 @@ using System.Threading.Tasks;
 
 namespace UnitySequencerSystem.StandardSequences
 {
-    /// <summary>
-    /// ログを出力するシーケンス
-    /// </summary>
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/Log")]
+#endif
     [Serializable]
     public sealed class Log : ISequence
     {

@@ -7,7 +7,9 @@ namespace UnitySequencerSystem.Resolvers
     {
         public abstract Color Resolve(Container container);
 
-        [AddTypeMenu("Constant")]
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Constant")]
+#endif
         [Serializable]
         public sealed class Constant : ColorResolver
         {
@@ -20,7 +22,9 @@ namespace UnitySequencerSystem.Resolvers
             }
         }
 
-        [AddTypeMenu("Name")]
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Name")]
+#endif
         [Serializable]
         public sealed class Name : ColorResolver
         {
@@ -33,7 +37,9 @@ namespace UnitySequencerSystem.Resolvers
             }
         }
 
-        [AddTypeMenu("Func")]
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Func")]
+#endif
         [Serializable]
         public sealed class Func : ColorResolver
         {

@@ -7,7 +7,9 @@ namespace UnitySequencerSystem.Resolvers
     {
         public abstract string Resolve(Container container);
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [AddTypeMenu("Constant")]
+#endif
         [Serializable]
         public sealed class Constant : StringResolver
         {
@@ -20,7 +22,9 @@ namespace UnitySequencerSystem.Resolvers
             }
         }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [AddTypeMenu("Name")]
+#endif
         [Serializable]
         public sealed class NameString : StringResolver
         {

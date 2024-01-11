@@ -10,7 +10,9 @@ using System.Threading.Tasks;
 
 namespace UnitySequencerSystem.StandardSequences
 {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/GameObject Instantiate")]
+#endif
     [Serializable]
     public sealed class GameObjectInstantiate : ISequence
     {
@@ -29,13 +31,13 @@ namespace UnitySequencerSystem.StandardSequences
         public GameObjectInstantiate()
         {
         }
-        
+
         public GameObjectInstantiate(GameObjectResolver prefabResolver, StringResolver containerNameResolver)
         {
             this.prefabResolver = prefabResolver;
             this.containerNameResolver = containerNameResolver;
         }
-        
+
 #if USS_SUPPORT_UNITASK
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
@@ -60,7 +62,9 @@ namespace UnitySequencerSystem.StandardSequences
     /// <summary>
     /// <see cref="GameObject"/>を破棄するシーケンス
     /// </summary>
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/GameObject Destroy")]
+#endif
     [Serializable]
     public sealed class GameObjectDestroy : ISequence
     {

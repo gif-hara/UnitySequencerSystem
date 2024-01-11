@@ -11,10 +11,9 @@ using System.Collections;
 
 namespace UnitySequencerSystem.StandardSequences
 {
-    /// <summary>
-    /// 指定した秒数待機するシーケンス
-    /// </summary>
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/Delay")]
+#endif
     [Serializable]
     public sealed class Delay : ISequence
     {
@@ -43,10 +42,9 @@ namespace UnitySequencerSystem.StandardSequences
 #endif
     }
 
-    /// <summary>
-    /// 指定したフレーム待機するシーケンス
-    /// </summary>
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/Delay Frame")]
+#endif
     [Serializable]
     public sealed class DelayFrame : ISequence
     {

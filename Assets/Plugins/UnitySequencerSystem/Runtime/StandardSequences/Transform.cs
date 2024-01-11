@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 #endif
 
 namespace UnitySequencerSystem.StandardSequences
-{ 
+{
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/Transform Set Position")]
+#endif
     [Serializable]
     public sealed class TransformSetPosition : ISequence
     {
@@ -25,7 +27,7 @@ namespace UnitySequencerSystem.StandardSequences
 #endif
         [SerializeReference]
         private Vector3Resolver positionResolver;
-        
+
         public TransformSetPosition()
         {
         }
@@ -53,7 +55,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/Transform Set Local Position")]
+#endif
     [Serializable]
     public sealed class TransformSetLocalPosition : ISequence
     {
@@ -68,7 +72,7 @@ namespace UnitySequencerSystem.StandardSequences
 #endif
         [SerializeReference]
         private Vector3Resolver positionResolver;
-        
+
         public TransformSetLocalPosition()
         {
         }
@@ -96,7 +100,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/Transform Set Euler Angles")]
+#endif
     [Serializable]
     public sealed class TransformSetEulerAngles : ISequence
     {
@@ -111,7 +117,7 @@ namespace UnitySequencerSystem.StandardSequences
 #endif
         [SerializeReference]
         private Vector3Resolver eulerAnglesResolver;
-        
+
         public TransformSetEulerAngles()
         {
         }
@@ -139,7 +145,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/Transform Set Local Euler Angles")]
+#endif
     [Serializable]
     public sealed class TransformSetLocalEulerAngles : ISequence
     {
@@ -154,7 +162,7 @@ namespace UnitySequencerSystem.StandardSequences
 #endif
         [SerializeReference]
         private Vector3Resolver eulerAnglesResolver;
-        
+
         public TransformSetLocalEulerAngles()
         {
         }
@@ -182,7 +190,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/Transform Set Local Scale")]
+#endif
     [Serializable]
     public sealed class TransformSetLocalScale : ISequence
     {
@@ -197,7 +207,7 @@ namespace UnitySequencerSystem.StandardSequences
 #endif
         [SerializeReference]
         private Vector3Resolver localScaleResolver;
-        
+
         public TransformSetLocalScale()
         {
         }
@@ -228,7 +238,9 @@ namespace UnitySequencerSystem.StandardSequences
     /// <summary>
     /// <see cref="Transform"/>の座標を加算するシーケンス
     /// </summary>
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/Transform Add Position")]
+#endif
     [Serializable]
     public sealed class TransformAddPosition : ISequence
     {
@@ -249,7 +261,7 @@ namespace UnitySequencerSystem.StandardSequences
 #endif
         [SerializeReference]
         private DeltaTimeResolver deltaTimeResolver;
-        
+
         public TransformAddPosition()
         {
         }
@@ -282,11 +294,13 @@ namespace UnitySequencerSystem.StandardSequences
 #endif
         }
     }
-    
+
     /// <summary>
     /// <see cref="Transform"/>の座標を加算するシーケンス
     /// </summary>
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/Transform Add Local Position")]
+#endif
     [Serializable]
     public sealed class TransformAddLocalPosition : ISequence
     {
@@ -307,7 +321,7 @@ namespace UnitySequencerSystem.StandardSequences
 #endif
         [SerializeReference]
         private DeltaTimeResolver deltaTimeResolver;
-        
+
         public TransformAddLocalPosition()
         {
         }
@@ -344,7 +358,9 @@ namespace UnitySequencerSystem.StandardSequences
     /// <summary>
     /// <see cref="Transform"/>の回転を加算するシーケンス
     /// </summary>
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/Transform Add Euler Angles")]
+#endif
     [Serializable]
     public sealed class TransformAddEulerAngles : ISequence
     {
@@ -365,7 +381,7 @@ namespace UnitySequencerSystem.StandardSequences
 #endif
         [SerializeReference]
         private DeltaTimeResolver deltaTimeResolver;
-        
+
         public TransformAddEulerAngles()
         {
         }
@@ -402,25 +418,27 @@ namespace UnitySequencerSystem.StandardSequences
     /// <summary>
     /// <see cref="Transform"/>の回転を加算するシーケンス
     /// </summary>
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/Transform Add Local Euler Angles")]
+#endif
     [Serializable]
     public sealed class TransformAddLocalEulerAngles : ISequence
     {
-        #if USS_SUPPORT_SUB_CLASS_SELECTOR
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
-        #endif
+#endif
         [SerializeReference]
         private TransformResolver targetResolver;
 
-        #if USS_SUPPORT_SUB_CLASS_SELECTOR
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
-        #endif
+#endif
         [SerializeReference]
         private Vector3Resolver eulerAnglesResolver;
 
-        #if USS_SUPPORT_SUB_CLASS_SELECTOR
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
-        #endif
+#endif
         [SerializeReference]
         private DeltaTimeResolver deltaTimeResolver;
 
@@ -439,46 +457,48 @@ namespace UnitySequencerSystem.StandardSequences
             this.deltaTimeResolver = deltaTimeResolver;
         }
 
-        #if USS_SUPPORT_UNITASK
+#if USS_SUPPORT_UNITASK
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
-        #else
+#else
         public Task PlayAsync(Container container, CancellationToken cancellationToken)
-        #endif
+#endif
         {
             var target = this.targetResolver.Resolve(container);
             var eulerAngles = this.eulerAnglesResolver.Resolve(container);
             var deltaTime = this.deltaTimeResolver.Resolve(container);
             target.localEulerAngles += eulerAngles * deltaTime;
-            #if USS_SUPPORT_UNITASK
+#if USS_SUPPORT_UNITASK
             return UniTask.CompletedTask;
-            #else
+#else
             return Task.CompletedTask;
-            #endif
+#endif
         }
     }
 
     /// <summary>
     /// <see cref="Transform"/>のスケールを加算するシーケンス
     /// </summary>
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/Transform Add Local Scale")]
+#endif
     [Serializable]
     public sealed class TransformAddLocalScale : ISequence
     {
-        #if USS_SUPPORT_SUB_CLASS_SELECTOR
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
-        #endif
+#endif
         [SerializeReference]
         private TransformResolver targetResolver;
 
-        #if USS_SUPPORT_SUB_CLASS_SELECTOR
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
-        #endif
+#endif
         [SerializeReference]
         private Vector3Resolver scaleResolver;
 
-        #if USS_SUPPORT_SUB_CLASS_SELECTOR
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
-        #endif
+#endif
         [SerializeReference]
         private DeltaTimeResolver deltaTimeResolver;
 
@@ -497,21 +517,21 @@ namespace UnitySequencerSystem.StandardSequences
             this.deltaTimeResolver = deltaTimeResolver;
         }
 
-        #if USS_SUPPORT_UNITASK
+#if USS_SUPPORT_UNITASK
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
-        #else
+#else
         public Task PlayAsync(Container container, CancellationToken cancellationToken)
-        #endif
+#endif
         {
             var target = this.targetResolver.Resolve(container);
             var scale = this.scaleResolver.Resolve(container);
             var deltaTime = this.deltaTimeResolver.Resolve(container);
             target.localScale += scale * deltaTime;
-            #if USS_SUPPORT_UNITASK
+#if USS_SUPPORT_UNITASK
             return UniTask.CompletedTask;
-            #else
+#else
             return Task.CompletedTask;
-            #endif
+#endif
         }
     }
 }

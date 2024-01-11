@@ -11,10 +11,9 @@ using System.Threading.Tasks;
 
 namespace UnitySequencerSystem.StandardSequences
 {
-    /// <summary>
-    /// シーケンスを非同期で実行するシーケンス
-    /// </summary>
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/Forget")]
+#endif
     [Serializable]
     public sealed class Forget : ISequence
     {

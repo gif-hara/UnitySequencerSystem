@@ -13,7 +13,9 @@ using System.Collections;
 
 namespace UnitySequencerSystem.StandardSequences
 {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/WaitUntil")]
+#endif
     [Serializable]
     public sealed class WaitUntil : ISequence
     {
@@ -32,7 +34,7 @@ namespace UnitySequencerSystem.StandardSequences
             this.conditionResolver = conditionResolver;
         }
 
-    #if USS_SUPPORT_UNITASK
+#if USS_SUPPORT_UNITASK
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
         public Task PlayAsync(Container container, CancellationToken cancellationToken)
@@ -55,7 +57,9 @@ namespace UnitySequencerSystem.StandardSequences
     /// <summary>
     /// キー入力を待機するシーケンス
     /// </summary>
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/WaitUntil LegacyInput")]
+#endif
     [Serializable]
     public sealed class WaitUntilLegacyInput : ISequence
     {
@@ -117,7 +121,9 @@ namespace UnitySequencerSystem.StandardSequences
     /// <summary>
     /// <see cref="InputAction"/>のトリガーを待機するシーケンス
     /// </summary>
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/WaitUntil InputActionTriggered")]
+#endif
     [Serializable]
     public sealed class WaitUntilInputActionTriggered : ISequence
     {

@@ -13,13 +13,15 @@ namespace UnitySequencerSystem.StandardSequences
     /// <summary>
     /// <see cref="ParticleSystem"/>を再生するシーケンス
     /// </summary>
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/Particle Play")]
+#endif
     [Serializable]
     public sealed class ParticlePlay : ISequence
     {
-        #if USS_SUPPORT_SUB_CLASS_SELECTOR
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
-        #endif
+#endif
         [SerializeReference]
         private ParticleSystemResolver targetResolver;
 
@@ -36,32 +38,34 @@ namespace UnitySequencerSystem.StandardSequences
             this.withChildren = withChildren;
         }
 
-        #if USS_SUPPORT_UNITASK
+#if USS_SUPPORT_UNITASK
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
-        #else
+#else
         public Task PlayAsync(Container container, CancellationToken cancellationToken)
-        #endif
+#endif
         {
             var target = this.targetResolver.Resolve(container);
             target.Play(withChildren);
-            #if USS_SUPPORT_UNITASK
+#if USS_SUPPORT_UNITASK
             return UniTask.CompletedTask;
-            #else
+#else
             return Task.CompletedTask;
-            #endif
+#endif
         }
     }
-        
+
     /// <summary>
     /// <see cref="ParticleSystem"/>を停止するシーケンス
     /// </summary>
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/Particle Stop")]
+#endif
     [Serializable]
     public sealed class ParticleStop : ISequence
     {
-        #if USS_SUPPORT_SUB_CLASS_SELECTOR
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
-        #endif
+#endif
         [SerializeReference]
         private ParticleSystemResolver targetResolver;
 
@@ -82,19 +86,19 @@ namespace UnitySequencerSystem.StandardSequences
             this.stopBehavior = stopBehavior;
         }
 
-        #if USS_SUPPORT_UNITASK
+#if USS_SUPPORT_UNITASK
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
-        #else
+#else
         public Task PlayAsync(Container container, CancellationToken cancellationToken)
-        #endif
+#endif
         {
             var target = this.targetResolver.Resolve(container);
             target.Stop(withChildren, stopBehavior);
-            #if USS_SUPPORT_UNITASK
+#if USS_SUPPORT_UNITASK
             return UniTask.CompletedTask;
-            #else
+#else
             return Task.CompletedTask;
-            #endif
+#endif
         }
     }
 }

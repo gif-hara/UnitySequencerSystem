@@ -7,7 +7,9 @@ namespace UnitySequencerSystem.Resolvers
     {
         public abstract Transform Resolve(Container container);
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [AddTypeMenu("Reference")]
+#endif
         [Serializable]
         public sealed class ReferenceTransform : TransformResolver
         {
@@ -20,7 +22,9 @@ namespace UnitySequencerSystem.Resolvers
             }
         }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [AddTypeMenu("Name")]
+#endif
         [Serializable]
         public sealed class NameTransform : TransformResolver
         {

@@ -7,7 +7,9 @@ namespace UnitySequencerSystem.Resolvers
     {
         public abstract ParticleSystem Resolve(Container container);
 
-        [AddTypeMenu("Reference")]
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Reference")]
+#endif
         [Serializable]
         public sealed class ReferenceParticleSystem : ParticleSystemResolver
         {
@@ -20,7 +22,9 @@ namespace UnitySequencerSystem.Resolvers
             }
         }
 
-        [AddTypeMenu("Name")]
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Name")]
+#endif
         [Serializable]
         public sealed class NameParticleSystem : ParticleSystemResolver
         {

@@ -8,7 +8,9 @@ namespace UnitySequencerSystem.Resolvers
     {
         public abstract List<ISequence> Resolve(Container container);
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [AddTypeMenu("List")]
+#endif
         [Serializable]
         public sealed class List : SequencesResolver
         {
@@ -24,7 +26,9 @@ namespace UnitySequencerSystem.Resolvers
             }
         }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [AddTypeMenu("Name")]
+#endif
         [Serializable]
         public sealed class Name : SequencesResolver
         {
@@ -37,7 +41,9 @@ namespace UnitySequencerSystem.Resolvers
             }
         }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [AddTypeMenu("Func")]
+#endif
         [Serializable]
         public sealed class Func : SequencesResolver
         {
@@ -50,7 +56,9 @@ namespace UnitySequencerSystem.Resolvers
             }
         }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [AddTypeMenu("ScriptableObject")]
+#endif
         [Serializable]
         public sealed class ScriptableObject : SequencesResolver
         {

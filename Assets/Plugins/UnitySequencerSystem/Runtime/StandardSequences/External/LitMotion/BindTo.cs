@@ -111,7 +111,9 @@ namespace UnitySequencerSystem.LitMotion
     {
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To Position")]
+#endif
     [Serializable]
     public sealed class BindToPosition : ISequence
     {
@@ -150,7 +152,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To Local Position")]
+#endif
     [Serializable]
     public sealed class BindToLocalPosition : ISequence
     {
@@ -189,7 +193,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To Euler Angles")]
+#endif
     [Serializable]
     public sealed class BindToEulerAngles : ISequence
     {
@@ -228,7 +234,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To Local Euler Angles")]
+#endif
     [Serializable]
     public sealed class BindToLocalEulerAngles : ISequence
     {
@@ -267,7 +275,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To Local Scale")]
+#endif
     [Serializable]
     public sealed class BindToLocalScale : ISequence
     {
@@ -306,7 +316,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To PositionX")]
+#endif
     [Serializable]
     public sealed class BindToPositionX : ISequence
     {
@@ -345,7 +357,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To PositionY")]
+#endif
     [Serializable]
     public sealed class BindToPositionY : ISequence
     {
@@ -384,7 +398,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To PositionZ")]
+#endif
     [Serializable]
     public sealed class BindToPositionZ : ISequence
     {
@@ -423,7 +439,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To Local PositionX")]
+#endif
     [Serializable]
     public sealed class BindToLocalPositionX : ISequence
     {
@@ -463,7 +481,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To Local PositionY")]
+#endif
     [Serializable]
     public sealed class BindToLocalPositionY : ISequence
     {
@@ -503,7 +523,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To Local PositionZ")]
+#endif
     [Serializable]
     public sealed class BindToLocalPositionZ : ISequence
     {
@@ -543,7 +565,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To Rotation")]
+#endif
     [Serializable]
     public sealed class BindToRotation : ISequence
     {
@@ -586,7 +610,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To Local Rotation")]
+#endif
     [Serializable]
     public sealed class BindToLocalRotation : ISequence
     {
@@ -628,7 +654,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To Local ScaleX")]
+#endif
     [Serializable]
     public sealed class BindToLocalScaleX : ISequence
     {
@@ -670,7 +698,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To Local ScaleY")]
+#endif
     [Serializable]
     public sealed class BindToLocalScaleY : ISequence
     {
@@ -712,7 +742,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To Local ScaleZ")]
+#endif
     [Serializable]
     public sealed class BindToLocalScaleZ : ISequence
     {
@@ -754,7 +786,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To Euler AnglesX")]
+#endif
     [Serializable]
     public sealed class BindToEulerAnglesX : ISequence
     {
@@ -796,7 +830,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To Euler AnglesY")]
+#endif
     [Serializable]
     public sealed class BindToEulerAnglesY : ISequence
     {
@@ -838,7 +874,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To Euler AnglesZ")]
+#endif
     [Serializable]
     public sealed class BindToEulerAnglesZ : ISequence
     {
@@ -880,7 +918,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To Local Euler AnglesX")]
+#endif
     [Serializable]
     public sealed class BindToLocalEulerAnglesX : ISequence
     {
@@ -922,7 +962,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To Local Euler AnglesY")]
+#endif
     [Serializable]
     public sealed class BindToLocalEulerAnglesY : ISequence
     {
@@ -964,7 +1006,9 @@ namespace UnitySequencerSystem.LitMotion
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("LitMotion/Bind To Local Euler AnglesZ")]
+#endif
     [Serializable]
     public sealed class BindToLocalEulerAnglesZ : ISequence
     {

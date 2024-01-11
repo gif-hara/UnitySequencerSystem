@@ -7,7 +7,9 @@ namespace UnitySequencerSystem.Resolvers
     {
         public abstract float Resolve(Container container);
 
-        [AddTypeMenu("Constant")]
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Constant")]
+#endif
         [Serializable]
         public sealed class Constant : FloatResolver
         {
@@ -20,7 +22,9 @@ namespace UnitySequencerSystem.Resolvers
             }
         }
 
-        [AddTypeMenu("Name")]
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Name")]
+#endif
         [Serializable]
         public sealed class NameFloat : FloatResolver
         {

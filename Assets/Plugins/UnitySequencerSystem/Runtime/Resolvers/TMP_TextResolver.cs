@@ -9,7 +9,9 @@ namespace UnitySequencerSystem.Resolvers
     {
         public abstract TMP_Text Resolve(Container container);
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [AddTypeMenu("Reference")]
+#endif
         [Serializable]
         public sealed class ReferenceTMP_Text : TMP_TextResolver
         {
@@ -22,7 +24,9 @@ namespace UnitySequencerSystem.Resolvers
             }
         }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
         [AddTypeMenu("Name")]
+#endif
         [Serializable]
         public sealed class NameTMP_Text : TMP_TextResolver
         {

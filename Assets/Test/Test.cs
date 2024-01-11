@@ -14,7 +14,10 @@ namespace UnitySequencerSystem
     /// </summary>
     public class Test : MonoBehaviour
     {
-        [SerializeReference, SubclassSelector()]
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
         private List<ISequence> runOnceSequences = default;
 
         [SerializeField]

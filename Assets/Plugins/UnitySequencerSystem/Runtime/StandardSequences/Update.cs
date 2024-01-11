@@ -7,6 +7,7 @@ using UnitySequencerSystem.Resolvers;
 using Cysharp.Threading.Tasks;
 #else
 using System.Threading.Tasks;
+using System.Collections;
 #endif
 
 namespace UnitySequencerSystem.StandardSequences
@@ -22,6 +23,7 @@ namespace UnitySequencerSystem.StandardSequences
 #endif
         [SerializeReference]
         private SequencesResolver sequencesResolver;
+
 #if USS_SUPPORT_UNITASK
         [SerializeField]
         private PlayerLoopTiming playerLoopTiming = PlayerLoopTiming.Update;
@@ -54,9 +56,18 @@ namespace UnitySequencerSystem.StandardSequences
                 await UniTask.Yield(playerLoopTiming, cancellationToken: cancellationToken);
             }
 #else
-            foreach (var sequence in sequences)
+            IEnumerator WaitNextFrame()
             {
-                await sequence.PlayAsync(container, cancellationToken);
+                yield return null;
+            }
+            while (!cancellationToken.IsCancellationRequested)
+            {
+                foreach (var sequence in sequences)
+                {
+                    await sequence.PlayAsync(container, cancellationToken);
+                }
+
+                await MainThreadDispatcher.Instance.RunCoroutineAsTask(WaitNextFrame());
             }
 #endif
         }

@@ -9,7 +9,10 @@ namespace UnitySequencerSystem
     [CreateAssetMenu(fileName = "ScriptableSequences", menuName = "UnitySequencerSystem/ScriptableSequences")]
     public class ScriptableSequences : ScriptableObject
     {
-        [SerializeField]
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
         private List<ISequence> sequences = new();
 
         /// <summary>

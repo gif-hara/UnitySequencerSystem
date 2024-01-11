@@ -7,6 +7,7 @@ namespace UnitySequencerSystem.Resolvers
     {
         public abstract float Resolve(Container container);
 
+        [AddTypeMenu("Constant")]
         [Serializable]
         public sealed class Constant : DeltaTimeResolver
         {
@@ -19,6 +20,7 @@ namespace UnitySequencerSystem.Resolvers
             }
         }
 
+        [AddTypeMenu("UnityEngine DeltaTime")]
         [Serializable]
         public sealed class UnityEngineDeltaTime : DeltaTimeResolver
         {
@@ -28,6 +30,7 @@ namespace UnitySequencerSystem.Resolvers
             }
         }
 
+        [AddTypeMenu("UnityEngine FixedDeltaTime")]
         [Serializable]
         public sealed class UnityEngineFixedDeltaTime : DeltaTimeResolver
         {
@@ -37,6 +40,7 @@ namespace UnitySequencerSystem.Resolvers
             }
         }
 
+        [AddTypeMenu("UnityEngine UnscaledDeltaTime")]
         [Serializable]
         public sealed class UnityEngineUnscaledTime : DeltaTimeResolver
         {
@@ -46,6 +50,7 @@ namespace UnitySequencerSystem.Resolvers
             }
         }
 
+        [AddTypeMenu("Name")]
         [Serializable]
         public sealed class Name : DeltaTimeResolver
         {
@@ -58,6 +63,7 @@ namespace UnitySequencerSystem.Resolvers
             }
         }
 
+        [AddTypeMenu("Func")]
         [Serializable]
         public sealed class Func : DeltaTimeResolver
         {

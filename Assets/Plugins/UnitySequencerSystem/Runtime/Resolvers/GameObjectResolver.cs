@@ -7,6 +7,7 @@ namespace UnitySequencerSystem.Resolvers
     {
         public abstract GameObject Resolve(Container container);
 
+        [AddTypeMenu("Reference")]
         [Serializable]
         public sealed class ReferenceGameObject : GameObjectResolver
         {
@@ -19,6 +20,7 @@ namespace UnitySequencerSystem.Resolvers
             }
         }
 
+        [AddTypeMenu("Name")]
         [Serializable]
         public sealed class NameGameObject : GameObjectResolver
         {

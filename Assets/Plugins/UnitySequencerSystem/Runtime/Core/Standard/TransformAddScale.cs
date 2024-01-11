@@ -11,34 +11,52 @@ using System.Threading.Tasks;
 namespace HK.UnitySequencerSystem.Standard
 {
     /// <summary>
-    /// <see cref="Transform"/>の大きさを加算するシーケンス
+    /// Represents a sequence that adds scale to a target <see cref="Transform"/>.
     /// </summary>
     [AddTypeMenu("Standard/Transform Add Scale")]
     [Serializable]
     public sealed class TransformAddScale : ISequence
     {
+        /// <summary>
+        /// The resolver for the target <see cref="Transform"/>.
+        /// </summary>
         #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
         #endif
         [SerializeReference]
         private TransformResolver targetResolver;
 
+        /// <summary>
+        /// The resolver for the scale <see cref="Vector3"/>.
+        /// </summary>
         #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
         #endif
         [SerializeReference]
         private Vector3Resolver scaleResolver;
 
+        /// <summary>
+        /// The resolver for the delta time.
+        /// </summary>
         #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
         #endif
         [SerializeReference]
         private DeltaTimeResolver deltaTimeResolver;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TransformAddScale"/> class.
+        /// </summary>
         public TransformAddScale()
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TransformAddScale"/> class with the specified resolvers.
+        /// </summary>
+        /// <param name="targetResolver">The resolver for the target <see cref="Transform"/>.</param>
+        /// <param name="scaleResolver">The resolver for the scale <see cref="Vector3"/>.</param>
+        /// <param name="deltaTimeResolver">The resolver for the delta time.</param>
         public TransformAddScale(
             TransformResolver targetResolver,
             Vector3Resolver scaleResolver,
@@ -50,6 +68,12 @@ namespace HK.UnitySequencerSystem.Standard
             this.deltaTimeResolver = deltaTimeResolver;
         }
 
+        /// <summary>
+        /// Plays the sequence asynchronously.
+        /// </summary>
+        /// <param name="container">The container for resolving dependencies.</param>
+        /// <param name="cancellationToken">The cancellation token.</param>
+        /// <returns>A task representing the asynchronous operation.</returns>
         #if USS_SUPPORT_UNITASK
         public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         #else

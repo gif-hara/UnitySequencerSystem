@@ -27,7 +27,7 @@ namespace UnitySequencerSystem.StandardSequences
         private InputActionReference inputActionReference;
 
         [SerializeField]
-        private string registerName;
+        private string vector2Name;
 
         public InputActionReadValueVector2()
         {
@@ -45,7 +45,7 @@ namespace UnitySequencerSystem.StandardSequences
 #endif
         {
             var value = inputActionReference.action.ReadValue<Vector2>();
-            container.RegisterOrReplace(registerName, value);
+            container.RegisterOrReplace(vector2Name, value);
 #if USS_SUPPORT_UNITASK
             return UniTask.CompletedTask;
 #else

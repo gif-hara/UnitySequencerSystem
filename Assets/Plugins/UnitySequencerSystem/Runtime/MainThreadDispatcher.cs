@@ -2,7 +2,7 @@ using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace HK.UnitySequencerSystem.Core
+namespace UnitySequencerSystem.Core
 {
     public class MainThreadDispatcher : MonoBehaviour
     {

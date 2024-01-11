@@ -7,7 +7,7 @@ using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
 #endif
 
-namespace HK.UnitySequencerSystem.Standard
+namespace UnitySequencerSystem.Standard
 {
     /// <summary>
     /// <see cref="GameObject"/>を破棄するシーケンス

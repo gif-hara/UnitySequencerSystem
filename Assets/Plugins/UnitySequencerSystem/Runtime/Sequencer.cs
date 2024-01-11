@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 #endif
 
 
-namespace HK.UnitySequencerSystem
+namespace UnitySequencerSystem
 {
     /// <summary>
     /// <see cref="ISequence"/>を順番に実行するクラス

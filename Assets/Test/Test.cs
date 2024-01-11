@@ -7,7 +7,7 @@ using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
-namespace HK.UnitySequencerSystem
+namespace UnitySequencerSystem
 {
     /// <summary>
     /// 

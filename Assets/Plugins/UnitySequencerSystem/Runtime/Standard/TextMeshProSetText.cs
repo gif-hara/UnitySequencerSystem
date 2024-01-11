@@ -1,7 +1,7 @@
 #if USS_TMP_SUPPORT
 using System;
 using System.Threading;
-using HK.UnitySequencerSystem.Resolvers;
+using UnitySequencerSystem.Resolvers;
 using TMPro;
 using UnityEngine;
 #if USS_SUPPORT_UNITASK
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 #endif
 
 
-namespace HK.UnitySequencerSystem.Standard
+namespace UnitySequencerSystem.Standard
 {
     /// <summary>
     /// <see cref="TMP_Text"/>にテキストを設定するシーケンス

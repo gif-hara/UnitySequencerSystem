@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
 using UnityEngine;
-using HK.UnitySequencerSystem.Core;
+using UnitySequencerSystem.Core;
 using System.Collections;
 
 
@@ -11,7 +11,7 @@ using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
 #endif
 
-namespace HK.UnitySequencerSystem.Standard
+namespace UnitySequencerSystem.Standard
 {
     /// <summary>
     /// キー入力を待機するシーケンス

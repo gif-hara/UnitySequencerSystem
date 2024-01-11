@@ -1,8 +1,8 @@
 #if USS_SUPPORT_LIT_MOTION
 using System;
 using System.Threading;
-using HK.UnitySequencerSystem.Resolvers;
-using HK.UnitySequencerSystem.Resolvers.LitMotion;
+using UnitySequencerSystem.Resolvers;
+using UnitySequencerSystem.Resolvers.LitMotion;
 using LitMotion;
 using LitMotion.Extensions;
 using UnityEngine;
@@ -13,11 +13,11 @@ using LitMotion.Adapters;
 using Cysharp.Threading.Tasks;
 #else
 using System.Threading.Tasks;
-using HK.UnitySequencerSystem.Core;
+using UnitySequencerSystem.Core;
 #endif
 
 
-namespace HK.UnitySequencerSystem.LitMotion
+namespace UnitySequencerSystem.LitMotion
 {
     [Serializable]
     public abstract class Parameters<TValueResolver, TValue, TOptions, TAdapter>

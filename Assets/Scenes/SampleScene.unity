@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465788, g: 0.49641287, b: 0.5748173, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5331,60 +5331,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runOnceSequences:
-  - rid: 2598803724019695673
+  - rid: 5254756519452082187
   - rid: 2598803724019695634
   target: {fileID: 1498627966}
   texts: []
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 2598803724019695634
       type: {class: Log, ns: HK.UnitySequencerSystem.Standard, asm: UnitySequencerSystem}
       data:
         message: OK
-    - rid: 2598803724019695673
-      type: {class: BindToPositionY, ns: HK.UnitySequencerSystem.LitMotion, asm: UnitySequencerSystem}
+    - rid: 5254756519452082187
+      type: {class: TextMeshProSetText, ns: HK.UnitySequencerSystem.Standard, asm: UnitySequencerSystem}
       data:
         targetResolver:
-          rid: 2598803724019695674
-        parameters:
-          fromResolver:
-            rid: 2598803724019695675
-          toResolver:
-            rid: 2598803724019695676
-          durationResolver:
-            rid: 2598803724019695677
-          delayResolver:
-            rid: -2
-          loopCountResolver:
-            rid: 2598803724019695678
-          loopType: 0
-          motionSchedulerResolver:
-            rid: -2
-          ease: 0
-          ignoreTimeScale: 1
-    - rid: 2598803724019695674
-      type: {class: TransformResolver/ReferenceTransform, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+          rid: 5254756519452082190
+        textResolver:
+          rid: 5254756519452082191
+    - rid: 5254756519452082190
+      type: {class: TMP_TextResolver/ReferenceTMP_Text, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        target: {fileID: 324719453}
-    - rid: 2598803724019695675
-      type: {class: FloatResolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+        target: {fileID: 613766085}
+    - rid: 5254756519452082191
+      type: {class: StringResolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
-        value: 0
-    - rid: 2598803724019695676
-      type: {class: FloatResolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: 2
-    - rid: 2598803724019695677
-      type: {class: FloatResolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: 1
-    - rid: 2598803724019695678
-      type: {class: IntResolver/Constant, ns: HK.UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
-      data:
-        value: 2
+        value: Hogeeee
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
 #endif
 
-namespace HK.UnitySequencerSystem.Standard
+namespace UnitySequencerSystem.Standard
 {
         /// <summary>
         /// シーケンスを非同期で実行するシーケンス

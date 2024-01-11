@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 #endif
 
 
-namespace HK.UnitySequencerSystem
+namespace UnitySequencerSystem
 {
         /// <summary>
         /// シーケンスを表すインターフェイス

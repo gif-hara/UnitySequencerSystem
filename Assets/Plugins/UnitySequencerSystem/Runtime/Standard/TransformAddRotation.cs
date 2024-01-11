@@ -1,6 +1,6 @@
 using System;
 using System.Threading;
-using HK.UnitySequencerSystem.Resolvers;
+using UnitySequencerSystem.Resolvers;
 using UnityEngine;
 #if USS_SUPPORT_UNITASK
 using Cysharp.Threading.Tasks;
@@ -8,7 +8,7 @@ using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
 #endif
 
-namespace HK.UnitySequencerSystem.Standard
+namespace UnitySequencerSystem.Standard
 {
     [AddTypeMenu("Standard/Transform Add Rotation")]
     [Serializable]

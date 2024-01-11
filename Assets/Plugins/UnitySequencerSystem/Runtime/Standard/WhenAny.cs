@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 #endif
 
 
-namespace HK.UnitySequencerSystem.Standard
+namespace UnitySequencerSystem.Standard
 {
         /// <summary>
         /// シーケンスを実行し、どれかが完了したら終了するシーケンス

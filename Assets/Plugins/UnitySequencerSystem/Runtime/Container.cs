@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine.Assertions;
 
-namespace HK.UnitySequencerSystem
+namespace UnitySequencerSystem
 {
     /// <summary>
     /// シーケンスが利用するデータが格納されたコンテナ

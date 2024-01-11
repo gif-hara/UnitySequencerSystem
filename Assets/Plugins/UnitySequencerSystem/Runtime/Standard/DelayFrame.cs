@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using UnityEngine;
 using System.Collections;
-using HK.UnitySequencerSystem.Core;
+using UnitySequencerSystem.Core;
 
 
 #if USS_SUPPORT_UNITASK
@@ -11,7 +11,7 @@ using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
 #endif
 
-namespace HK.UnitySequencerSystem.Standard
+namespace UnitySequencerSystem.Standard
 {
     /// <summary>
     /// 指定したフレーム待機するシーケンス

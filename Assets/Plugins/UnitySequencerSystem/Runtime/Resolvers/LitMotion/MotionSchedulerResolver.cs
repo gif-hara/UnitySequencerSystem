@@ -1,7 +1,7 @@
 using System;
 using LitMotion;
 
-namespace HK.UnitySequencerSystem.Resolvers.LitMotion
+namespace UnitySequencerSystem.Resolvers.LitMotion
 {
     public abstract class MotionSchedulerResolver : IResolver<IMotionScheduler>
     {

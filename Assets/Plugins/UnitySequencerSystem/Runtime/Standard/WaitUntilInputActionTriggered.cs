@@ -8,10 +8,10 @@ using Cysharp.Threading.Tasks;
 #else
 using System.Threading.Tasks;
 using System.Collections;
-using HK.UnitySequencerSystem.Core;
+using UnitySequencerSystem.Core;
 #endif
 
-namespace HK.UnitySequencerSystem.Standard
+namespace UnitySequencerSystem.Standard
 {
     /// <summary>
     /// <see cref="InputAction"/>のトリガーを待機するシーケンス

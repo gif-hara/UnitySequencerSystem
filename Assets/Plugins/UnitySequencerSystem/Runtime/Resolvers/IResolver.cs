@@ -1,4 +1,4 @@
-namespace HK.UnitySequencerSystem.Resolvers
+namespace UnitySequencerSystem.Resolvers
 {
     /// <summary>
     /// データ取得を行うインターフェイス

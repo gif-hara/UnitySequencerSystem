@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace HK.UnitySequencerSystem.Resolvers
+namespace UnitySequencerSystem.Resolvers
 {
     public abstract class StringResolver : IResolver<string>
     {

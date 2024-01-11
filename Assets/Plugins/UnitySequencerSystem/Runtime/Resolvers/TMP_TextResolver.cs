@@ -3,7 +3,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
-namespace HK.UnitySequencerSystem.Resolvers
+namespace UnitySequencerSystem.Resolvers
 {
     public abstract class TMP_TextResolver : IResolver<TMP_Text>
     {

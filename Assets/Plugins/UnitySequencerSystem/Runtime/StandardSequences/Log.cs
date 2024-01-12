@@ -45,28 +45,13 @@ namespace UnitySequencerSystem.StandardSequences
     }
 
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
-    [AddTypeMenu("Standard/Log Vector3")]
+    [AddTypeMenu("Standard/Log Container")]
 #endif
     [Serializable]
-    public sealed class LogVector3 : Sequence
+    public sealed class LogContainer : Sequence
     {
-        [SerializeField]
-        private string header;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private Vector3Resolver vector3Resolver;
-
-        public LogVector3()
+        public LogContainer()
         {
-        }
-
-        public LogVector3(string header, Vector3Resolver vector3Resolver)
-        {
-            this.header = header;
-            this.vector3Resolver = vector3Resolver;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -75,7 +60,7 @@ namespace UnitySequencerSystem.StandardSequences
         public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
-            Debug.Log($"{header}{vector3Resolver.Resolve(container)}");
+            Debug.Log(container.ToString());
 #if USS_SUPPORT_UNITASK
             return UniTask.CompletedTask;
 #else

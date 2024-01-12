@@ -14,6 +14,47 @@ using System.Threading.Tasks;
 
 namespace UnitySequencerSystem.StandardSequences
 {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Vector2 Set")]
+#endif
+    [Serializable]
+    public sealed class Vector2Set : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver vector2Resolver;
+
+        [SerializeField]
+        private string vector2Name;
+
+        public Vector2Set()
+        {
+        }
+
+        public Vector2Set(Vector2Resolver vector2Resolver, string vector2Name)
+        {
+            this.vector2Resolver = vector2Resolver;
+            this.vector2Name = vector2Name;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var value = vector2Resolver.Resolve(container);
+            container.RegisterOrReplace(vector2Name, value);
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
     /// <summary>
     /// Represents a sequence that converts a Vector2 to a Vector3.
     /// </summary>

@@ -70,13 +70,13 @@ namespace UnitySequencerSystem
             var sb = new System.Text.StringBuilder();
             foreach (var kv in this.data)
             {
-                sb.AppendLine($"{kv.Key} {kv.Value}");
+                sb.AppendLine($"Type: {kv.Key}, Value: {kv.Value}");
             }
             foreach (var kv in this.namedData)
             {
                 foreach (var kv2 in kv.Value)
                 {
-                    sb.AppendLine($"{kv.Key} {kv2.Key} {kv2.Value}");
+                    sb.AppendLine($"Type: {kv.Key}, Name: {kv2.Key}, Value: {kv2.Value}");
                 }
             }
             return sb.ToString();

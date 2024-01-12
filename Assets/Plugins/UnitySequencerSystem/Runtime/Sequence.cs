@@ -8,18 +8,28 @@ using System.Threading.Tasks;
 
 namespace UnitySequencerSystem
 {
-        /// <summary>
-        /// シーケンスを表すインターフェイス
-        /// </summary>
-        public interface ISequence
+
+    public abstract class sequence : ISequence
+    {
+#if USS_SUPPORT_UNITASK
+        public abstract UniTask PlayAsync(Container container, CancellationToken cancellationToken);
+#else
+        public abstract Task PlayAsync(Container container, CancellationToken cancellationToken);
+#endif
+
+        public virtual void Complete()
         {
-                /// <summary>
-                /// シーケンスを再生する
-                /// </summary>
+        }
+    }
+
+    public interface ISequence
+    {
 #if USS_SUPPORT_UNITASK
         UniTask PlayAsync(Container container, CancellationToken cancellationToken);
 #else
-                Task PlayAsync(Container container, CancellationToken cancellationToken);
+        Task PlayAsync(Container container, CancellationToken cancellationToken);
 #endif
-        }
+
+        void Complete();
+    }
 }

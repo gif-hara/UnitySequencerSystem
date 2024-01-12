@@ -16,10 +16,6 @@ namespace UnitySequencerSystem
 #else
         public abstract Task PlayAsync(Container container, CancellationToken cancellationToken);
 #endif
-
-        public virtual void Complete()
-        {
-        }
     }
 
     public interface ISequence
@@ -29,7 +25,5 @@ namespace UnitySequencerSystem
 #else
         Task PlayAsync(Container container, CancellationToken cancellationToken);
 #endif
-
-        void Complete();
     }
 }

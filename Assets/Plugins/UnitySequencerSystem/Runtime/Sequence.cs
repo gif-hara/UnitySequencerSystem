@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace UnitySequencerSystem
 {
 
-    public abstract class sequence : ISequence
+    public abstract class Sequence : ISequence
     {
 #if USS_SUPPORT_UNITASK
         public abstract UniTask PlayAsync(Container container, CancellationToken cancellationToken);

@@ -15,7 +15,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/Delay")]
 #endif
     [Serializable]
-    public sealed class Delay : ISequence
+    public sealed class Delay : Sequence
     {
         [SerializeField]
         private float seconds;
@@ -30,12 +30,12 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
             return UniTask.Delay(TimeSpan.FromSeconds(this.seconds), cancellationToken: cancellationToken);
         }
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
         {
             return Task.Delay(TimeSpan.FromSeconds(this.seconds), cancellationToken: cancellationToken);
         }
@@ -46,7 +46,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/Delay Frame")]
 #endif
     [Serializable]
-    public sealed class DelayFrame : ISequence
+    public sealed class DelayFrame : Sequence
     {
         [SerializeField]
         private int frames;
@@ -61,9 +61,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
 #if USS_SUPPORT_UNITASK

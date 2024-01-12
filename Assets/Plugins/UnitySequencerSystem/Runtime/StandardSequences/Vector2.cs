@@ -21,7 +21,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/Vector2 To Vector3")]
 #endif
     [Serializable]
-    public sealed class Vector2ToVector3 : ISequence
+    public sealed class Vector2ToVector3 : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -71,7 +71,7 @@ namespace UnitySequencerSystem.StandardSequences
         /// <param name="container">The container that holds the sequence data.</param>
         /// <param name="cancellationToken">The cancellation token to cancel the operation.</param>
         /// <returns>A UniTask representing the asynchronous operation.</returns>
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
         /// <summary>
         /// Plays the sequence asynchronously.
@@ -79,7 +79,7 @@ namespace UnitySequencerSystem.StandardSequences
         /// <param name="container">The container that holds the sequence data.</param>
         /// <param name="cancellationToken">The cancellation token to cancel the operation.</param>
         /// <returns>A Task representing the asynchronous operation.</returns>
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var value = vector2Resolver.Resolve(container);

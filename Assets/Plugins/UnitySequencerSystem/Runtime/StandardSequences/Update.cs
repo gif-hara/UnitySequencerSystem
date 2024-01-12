@@ -16,7 +16,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/Update")]
 #endif
     [Serializable]
-    public sealed class Update : ISequence
+    public sealed class Update : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -39,9 +39,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var sequences = sequencesResolver.Resolve(container);

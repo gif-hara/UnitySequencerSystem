@@ -20,7 +20,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/TextMeshPro Set Text")]
 #endif
     [Serializable]
-    public sealed class TextMeshProSetText : ISequence
+    public sealed class TextMeshProSetText : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -45,9 +45,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = targetResolver.Resolve(container);

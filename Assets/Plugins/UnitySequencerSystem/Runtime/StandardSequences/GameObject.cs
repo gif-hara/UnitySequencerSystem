@@ -14,7 +14,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/GameObject Instantiate")]
 #endif
     [Serializable]
-    public sealed class GameObjectInstantiate : ISequence
+    public sealed class GameObjectInstantiate : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -39,9 +39,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var prefab = this.prefabResolver.Resolve(container);
@@ -66,7 +66,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/GameObject Destroy")]
 #endif
     [Serializable]
-    public sealed class GameObjectDestroy : ISequence
+    public sealed class GameObjectDestroy : Sequence
     {
         [SerializeField]
         private string targetName;
@@ -81,9 +81,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = container.Resolve<GameObject>(this.targetName);

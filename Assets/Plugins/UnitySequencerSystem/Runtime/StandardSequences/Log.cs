@@ -15,7 +15,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/Log")]
 #endif
     [Serializable]
-    public sealed class Log : ISequence
+    public sealed class Log : Sequence
     {
         [SerializeField]
         private string message;
@@ -30,9 +30,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             Debug.Log(this.message);
@@ -48,7 +48,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/Log Vector3")]
 #endif
     [Serializable]
-    public sealed class LogVector3 : ISequence
+    public sealed class LogVector3 : Sequence
     {
         [SerializeField]
         private string header;
@@ -70,9 +70,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             Debug.Log($"{header}{vector3Resolver.Resolve(container)}");

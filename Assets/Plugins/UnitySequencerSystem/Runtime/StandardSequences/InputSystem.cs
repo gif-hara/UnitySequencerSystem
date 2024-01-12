@@ -21,7 +21,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/Input Action Read Value/Vector2")]
 #endif
     [Serializable]
-    public sealed class InputActionReadValueVector2 : ISequence
+    public sealed class InputActionReadValueVector2 : Sequence
     {
         [SerializeField]
         private InputActionReference inputActionReference;
@@ -39,9 +39,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             inputActionReference.action.Enable();
@@ -59,7 +59,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/Input Action Performed")]
 #endif
     [Serializable]
-    public sealed class InputActionPerformed : ISequence
+    public sealed class InputActionPerformed : Sequence
     {
         [SerializeField]
         private InputActionReference inputActionReference;
@@ -78,9 +78,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             inputActionReference.action.Enable();

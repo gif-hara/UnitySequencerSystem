@@ -20,31 +20,31 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/When Any")]
 #endif
     [Serializable]
-    public sealed class WhenAny : ISequence
+    public sealed class WhenAny : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
         [SerializeReference]
-        private List<ISequence> sequences;
+        private List<Sequence> sequences;
 
         public WhenAny()
         {
         }
 
-        public WhenAny(List<ISequence> sequences)
+        public WhenAny(List<Sequence> sequences)
         {
             this.sequences = sequences;
         }
 
 #if USS_SUPPORT_UNITASK
-                public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
 #if USS_SUPPORT_UNITASK
-                        await UniTask.WhenAny(sequences.Select(s => s.PlayAsync(container, cancellationToken)));
+            await UniTask.WhenAny(sequences.Select(s => s.PlayAsync(container, cancellationToken)));
 #else
             await Task.WhenAny(sequences.Select(s => s.PlayAsync(container, cancellationToken)));
 #endif

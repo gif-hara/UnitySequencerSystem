@@ -55,6 +55,219 @@ namespace UnitySequencerSystem.StandardSequences
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Vector2 Add")]
+#endif
+    [Serializable]
+    public sealed class Vector2Add : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver leftVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver rightVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver vector2NameResolver;
+
+
+        public Vector2Add()
+        {
+        }
+
+        public Vector2Add(Vector2Resolver leftVector2Resolver, Vector2Resolver rightVector2Resolver, StringResolver vector2NameResolver)
+        {
+            this.leftVector2Resolver = leftVector2Resolver;
+            this.rightVector2Resolver = rightVector2Resolver;
+            this.vector2NameResolver = vector2NameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var left = leftVector2Resolver.Resolve(container);
+            var right = rightVector2Resolver.Resolve(container);
+            var vector2Name = vector2NameResolver.Resolve(container);
+            container.RegisterOrReplace(vector2Name, left + right);
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Vector2 Subtract")]
+#endif
+    [Serializable]
+    public sealed class Vector2Subtract : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver leftVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver rightVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver vector2NameResolver;
+
+        public Vector2Subtract()
+        {
+        }
+
+        public Vector2Subtract(Vector2Resolver leftVector2Resolver, Vector2Resolver rightVector2Resolver, StringResolver vector2NameResolver)
+        {
+            this.leftVector2Resolver = leftVector2Resolver;
+            this.rightVector2Resolver = rightVector2Resolver;
+            this.vector2NameResolver = vector2NameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var left = leftVector2Resolver.Resolve(container);
+            var right = rightVector2Resolver.Resolve(container);
+            var vector2Name = vector2NameResolver.Resolve(container);
+            container.RegisterOrReplace(vector2Name, left - right);
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Vector2 Multiply")]
+#endif
+    [Serializable]
+    public sealed class Vector2Multiply : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver leftVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver rightVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver vector2NameResolver;
+
+        public Vector2Multiply()
+        {
+        }
+
+        public Vector2Multiply(Vector2Resolver leftVector2Resolver, Vector2Resolver rightVector2Resolver, StringResolver vector2NameResolver)
+        {
+            this.leftVector2Resolver = leftVector2Resolver;
+            this.rightVector2Resolver = rightVector2Resolver;
+            this.vector2NameResolver = vector2NameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var left = leftVector2Resolver.Resolve(container);
+            var right = rightVector2Resolver.Resolve(container);
+            var vector2Name = vector2NameResolver.Resolve(container);
+            container.RegisterOrReplace(vector2Name, left * right);
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Vector2 Divide")]
+#endif
+    [Serializable]
+    public sealed class Vector2Divide : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver leftVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver rightVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver vector2NameResolver;
+
+        public Vector2Divide()
+        {
+        }
+
+        public Vector2Divide(Vector2Resolver leftVector2Resolver, Vector2Resolver rightVector2Resolver, StringResolver vector2NameResolver)
+        {
+            this.leftVector2Resolver = leftVector2Resolver;
+            this.rightVector2Resolver = rightVector2Resolver;
+            this.vector2NameResolver = vector2NameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var left = leftVector2Resolver.Resolve(container);
+            var right = rightVector2Resolver.Resolve(container);
+            var vector2Name = vector2NameResolver.Resolve(container);
+            container.RegisterOrReplace(vector2Name, left / right);
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
     /// <summary>
     /// Represents a sequence that converts a Vector2 to a Vector3.
     /// </summary>

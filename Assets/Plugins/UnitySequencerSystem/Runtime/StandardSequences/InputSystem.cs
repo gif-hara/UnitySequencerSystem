@@ -3,8 +3,6 @@ using System;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnitySequencerSystem.Resolvers;
-
 
 
 #if USS_SUPPORT_UNITASK
@@ -18,7 +16,7 @@ using System.Threading.Tasks;
 namespace UnitySequencerSystem.StandardSequences
 {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
-    [AddTypeMenu("Standard/Input Action Read Value/Vector2")]
+    [AddTypeMenu("Standard/Input Action Read Value Vector2")]
 #endif
     [Serializable]
     public sealed class InputActionReadValueVector2 : Sequence
@@ -33,9 +31,10 @@ namespace UnitySequencerSystem.StandardSequences
         {
         }
 
-        public InputActionReadValueVector2(InputActionReference inputActionReference)
+        public InputActionReadValueVector2(InputActionReference inputActionReference, string vector2Name)
         {
             this.inputActionReference = inputActionReference;
+            this.vector2Name = vector2Name;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -56,7 +55,7 @@ namespace UnitySequencerSystem.StandardSequences
     }
 
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
-    [AddTypeMenu("Standard/Input Action Read Value/Vector3")]
+    [AddTypeMenu("Standard/Input Action Read Value Vector3")]
 #endif
     [Serializable]
     public sealed class InputActionReadValueVector3 : Sequence
@@ -71,9 +70,10 @@ namespace UnitySequencerSystem.StandardSequences
         {
         }
 
-        public InputActionReadValueVector3(InputActionReference inputActionReference)
+        public InputActionReadValueVector3(InputActionReference inputActionReference, string vector3Name)
         {
             this.inputActionReference = inputActionReference;
+            this.vector3Name = vector3Name;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -94,45 +94,7 @@ namespace UnitySequencerSystem.StandardSequences
     }
 
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
-    [AddTypeMenu("Standard/Input Action Read Value/bool")]
-#endif
-    [Serializable]
-    public sealed class InputActionReadValueBool : Sequence
-    {
-        [SerializeField]
-        private InputActionReference inputActionReference;
-
-        [SerializeField]
-        private string boolName;
-
-        public InputActionReadValueBool()
-        {
-        }
-
-        public InputActionReadValueBool(InputActionReference inputActionReference)
-        {
-            this.inputActionReference = inputActionReference;
-        }
-
-#if USS_SUPPORT_UNITASK
-        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
-#else
-        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
-#endif
-        {
-            inputActionReference.action.Enable();
-            var value = inputActionReference.action.ReadValue<bool>();
-            container.RegisterOrReplace(boolName, value);
-#if USS_SUPPORT_UNITASK
-            return UniTask.CompletedTask;
-#else
-            return Task.CompletedTask;
-#endif
-        }
-    }
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-    [AddTypeMenu("Standard/Input Action Read Value/float")]
+    [AddTypeMenu("Standard/Input Action Read Value Float")]
 #endif
     [Serializable]
     public sealed class InputActionReadValueFloat : Sequence
@@ -147,9 +109,10 @@ namespace UnitySequencerSystem.StandardSequences
         {
         }
 
-        public InputActionReadValueFloat(InputActionReference inputActionReference)
+        public InputActionReadValueFloat(InputActionReference inputActionReference, string floatName)
         {
             this.inputActionReference = inputActionReference;
+            this.floatName = floatName;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -160,6 +123,7 @@ namespace UnitySequencerSystem.StandardSequences
         {
             inputActionReference.action.Enable();
             var value = inputActionReference.action.ReadValue<float>();
+            Debug.Log(value);
             container.RegisterOrReplace(floatName, value);
 #if USS_SUPPORT_UNITASK
             return UniTask.CompletedTask;
@@ -170,24 +134,25 @@ namespace UnitySequencerSystem.StandardSequences
     }
 
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
-    [AddTypeMenu("Standard/Input Action Phase")]
+    [AddTypeMenu("Standard/Input Action Was Pressed This Frame")]
 #endif
     [Serializable]
-    public sealed class InputActionPhase : Sequence
+    public sealed class InputActionWasPressedThisFrame : Sequence
     {
         [SerializeField]
         private InputActionReference inputActionReference;
 
         [SerializeField]
-        private string phaseName;
+        private string boolName;
 
-        public InputActionPhase()
+        public InputActionWasPressedThisFrame()
         {
         }
 
-        public InputActionPhase(InputActionReference inputActionReference)
+        public InputActionWasPressedThisFrame(InputActionReference inputActionReference, string boolName)
         {
             this.inputActionReference = inputActionReference;
+            this.boolName = boolName;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -197,8 +162,86 @@ namespace UnitySequencerSystem.StandardSequences
 #endif
         {
             inputActionReference.action.Enable();
-            var value = inputActionReference.action.phase;
-            container.RegisterOrReplace(phaseName, value);
+            var value = inputActionReference.action.WasPressedThisFrame();
+            container.RegisterOrReplace(boolName, value);
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Input Action Was Released This Frame")]
+#endif
+    [Serializable]
+    public sealed class InputActionWasReleasedThisFrame : Sequence
+    {
+        [SerializeField]
+        private InputActionReference inputActionReference;
+
+        [SerializeField]
+        private string boolName;
+
+        public InputActionWasReleasedThisFrame()
+        {
+        }
+
+        public InputActionWasReleasedThisFrame(InputActionReference inputActionReference, string boolName)
+        {
+            this.inputActionReference = inputActionReference;
+            this.boolName = boolName;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            inputActionReference.action.Enable();
+            var value = inputActionReference.action.WasReleasedThisFrame();
+            container.RegisterOrReplace(boolName, value);
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Input Action Was Performed")]
+#endif
+    [Serializable]
+    public sealed class InputActionWasPerformedThisFrame : Sequence
+    {
+        [SerializeField]
+        private InputActionReference inputActionReference;
+
+        [SerializeField]
+        private string boolName;
+
+        public InputActionWasPerformedThisFrame()
+        {
+        }
+
+        public InputActionWasPerformedThisFrame(InputActionReference inputActionReference, string boolName)
+        {
+            this.inputActionReference = inputActionReference;
+            this.boolName = boolName;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            inputActionReference.action.Enable();
+            var value = inputActionReference.action.WasPerformedThisFrame();
+            container.RegisterOrReplace(boolName, value);
 #if USS_SUPPORT_UNITASK
             return UniTask.CompletedTask;
 #else

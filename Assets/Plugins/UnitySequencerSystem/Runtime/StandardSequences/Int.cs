@@ -324,5 +324,140 @@ namespace UnitySequencerSystem.StandardSequences
 #endif
         }
     }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Int To Float")]
+#endif
+    [Serializable]
+    public sealed class IntToFloat : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private IntResolver intResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver floatNameResolver;
+
+        public IntToFloat()
+        {
+        }
+
+        public IntToFloat(IntResolver intResolver, StringResolver floatNameResolver)
+        {
+            this.intResolver = intResolver;
+            this.floatNameResolver = floatNameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var value = intResolver.Resolve(container);
+            var name = floatNameResolver.Resolve(container);
+            container.RegisterOrReplace(name, (float)value);
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Int To String")]
+#endif
+    [Serializable]
+    public sealed class IntToString : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private IntResolver intResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver stringNameResolver;
+
+        public IntToString()
+        {
+        }
+
+        public IntToString(IntResolver intResolver, StringResolver stringNameResolver)
+        {
+            this.intResolver = intResolver;
+            this.stringNameResolver = stringNameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var value = intResolver.Resolve(container);
+            var name = stringNameResolver.Resolve(container);
+            container.RegisterOrReplace(name, value.ToString());
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Int To Bool")]
+#endif
+    [Serializable]
+    public sealed class IntToBool : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private IntResolver intResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver boolNameResolver;
+
+        public IntToBool()
+        {
+        }
+
+        public IntToBool(IntResolver intResolver, StringResolver boolNameResolver)
+        {
+            this.intResolver = intResolver;
+            this.boolNameResolver = boolNameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var value = intResolver.Resolve(container);
+            var name = boolNameResolver.Resolve(container);
+            container.RegisterOrReplace(name, value != 0);
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
 }
 

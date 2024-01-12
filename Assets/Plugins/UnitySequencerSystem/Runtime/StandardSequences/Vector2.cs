@@ -83,7 +83,6 @@ namespace UnitySequencerSystem.StandardSequences
 #endif
         {
             var value = vector2Resolver.Resolve(container);
-            Debug.Log($"{vector3Name} = {value}");
             var x = GetAxisValue(value, axisX);
             var y = GetAxisValue(value, axisY);
             var z = GetAxisValue(value, axisZ);

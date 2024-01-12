@@ -168,5 +168,43 @@ namespace UnitySequencerSystem.StandardSequences
 #endif
         }
     }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Input Action Phase")]
+#endif
+    [Serializable]
+    public sealed class InputActionPhase : Sequence
+    {
+        [SerializeField]
+        private InputActionReference inputActionReference;
+
+        [SerializeField]
+        private string phaseName;
+
+        public InputActionPhase()
+        {
+        }
+
+        public InputActionPhase(InputActionReference inputActionReference)
+        {
+            this.inputActionReference = inputActionReference;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            inputActionReference.action.Enable();
+            var value = inputActionReference.action.phase;
+            container.RegisterOrReplace(phaseName, value);
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
 }
 #endif

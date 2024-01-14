@@ -16,6 +16,10 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeField]
             private float value;
 
+            public Constant()
+            {
+            }
+
             public override float Resolve(Container container)
             {
                 return value;
@@ -28,6 +32,10 @@ namespace UnitySequencerSystem.Resolvers
         [Serializable]
         public sealed class UnityEngineDeltaTime : DeltaTimeResolver
         {
+            public UnityEngineDeltaTime()
+            {
+            }
+
             public override float Resolve(Container container)
             {
                 return Time.deltaTime;
@@ -40,6 +48,10 @@ namespace UnitySequencerSystem.Resolvers
         [Serializable]
         public sealed class UnityEngineFixedDeltaTime : DeltaTimeResolver
         {
+            public UnityEngineFixedDeltaTime()
+            {
+            }
+
             public override float Resolve(Container container)
             {
                 return Time.fixedDeltaTime;
@@ -52,6 +64,10 @@ namespace UnitySequencerSystem.Resolvers
         [Serializable]
         public sealed class UnityEngineUnscaledTime : DeltaTimeResolver
         {
+            public UnityEngineUnscaledTime()
+            {
+            }
+
             public override float Resolve(Container container)
             {
                 return Time.unscaledDeltaTime;
@@ -67,6 +83,15 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeField]
             private string name;
 
+            public Name()
+            {
+            }
+
+            public Name(string name)
+            {
+                this.name = name;
+            }
+
             public override float Resolve(Container container)
             {
                 return container.Resolve<float>(name);
@@ -81,6 +106,15 @@ namespace UnitySequencerSystem.Resolvers
         {
             [SerializeField]
             private string name;
+
+            public Func()
+            {
+            }
+
+            public Func(string name)
+            {
+                this.name = name;
+            }
 
             public override float Resolve(Container container)
             {

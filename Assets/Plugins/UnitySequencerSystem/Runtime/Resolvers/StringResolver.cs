@@ -16,6 +16,15 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeField]
             private string value;
 
+            public Constant()
+            {
+            }
+
+            public Constant(string value)
+            {
+                this.value = value;
+            }
+
             public override string Resolve(Container container)
             {
                 return value;
@@ -30,6 +39,15 @@ namespace UnitySequencerSystem.Resolvers
         {
             [SerializeField]
             private string name;
+
+            public NameString()
+            {
+            }
+
+            public NameString(string name)
+            {
+                this.name = name;
+            }
 
             public override string Resolve(Container container)
             {

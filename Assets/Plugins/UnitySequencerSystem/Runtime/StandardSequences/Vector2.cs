@@ -1135,7 +1135,6 @@ namespace UnitySequencerSystem.StandardSequences
         }
     }
 
-
     /// <summary>
     /// Represents a sequence that converts a Vector2 to a Vector3.
     /// </summary>

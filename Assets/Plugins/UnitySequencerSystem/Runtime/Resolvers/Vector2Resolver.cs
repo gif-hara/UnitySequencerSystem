@@ -16,6 +16,15 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeField]
             private Vector2 value;
 
+            public Constant()
+            {
+            }
+
+            public Constant(Vector2 value)
+            {
+                this.value = value;
+            }
+
             public override Vector2 Resolve(Container container)
             {
                 return value;
@@ -26,10 +35,19 @@ namespace UnitySequencerSystem.Resolvers
         [AddTypeMenu("Name")]
 #endif
         [Serializable]
-        public sealed class NameVector2 : Vector2Resolver
+        public sealed class Name : Vector2Resolver
         {
             [SerializeField]
             private string name;
+
+            public Name()
+            {
+            }
+
+            public Name(string name)
+            {
+                this.name = name;
+            }
 
             public override Vector2 Resolve(Container container)
             {

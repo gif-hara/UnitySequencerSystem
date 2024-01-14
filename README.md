@@ -52,6 +52,8 @@ https://github.com/gif-hara/UnitySequencerSystem.git?path=Assets/Plugins/UnitySe
 ```
 また以下のプラグインに対応しています。各プラグインがUPM Manager経由でインストールされている場合は自動的に利用可能になります。
 - [UniTask](https://github.com/Cysharp/UniTask)
+  - UniTaskを利用しない場合はTaskを利用しています。
+  - 一部のUnity関連の操作をするシーケンスはとりあえずの対応は行っていますが基本的にUniTaskを利用するのをお勧めします。
 - [Unity-SerializeReferenceExtensions](https://github.com/mackysoft/Unity-SerializeReferenceExtensions)
 - TextMeshPro
 - InputSystem

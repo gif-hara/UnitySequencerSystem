@@ -26,7 +26,7 @@ namespace UnitySequencerSystem.Resolvers
         [AddTypeMenu("Name")]
 #endif
         [Serializable]
-        public sealed class NameQuaternion : QuaternionResolver
+        public sealed class Name : QuaternionResolver
         {
             [SerializeField]
             private string name;

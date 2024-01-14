@@ -391,6 +391,750 @@ namespace UnitySequencerSystem.StandardSequences
         }
     }
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Vector2 Dot")]
+#endif
+    [Serializable]
+    public sealed class Vector2Dot : Sequence
+    {
+        [SerializeReference]
+        private Vector2Resolver leftVector2Resolver;
+
+        [SerializeReference]
+        private Vector2Resolver rightVector2Resolver;
+
+        [SerializeReference]
+        private StringResolver dotNameResolver;
+
+        public Vector2Dot()
+        {
+        }
+
+        public Vector2Dot(Vector2Resolver leftVector2Resolver, Vector2Resolver rightVector2Resolver, StringResolver dotNameResolver)
+        {
+            this.leftVector2Resolver = leftVector2Resolver;
+            this.rightVector2Resolver = rightVector2Resolver;
+            this.dotNameResolver = dotNameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var left = leftVector2Resolver.Resolve(container);
+            var right = rightVector2Resolver.Resolve(container);
+            var name = dotNameResolver.Resolve(container);
+            container.RegisterOrReplace(name, Vector2.Dot(left, right));
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Vector2 Perpendicular")]
+#endif
+    [Serializable]
+    public sealed class Vector2Perpendicular : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver vector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver perpendicularNameResolver;
+
+        public Vector2Perpendicular()
+        {
+        }
+
+        public Vector2Perpendicular(Vector2Resolver vector2Resolver, StringResolver perpendicularNameResolver)
+        {
+            this.vector2Resolver = vector2Resolver;
+            this.perpendicularNameResolver = perpendicularNameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var vector2 = vector2Resolver.Resolve(container);
+            var name = perpendicularNameResolver.Resolve(container);
+            container.RegisterOrReplace(name, Vector2.Perpendicular(vector2));
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Vector2 Reflect")]
+#endif
+    [Serializable]
+    public sealed class Vector2Reflect : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver vector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver normalResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver reflectNameResolver;
+
+        public Vector2Reflect()
+        {
+        }
+
+        public Vector2Reflect(Vector2Resolver vector2Resolver, Vector2Resolver normalResolver, StringResolver reflectNameResolver)
+        {
+            this.vector2Resolver = vector2Resolver;
+            this.normalResolver = normalResolver;
+            this.reflectNameResolver = reflectNameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+
+        {
+            var vector2 = vector2Resolver.Resolve(container);
+            var normal = normalResolver.Resolve(container);
+            var name = reflectNameResolver.Resolve(container);
+            container.RegisterOrReplace(name, Vector2.Reflect(vector2, normal));
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Vector2 Angle")]
+#endif
+    [Serializable]
+    public sealed class Vector2Angle : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver fromVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver toVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver angleNameResolver;
+
+        public Vector2Angle()
+        {
+        }
+
+        public Vector2Angle(Vector2Resolver fromVector2Resolver, Vector2Resolver toVector2Resolver, StringResolver angleNameResolver)
+        {
+            this.fromVector2Resolver = fromVector2Resolver;
+            this.toVector2Resolver = toVector2Resolver;
+            this.angleNameResolver = angleNameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+
+        {
+            var from = fromVector2Resolver.Resolve(container);
+            var to = toVector2Resolver.Resolve(container);
+            var name = angleNameResolver.Resolve(container);
+            container.RegisterOrReplace(name, Vector2.Angle(from, to));
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Vector2 SignedAngle")]
+#endif
+    [Serializable]
+    public sealed class Vector2SignedAngle : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver fromVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver toVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver signedAngleNameResolver;
+
+        public Vector2SignedAngle()
+        {
+        }
+
+        public Vector2SignedAngle(Vector2Resolver fromVector2Resolver, Vector2Resolver toVector2Resolver, StringResolver signedAngleNameResolver)
+        {
+            this.fromVector2Resolver = fromVector2Resolver;
+            this.toVector2Resolver = toVector2Resolver;
+            this.signedAngleNameResolver = signedAngleNameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+
+        {
+            var from = fromVector2Resolver.Resolve(container);
+            var to = toVector2Resolver.Resolve(container);
+            var name = signedAngleNameResolver.Resolve(container);
+            container.RegisterOrReplace(name, Vector2.SignedAngle(from, to));
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Vector2 Distance")]
+#endif
+    [Serializable]
+    public sealed class Vector2Distance : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver fromVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver toVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver distanceNameResolver;
+
+        public Vector2Distance()
+        {
+        }
+
+        public Vector2Distance(Vector2Resolver fromVector2Resolver, Vector2Resolver toVector2Resolver, StringResolver distanceNameResolver)
+        {
+            this.fromVector2Resolver = fromVector2Resolver;
+            this.toVector2Resolver = toVector2Resolver;
+            this.distanceNameResolver = distanceNameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+
+        {
+            var from = fromVector2Resolver.Resolve(container);
+            var to = toVector2Resolver.Resolve(container);
+            var name = distanceNameResolver.Resolve(container);
+            container.RegisterOrReplace(name, Vector2.Distance(from, to));
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Vector2 ClampMagnitude")]
+#endif
+    [Serializable]
+    public sealed class Vector2ClampMagnitude : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver vector2Resolver;
+
+        [SerializeField]
+        private FloatResolver maxLengthResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver clampMagnitudeNameResolver;
+
+        public Vector2ClampMagnitude()
+        {
+        }
+
+        public Vector2ClampMagnitude(Vector2Resolver vector2Resolver, FloatResolver maxLengthResolver, StringResolver clampMagnitudeNameResolver)
+        {
+            this.vector2Resolver = vector2Resolver;
+            this.maxLengthResolver = maxLengthResolver;
+            this.clampMagnitudeNameResolver = clampMagnitudeNameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+
+        {
+            var vector2 = vector2Resolver.Resolve(container);
+            var maxLength = maxLengthResolver.Resolve(container);
+            var name = clampMagnitudeNameResolver.Resolve(container);
+            container.RegisterOrReplace(name, Vector2.ClampMagnitude(vector2, maxLength));
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Vector2 Lerp")]
+#endif
+    [Serializable]
+    public sealed class Vector2Lerp : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver fromVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver toVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private FloatResolver timeResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver lerpNameResolver;
+
+        public Vector2Lerp()
+        {
+        }
+
+        public Vector2Lerp(Vector2Resolver fromVector2Resolver, Vector2Resolver toVector2Resolver, FloatResolver timeResolver, StringResolver lerpNameResolver)
+        {
+            this.fromVector2Resolver = fromVector2Resolver;
+            this.toVector2Resolver = toVector2Resolver;
+            this.timeResolver = timeResolver;
+            this.lerpNameResolver = lerpNameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+
+        {
+            var from = fromVector2Resolver.Resolve(container);
+            var to = toVector2Resolver.Resolve(container);
+            var time = timeResolver.Resolve(container);
+            var name = lerpNameResolver.Resolve(container);
+            container.RegisterOrReplace(name, Vector2.Lerp(from, to, time));
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Vector2 LerpUnclamped")]
+#endif
+    [Serializable]
+    public sealed class Vector2LerpUnclamped : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver fromVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver toVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private FloatResolver timeResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver lerpUnclampedNameResolver;
+
+        public Vector2LerpUnclamped()
+        {
+        }
+
+        public Vector2LerpUnclamped(Vector2Resolver fromVector2Resolver, Vector2Resolver toVector2Resolver, FloatResolver timeResolver, StringResolver lerpUnclampedNameResolver)
+        {
+            this.fromVector2Resolver = fromVector2Resolver;
+            this.toVector2Resolver = toVector2Resolver;
+            this.timeResolver = timeResolver;
+            this.lerpUnclampedNameResolver = lerpUnclampedNameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+
+        {
+            var from = fromVector2Resolver.Resolve(container);
+            var to = toVector2Resolver.Resolve(container);
+            var time = timeResolver.Resolve(container);
+            var name = lerpUnclampedNameResolver.Resolve(container);
+            container.RegisterOrReplace(name, Vector2.LerpUnclamped(from, to, time));
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Vector2 MoveTowards")]
+#endif
+    [Serializable]
+    public sealed class Vector2MoveTowards : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver currentVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver targetVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private FloatResolver maxDistanceDeltaResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver moveTowardsNameResolver;
+
+        public Vector2MoveTowards()
+        {
+        }
+
+        public Vector2MoveTowards(Vector2Resolver currentVector2Resolver, Vector2Resolver targetVector2Resolver, FloatResolver maxDistanceDeltaResolver, StringResolver moveTowardsNameResolver)
+        {
+            this.currentVector2Resolver = currentVector2Resolver;
+            this.targetVector2Resolver = targetVector2Resolver;
+            this.maxDistanceDeltaResolver = maxDistanceDeltaResolver;
+            this.moveTowardsNameResolver = moveTowardsNameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)    
+#endif
+
+        {
+            var current = currentVector2Resolver.Resolve(container);
+            var target = targetVector2Resolver.Resolve(container);
+            var maxDistanceDelta = maxDistanceDeltaResolver.Resolve(container);
+            var name = moveTowardsNameResolver.Resolve(container);
+            container.RegisterOrReplace(name, Vector2.MoveTowards(current, target, maxDistanceDelta));
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Vector2 SmoothDamp")]
+#endif
+    [Serializable]
+    public sealed class Vector2SmoothDamp : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver currentVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver targetVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver currentVelocityVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private FloatResolver smoothTimeResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private FloatResolver maxSpeedResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private FloatResolver deltaTimeResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver smoothDampNameResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver currentVelocityNameResolver;
+
+
+        public Vector2SmoothDamp()
+        {
+        }
+
+        public Vector2SmoothDamp(Vector2Resolver currentVector2Resolver, Vector2Resolver targetVector2Resolver, Vector2Resolver currentVelocityVector2Resolver, FloatResolver smoothTimeResolver, FloatResolver maxSpeedResolver, FloatResolver deltaTimeResolver, StringResolver smoothDampNameResolver, StringResolver currentVelocityNameResolver)
+        {
+            this.currentVector2Resolver = currentVector2Resolver;
+            this.targetVector2Resolver = targetVector2Resolver;
+            this.currentVelocityVector2Resolver = currentVelocityVector2Resolver;
+            this.smoothTimeResolver = smoothTimeResolver;
+            this.maxSpeedResolver = maxSpeedResolver;
+            this.deltaTimeResolver = deltaTimeResolver;
+            this.smoothDampNameResolver = smoothDampNameResolver;
+            this.currentVelocityNameResolver = currentVelocityNameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+
+        {
+            var current = currentVector2Resolver.Resolve(container);
+            var target = targetVector2Resolver.Resolve(container);
+            var currentVelocity = currentVelocityVector2Resolver.Resolve(container);
+            var smoothTime = smoothTimeResolver.Resolve(container);
+            var maxSpeed = maxSpeedResolver.Resolve(container);
+            var deltaTime = deltaTimeResolver.Resolve(container);
+            var smoothDampName = smoothDampNameResolver.Resolve(container);
+            var currentVelocityName = currentVelocityNameResolver.Resolve(container);
+            container.RegisterOrReplace(smoothDampName, Vector2.SmoothDamp(current, target, ref currentVelocity, smoothTime, maxSpeed, deltaTime));
+            container.RegisterOrReplace(currentVelocityName, currentVelocity);
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Vector2 Min")]
+#endif
+    [Serializable]
+    public sealed class Vector2Min : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver leftVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver rightVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver minNameResolver;
+
+        public Vector2Min()
+        {
+        }
+
+        public Vector2Min(Vector2Resolver leftVector2Resolver, Vector2Resolver rightVector2Resolver, StringResolver minNameResolver)
+        {
+            this.leftVector2Resolver = leftVector2Resolver;
+            this.rightVector2Resolver = rightVector2Resolver;
+            this.minNameResolver = minNameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var left = leftVector2Resolver.Resolve(container);
+            var right = rightVector2Resolver.Resolve(container);
+            var name = minNameResolver.Resolve(container);
+            container.RegisterOrReplace(name, Vector2.Min(left, right));
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Vector2 Max")]
+#endif
+    [Serializable]
+    public sealed class Vector2Max : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver leftVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private Vector2Resolver rightVector2Resolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver maxNameResolver;
+
+        public Vector2Max()
+        {
+        }
+
+        public Vector2Max(Vector2Resolver leftVector2Resolver, Vector2Resolver rightVector2Resolver, StringResolver maxNameResolver)
+        {
+            this.leftVector2Resolver = leftVector2Resolver;
+            this.rightVector2Resolver = rightVector2Resolver;
+            this.maxNameResolver = maxNameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var left = leftVector2Resolver.Resolve(container);
+            var right = rightVector2Resolver.Resolve(container);
+            var name = maxNameResolver.Resolve(container);
+            container.RegisterOrReplace(name, Vector2.Max(left, right));
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
 
     /// <summary>
     /// Represents a sequence that converts a Vector2 to a Vector3.

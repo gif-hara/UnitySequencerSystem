@@ -16,6 +16,15 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeField]
             private Transform target;
 
+            public ReferenceTransform()
+            {
+            }
+
+            public ReferenceTransform(Transform target)
+            {
+                this.target = target;
+            }
+
             public override Transform Resolve(Container container)
             {
                 return target;
@@ -30,6 +39,15 @@ namespace UnitySequencerSystem.Resolvers
         {
             [SerializeField]
             private string name;
+
+            public NameTransform()
+            {
+            }
+
+            public NameTransform(string name)
+            {
+                this.name = name;
+            }
 
             public override Transform Resolve(Container container)
             {

@@ -56,6 +56,9 @@ https://github.com/gif-hara/UnitySequencerSystem.git?path=Assets/Plugins/UnitySe
 - TextMeshPro
 - InputSystem
 
+Unity-SerializeReferenceExtensionsを利用することでInspectorで定義をすることも可能です。
+![image](https://github.com/gif-hara/UnitySequencerSystem/assets/5396546/95fdff5c-db2c-493f-ad1d-094997f2f57d)
+
 ## Resolverクラス
 Resolverクラスは操作を行う対象の参照を解決するクラスです。
 例えばTransformSetPositionはTransformの座標を設定しますが、そのTransformはResolverクラスを通して参照することができます。

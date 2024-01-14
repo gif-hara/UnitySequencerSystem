@@ -13,10 +13,19 @@ namespace UnitySequencerSystem.Resolvers
         [AddTypeMenu("Reference")]
 #endif
         [Serializable]
-        public sealed class ReferenceTMP_Text : TMP_TextResolver
+        public sealed class Reference : TMP_TextResolver
         {
             [SerializeField]
             private TMP_Text target;
+
+            public Reference()
+            {
+            }
+
+            public Reference(TMP_Text target)
+            {
+                this.target = target;
+            }
 
             public override TMP_Text Resolve(Container container)
             {
@@ -28,10 +37,19 @@ namespace UnitySequencerSystem.Resolvers
         [AddTypeMenu("Name")]
 #endif
         [Serializable]
-        public sealed class NameTMP_Text : TMP_TextResolver
+        public sealed class Name : TMP_TextResolver
         {
             [SerializeField]
             private string name;
+
+            public Name()
+            {
+            }
+
+            public Name(string name)
+            {
+                this.name = name;
+            }
 
             public override TMP_Text Resolve(Container container)
             {

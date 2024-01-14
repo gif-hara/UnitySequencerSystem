@@ -8,10 +8,10 @@ namespace UnitySequencerSystem.Resolvers
         public abstract ParticleSystem Resolve(Container container);
 
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
-    [AddTypeMenu("Reference")]
+        [AddTypeMenu("Reference")]
 #endif
         [Serializable]
-        public sealed class ReferenceParticleSystem : ParticleSystemResolver
+        public sealed class Reference : ParticleSystemResolver
         {
             [SerializeField]
             private ParticleSystem target;
@@ -23,10 +23,10 @@ namespace UnitySequencerSystem.Resolvers
         }
 
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
-    [AddTypeMenu("Name")]
+        [AddTypeMenu("Name")]
 #endif
         [Serializable]
-        public sealed class NameParticleSystem : ParticleSystemResolver
+        public sealed class Name : ParticleSystemResolver
         {
             [SerializeField]
             private string name;

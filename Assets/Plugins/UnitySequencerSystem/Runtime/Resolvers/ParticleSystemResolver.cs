@@ -16,6 +16,15 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeField]
             private ParticleSystem target;
 
+            public Reference()
+            {
+            }
+
+            public Reference(ParticleSystem target)
+            {
+                this.target = target;
+            }
+
             public override ParticleSystem Resolve(Container container)
             {
                 return target;
@@ -30,6 +39,15 @@ namespace UnitySequencerSystem.Resolvers
         {
             [SerializeField]
             private string name;
+
+            public Name()
+            {
+            }
+
+            public Name(string name)
+            {
+                this.name = name;
+            }
 
             public override ParticleSystem Resolve(Container container)
             {

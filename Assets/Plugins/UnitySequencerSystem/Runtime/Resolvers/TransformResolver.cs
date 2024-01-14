@@ -11,16 +11,16 @@ namespace UnitySequencerSystem.Resolvers
         [AddTypeMenu("Reference")]
 #endif
         [Serializable]
-        public sealed class ReferenceTransform : TransformResolver
+        public sealed class Reference : TransformResolver
         {
             [SerializeField]
             private Transform target;
 
-            public ReferenceTransform()
+            public Reference()
             {
             }
 
-            public ReferenceTransform(Transform target)
+            public Reference(Transform target)
             {
                 this.target = target;
             }
@@ -35,16 +35,16 @@ namespace UnitySequencerSystem.Resolvers
         [AddTypeMenu("Name")]
 #endif
         [Serializable]
-        public sealed class NameTransform : TransformResolver
+        public sealed class Name : TransformResolver
         {
             [SerializeField]
             private string name;
 
-            public NameTransform()
+            public Name()
             {
             }
 
-            public NameTransform(string name)
+            public Name(string name)
             {
                 this.name = name;
             }

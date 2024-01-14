@@ -57,7 +57,8 @@ https://github.com/gif-hara/UnitySequencerSystem.git?path=Assets/Plugins/UnitySe
 - InputSystem
 
 ## Resolverクラス
-Resolverクラスは操作を行う対象の参照を解決するクラスです。例えばTransformSetPositionはTransformの座標を設定しますが、
+Resolverクラスは操作を行う対象の参照を解決するクラスです。
+例えばTransformSetPositionはTransformの座標を設定しますが、そのTransformはResolverクラスを通して参照することができます。
 ```csharp
 // 直接Transformを参照する
 var sequences = new List<ISequence>

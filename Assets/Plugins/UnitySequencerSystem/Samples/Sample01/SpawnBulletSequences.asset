@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sequences:
   - rid: 2598803836872949760
+  - rid: 2598803836872949764
+  - rid: 2598803836872949775
   references:
     version: 2
     RefIds:
@@ -32,3 +34,33 @@ MonoBehaviour:
       type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         value: Bullet
+    - rid: 2598803836872949764
+      type: {class: GameObjectToTransform, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        targetResolver:
+          rid: 2598803836872949765
+        transformNameResolver:
+          rid: 2598803836872949766
+    - rid: 2598803836872949765
+      type: {class: GameObjectResolver/NameGameObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: Bullet
+    - rid: 2598803836872949766
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Bullet
+    - rid: 2598803836872949775
+      type: {class: TransformSetPosition, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        targetResolver:
+          rid: 2598803836872949776
+        positionResolver:
+          rid: 2598803836872949779
+    - rid: 2598803836872949776
+      type: {class: TransformResolver/Name, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: Bullet
+    - rid: 2598803836872949779
+      type: {class: Vector3Resolver/NameTransformPosition, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: Player

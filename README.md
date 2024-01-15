@@ -107,6 +107,25 @@ USSには基本的な機能として以下のシーケンスを用意してい�
 ### Delay
 与えられた秒数待機します。
 
+### その他随時実装中
+様々な型に随時対応しています。現在、以下のクラスの機能を提供しています。
+- Float
+- GameObject
+- Forget
+- If
+- InputSystem
+- Int
+- Particle
+- TextMeshPro
+- Transform
+- Update
+- Vector2
+- Vector3
+- WaitUntil
+- WhenAll
+- WhenAny
+
+
 ## 具体的な例
 USSは名前の通り、シーケンシャルな処理に特化しています。これはゲーム制作には欠かせないアルゴリズムであり、それを柔軟に組み立てることが可能です。いくつか例を以下に示します。
 

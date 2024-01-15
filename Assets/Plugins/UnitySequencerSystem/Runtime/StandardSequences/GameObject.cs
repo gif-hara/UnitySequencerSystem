@@ -26,16 +26,16 @@ namespace UnitySequencerSystem.StandardSequences
         [SubclassSelector]
 #endif
         [SerializeReference]
-        private StringResolver containerNameResolver;
+        private StringResolver gameObjectNameResolver;
 
         public GameObjectInstantiate()
         {
         }
 
-        public GameObjectInstantiate(GameObjectResolver prefabResolver, StringResolver containerNameResolver)
+        public GameObjectInstantiate(GameObjectResolver prefabResolver, StringResolver gameObjectNameResolver)
         {
             this.prefabResolver = prefabResolver;
-            this.containerNameResolver = containerNameResolver;
+            this.gameObjectNameResolver = gameObjectNameResolver;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -46,10 +46,10 @@ namespace UnitySequencerSystem.StandardSequences
         {
             var prefab = this.prefabResolver.Resolve(container);
             var instance = UnityEngine.Object.Instantiate(prefab);
-            if (containerNameResolver != null)
+            if (gameObjectNameResolver != null)
             {
-                var containerName = containerNameResolver.Resolve(container);
-                container.RegisterOrReplace(containerName, instance);
+                var name = gameObjectNameResolver.Resolve(container);
+                container.RegisterOrReplace(name, instance);
             }
 #if USS_SUPPORT_UNITASK
             return UniTask.CompletedTask;

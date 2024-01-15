@@ -15,7 +15,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/Log")]
 #endif
     [Serializable]
-    public sealed class Log : ISequence
+    public sealed class Log : Sequence
     {
         [SerializeField]
         private string message;
@@ -30,9 +30,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             Debug.Log(this.message);
@@ -45,37 +45,22 @@ namespace UnitySequencerSystem.StandardSequences
     }
 
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
-    [AddTypeMenu("Standard/Log Vector3")]
+    [AddTypeMenu("Standard/Log Container")]
 #endif
     [Serializable]
-    public sealed class LogVector3 : ISequence
+    public sealed class LogContainer : Sequence
     {
-        [SerializeField]
-        private string header;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        private Vector3Resolver vector3Resolver;
-
-        public LogVector3()
+        public LogContainer()
         {
-        }
-
-        public LogVector3(string header, Vector3Resolver vector3Resolver)
-        {
-            this.header = header;
-            this.vector3Resolver = vector3Resolver;
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
-            Debug.Log($"{header}{vector3Resolver.Resolve(container)}");
+            Debug.Log(container.ToString());
 #if USS_SUPPORT_UNITASK
             return UniTask.CompletedTask;
 #else

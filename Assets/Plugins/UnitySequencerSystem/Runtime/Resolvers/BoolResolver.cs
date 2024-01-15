@@ -16,6 +16,15 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeField]
             private bool value;
 
+            public Constant()
+            {
+            }
+
+            public Constant(bool value)
+            {
+                this.value = value;
+            }
+
             public override bool Resolve(Container container)
             {
                 return value;
@@ -31,6 +40,15 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeField]
             private string name;
 
+            public Name()
+            {
+            }
+
+            public Name(string name)
+            {
+                this.name = name;
+            }
+
             public override bool Resolve(Container container)
             {
                 return container.Resolve<bool>(name);
@@ -45,6 +63,15 @@ namespace UnitySequencerSystem.Resolvers
         {
             [SerializeField]
             private string name;
+
+            public Func()
+            {
+            }
+
+            public Func(string name)
+            {
+                this.name = name;
+            }
 
             public override bool Resolve(Container container)
             {

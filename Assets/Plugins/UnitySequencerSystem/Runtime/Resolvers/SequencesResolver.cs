@@ -20,6 +20,15 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeReference]
             private List<ISequence> value;
 
+            public List()
+            {
+            }
+
+            public List(List<ISequence> value)
+            {
+                this.value = value;
+            }
+
             public override List<ISequence> Resolve(Container container)
             {
                 return value;
@@ -34,6 +43,15 @@ namespace UnitySequencerSystem.Resolvers
         {
             [SerializeField]
             private string name;
+
+            public Name()
+            {
+            }
+
+            public Name(string name)
+            {
+                this.name = name;
+            }
 
             public override List<ISequence> Resolve(Container container)
             {
@@ -50,6 +68,15 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeField]
             private string name;
 
+            public Func()
+            {
+            }
+
+            public Func(string name)
+            {
+                this.name = name;
+            }
+
             public override List<ISequence> Resolve(Container container)
             {
                 return container.Resolve<Func<List<ISequence>>>(name)();
@@ -64,6 +91,15 @@ namespace UnitySequencerSystem.Resolvers
         {
             [SerializeField]
             private ScriptableSequences value;
+
+            public ScriptableObject()
+            {
+            }
+
+            public ScriptableObject(ScriptableSequences value)
+            {
+                this.value = value;
+            }
 
             public override List<ISequence> Resolve(Container container)
             {

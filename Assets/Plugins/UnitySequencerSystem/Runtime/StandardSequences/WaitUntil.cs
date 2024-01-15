@@ -17,7 +17,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/WaitUntil")]
 #endif
     [Serializable]
-    public sealed class WaitUntil : ISequence
+    public sealed class WaitUntil : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -35,9 +35,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
 #if USS_SUPPORT_UNITASK
@@ -61,7 +61,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/WaitUntil LegacyInput")]
 #endif
     [Serializable]
-    public sealed class WaitUntilLegacyInput : ISequence
+    public sealed class WaitUntilLegacyInput : Sequence
     {
         public enum InputKeyType
         {
@@ -87,9 +87,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
 #if USS_SUPPORT_UNITASK
@@ -125,7 +125,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/WaitUntil InputActionTriggered")]
 #endif
     [Serializable]
-    public sealed class WaitUntilInputActionTriggered : ISequence
+    public sealed class WaitUntilInputActionTriggered : Sequence
     {
         [SerializeField]
         private InputActionReference inputActionReference;
@@ -154,9 +154,9 @@ namespace UnitySequencerSystem.StandardSequences
 
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             inputActionReference.action.Enable();

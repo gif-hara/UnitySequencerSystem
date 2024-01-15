@@ -14,7 +14,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/Transform Set Position")]
 #endif
     [Serializable]
-    public sealed class TransformSetPosition : ISequence
+    public sealed class TransformSetPosition : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -39,9 +39,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -59,7 +59,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/Transform Set Local Position")]
 #endif
     [Serializable]
-    public sealed class TransformSetLocalPosition : ISequence
+    public sealed class TransformSetLocalPosition : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -84,9 +84,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -104,7 +104,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/Transform Set Euler Angles")]
 #endif
     [Serializable]
-    public sealed class TransformSetEulerAngles : ISequence
+    public sealed class TransformSetEulerAngles : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -129,9 +129,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -149,7 +149,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/Transform Set Local Euler Angles")]
 #endif
     [Serializable]
-    public sealed class TransformSetLocalEulerAngles : ISequence
+    public sealed class TransformSetLocalEulerAngles : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -174,9 +174,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -194,7 +194,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/Transform Set Local Scale")]
 #endif
     [Serializable]
-    public sealed class TransformSetLocalScale : ISequence
+    public sealed class TransformSetLocalScale : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -219,9 +219,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -242,7 +242,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/Transform Add Position")]
 #endif
     [Serializable]
-    public sealed class TransformAddPosition : ISequence
+    public sealed class TransformAddPosition : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -278,9 +278,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -302,7 +302,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/Transform Add Local Position")]
 #endif
     [Serializable]
-    public sealed class TransformAddLocalPosition : ISequence
+    public sealed class TransformAddLocalPosition : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -338,9 +338,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -362,7 +362,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/Transform Add Euler Angles")]
 #endif
     [Serializable]
-    public sealed class TransformAddEulerAngles : ISequence
+    public sealed class TransformAddEulerAngles : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -398,9 +398,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -422,7 +422,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/Transform Add Local Euler Angles")]
 #endif
     [Serializable]
-    public sealed class TransformAddLocalEulerAngles : ISequence
+    public sealed class TransformAddLocalEulerAngles : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -458,9 +458,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -482,7 +482,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/Transform Add Local Scale")]
 #endif
     [Serializable]
-    public sealed class TransformAddLocalScale : ISequence
+    public sealed class TransformAddLocalScale : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -518,9 +518,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);

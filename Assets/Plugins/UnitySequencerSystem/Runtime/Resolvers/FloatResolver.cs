@@ -8,13 +8,22 @@ namespace UnitySequencerSystem.Resolvers
         public abstract float Resolve(Container container);
 
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
-    [AddTypeMenu("Constant")]
+        [AddTypeMenu("Constant")]
 #endif
         [Serializable]
         public sealed class Constant : FloatResolver
         {
             [SerializeField]
             private float value;
+
+            public Constant()
+            {
+            }
+
+            public Constant(float value)
+            {
+                this.value = value;
+            }
 
             public override float Resolve(Container container)
             {
@@ -23,13 +32,22 @@ namespace UnitySequencerSystem.Resolvers
         }
 
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
-    [AddTypeMenu("Name")]
+        [AddTypeMenu("Name")]
 #endif
         [Serializable]
         public sealed class NameFloat : FloatResolver
         {
             [SerializeField]
             private string name;
+
+            public NameFloat()
+            {
+            }
+
+            public NameFloat(string name)
+            {
+                this.name = name;
+            }
 
             public override float Resolve(Container container)
             {

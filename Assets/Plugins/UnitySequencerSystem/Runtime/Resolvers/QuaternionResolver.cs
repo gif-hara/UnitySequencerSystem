@@ -16,6 +16,15 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeField]
             private Quaternion value;
 
+            public Constant()
+            {
+            }
+
+            public Constant(Quaternion value)
+            {
+                this.value = value;
+            }
+
             public override Quaternion Resolve(Container container)
             {
                 return value;
@@ -26,10 +35,19 @@ namespace UnitySequencerSystem.Resolvers
         [AddTypeMenu("Name")]
 #endif
         [Serializable]
-        public sealed class NameQuaternion : QuaternionResolver
+        public sealed class Name : QuaternionResolver
         {
             [SerializeField]
             private string name;
+
+            public Name()
+            {
+            }
+
+            public Name(string name)
+            {
+                this.name = name;
+            }
 
             public override Quaternion Resolve(Container container)
             {
@@ -46,6 +64,15 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeField]
             private Transform target;
 
+            public ReferenceTransformRotation()
+            {
+            }
+
+            public ReferenceTransformRotation(Transform target)
+            {
+                this.target = target;
+            }
+
             public override Quaternion Resolve(Container container)
             {
                 return target.rotation;
@@ -60,6 +87,15 @@ namespace UnitySequencerSystem.Resolvers
         {
             [SerializeField]
             private Transform target;
+
+            public ReferenceTransformLocalRotation()
+            {
+            }
+
+            public ReferenceTransformLocalRotation(Transform target)
+            {
+                this.target = target;
+            }
 
             public override Quaternion Resolve(Container container)
             {
@@ -76,6 +112,15 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeField]
             private string name;
 
+            public NameTransformRotation()
+            {
+            }
+
+            public NameTransformRotation(string name)
+            {
+                this.name = name;
+            }
+
             public override Quaternion Resolve(Container container)
             {
                 var target = container.Resolve<Transform>(name);
@@ -91,6 +136,15 @@ namespace UnitySequencerSystem.Resolvers
         {
             [SerializeField]
             private string name;
+
+            public NameTransformLocalRotation()
+            {
+            }
+
+            public NameTransformLocalRotation(string name)
+            {
+                this.name = name;
+            }
 
             public override Quaternion Resolve(Container container)
             {

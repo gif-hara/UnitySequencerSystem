@@ -16,6 +16,15 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeField]
             private Vector3 value;
 
+            public Constant()
+            {
+            }
+
+            public Constant(Vector3 value)
+            {
+                this.value = value;
+            }
+
             public override Vector3 Resolve(Container container)
             {
                 return value;
@@ -26,10 +35,19 @@ namespace UnitySequencerSystem.Resolvers
         [AddTypeMenu("Name")]
 #endif
         [Serializable]
-        public sealed class NameVector3 : Vector3Resolver
+        public sealed class Name : Vector3Resolver
         {
             [SerializeField]
             private string name;
+
+            public Name()
+            {
+            }
+
+            public Name(string name)
+            {
+                this.name = name;
+            }
 
             public override Vector3 Resolve(Container container)
             {
@@ -46,6 +64,15 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeField]
             private Transform target;
 
+            public ReferenceTransformPosition()
+            {
+            }
+
+            public ReferenceTransformPosition(Transform target)
+            {
+                this.target = target;
+            }
+
             public override Vector3 Resolve(Container container)
             {
                 return target.position;
@@ -60,6 +87,15 @@ namespace UnitySequencerSystem.Resolvers
         {
             [SerializeField]
             private Transform target;
+
+            public ReferenceTransformLocalPosition()
+            {
+            }
+
+            public ReferenceTransformLocalPosition(Transform target)
+            {
+                this.target = target;
+            }
 
             public override Vector3 Resolve(Container container)
             {
@@ -76,6 +112,15 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeField]
             private Transform target;
 
+            public ReferenceTransformEulerAngles()
+            {
+            }
+
+            public ReferenceTransformEulerAngles(Transform target)
+            {
+                this.target = target;
+            }
+
             public override Vector3 Resolve(Container container)
             {
                 return target.eulerAngles;
@@ -90,6 +135,15 @@ namespace UnitySequencerSystem.Resolvers
         {
             [SerializeField]
             private Transform target;
+
+            public ReferenceTransformLocalEulerAngles()
+            {
+            }
+
+            public ReferenceTransformLocalEulerAngles(Transform target)
+            {
+                this.target = target;
+            }
 
             public override Vector3 Resolve(Container container)
             {
@@ -106,6 +160,15 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeField]
             private Transform target;
 
+            public ReferenceTransformLocalScale()
+            {
+            }
+
+            public ReferenceTransformLocalScale(Transform target)
+            {
+                this.target = target;
+            }
+
             public override Vector3 Resolve(Container container)
             {
                 return target.localScale;
@@ -121,6 +184,15 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeField]
             private Transform target;
 
+            public ReferenceTransformLossyScale()
+            {
+            }
+
+            public ReferenceTransformLossyScale(Transform target)
+            {
+                this.target = target;
+            }
+
             public override Vector3 Resolve(Container container)
             {
                 return target.lossyScale;
@@ -135,6 +207,15 @@ namespace UnitySequencerSystem.Resolvers
         {
             [SerializeField]
             private string name;
+
+            public NameTransformPosition()
+            {
+            }
+
+            public NameTransformPosition(string name)
+            {
+                this.name = name;
+            }
 
             public override Vector3 Resolve(Container container)
             {
@@ -152,6 +233,15 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeField]
             private string name;
 
+            public NameTransformLocalPosition()
+            {
+            }
+
+            public NameTransformLocalPosition(string name)
+            {
+                this.name = name;
+            }
+
             public override Vector3 Resolve(Container container)
             {
                 var target = container.Resolve<Transform>(name);
@@ -167,6 +257,15 @@ namespace UnitySequencerSystem.Resolvers
         {
             [SerializeField]
             private string name;
+
+            public NameTransformEulerAngles()
+            {
+            }
+
+            public NameTransformEulerAngles(string name)
+            {
+                this.name = name;
+            }
 
             public override Vector3 Resolve(Container container)
             {
@@ -184,6 +283,15 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeField]
             private string name;
 
+            public NameTransformLocalEulerAngles()
+            {
+            }
+
+            public NameTransformLocalEulerAngles(string name)
+            {
+                this.name = name;
+            }
+
             public override Vector3 Resolve(Container container)
             {
                 var target = container.Resolve<Transform>(name);
@@ -200,6 +308,15 @@ namespace UnitySequencerSystem.Resolvers
             [SerializeField]
             private string name;
 
+            public NameTransformLocalScale()
+            {
+            }
+
+            public NameTransformLocalScale(string name)
+            {
+                this.name = name;
+            }
+
             public override Vector3 Resolve(Container container)
             {
                 var target = container.Resolve<Transform>(name);
@@ -215,6 +332,15 @@ namespace UnitySequencerSystem.Resolvers
         {
             [SerializeField]
             private string name;
+
+            public NameTransformLossyScale()
+            {
+            }
+
+            public NameTransformLossyScale(string name)
+            {
+                this.name = name;
+            }
 
             public override Vector3 Resolve(Container container)
             {

@@ -19,31 +19,31 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/When All")]
 #endif
     [Serializable]
-    public sealed class WhenAll : ISequence
+    public sealed class WhenAll : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
         [SerializeReference]
-        private List<ISequence> sequences;
+        private List<Sequence> sequences;
 
         public WhenAll()
         {
         }
 
-        public WhenAll(List<ISequence> sequences)
+        public WhenAll(List<Sequence> sequences)
         {
             this.sequences = sequences;
         }
 
 #if USS_SUPPORT_UNITASK
-                public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
 #if USS_SUPPORT_UNITASK
-                        await UniTask.WhenAll(sequences.Select(s => s.PlayAsync(container, cancellationToken)));
+            await UniTask.WhenAll(sequences.Select(s => s.PlayAsync(container, cancellationToken)));
 #else
             await Task.WhenAll(sequences.Select(s => s.PlayAsync(container, cancellationToken)));
 #endif

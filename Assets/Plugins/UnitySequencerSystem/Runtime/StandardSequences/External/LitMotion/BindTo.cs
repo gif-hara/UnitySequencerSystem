@@ -115,7 +115,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Position")]
 #endif
     [Serializable]
-    public sealed class BindToPosition : ISequence
+    public sealed class BindToPosition : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -137,9 +137,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -156,7 +156,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local Position")]
 #endif
     [Serializable]
-    public sealed class BindToLocalPosition : ISequence
+    public sealed class BindToLocalPosition : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -178,9 +178,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -197,7 +197,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Euler Angles")]
 #endif
     [Serializable]
-    public sealed class BindToEulerAngles : ISequence
+    public sealed class BindToEulerAngles : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -219,9 +219,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -238,7 +238,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local Euler Angles")]
 #endif
     [Serializable]
-    public sealed class BindToLocalEulerAngles : ISequence
+    public sealed class BindToLocalEulerAngles : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -260,9 +260,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -279,7 +279,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local Scale")]
 #endif
     [Serializable]
-    public sealed class BindToLocalScale : ISequence
+    public sealed class BindToLocalScale : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -301,9 +301,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -320,7 +320,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To PositionX")]
 #endif
     [Serializable]
-    public sealed class BindToPositionX : ISequence
+    public sealed class BindToPositionX : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -342,9 +342,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -361,7 +361,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To PositionY")]
 #endif
     [Serializable]
-    public sealed class BindToPositionY : ISequence
+    public sealed class BindToPositionY : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -383,9 +383,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -402,7 +402,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To PositionZ")]
 #endif
     [Serializable]
-    public sealed class BindToPositionZ : ISequence
+    public sealed class BindToPositionZ : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -424,9 +424,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -443,7 +443,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local PositionX")]
 #endif
     [Serializable]
-    public sealed class BindToLocalPositionX : ISequence
+    public sealed class BindToLocalPositionX : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -465,9 +465,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
 
         {
@@ -485,7 +485,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local PositionY")]
 #endif
     [Serializable]
-    public sealed class BindToLocalPositionY : ISequence
+    public sealed class BindToLocalPositionY : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -507,9 +507,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
 
         {
@@ -527,7 +527,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local PositionZ")]
 #endif
     [Serializable]
-    public sealed class BindToLocalPositionZ : ISequence
+    public sealed class BindToLocalPositionZ : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -549,9 +549,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
 
         {
@@ -569,7 +569,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Rotation")]
 #endif
     [Serializable]
-    public sealed class BindToRotation : ISequence
+    public sealed class BindToRotation : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -594,9 +594,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
 
         {
@@ -614,7 +614,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local Rotation")]
 #endif
     [Serializable]
-    public sealed class BindToLocalRotation : ISequence
+    public sealed class BindToLocalRotation : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -639,9 +639,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -658,7 +658,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local ScaleX")]
 #endif
     [Serializable]
-    public sealed class BindToLocalScaleX : ISequence
+    public sealed class BindToLocalScaleX : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -683,9 +683,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -702,7 +702,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local ScaleY")]
 #endif
     [Serializable]
-    public sealed class BindToLocalScaleY : ISequence
+    public sealed class BindToLocalScaleY : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -727,9 +727,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -746,7 +746,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local ScaleZ")]
 #endif
     [Serializable]
-    public sealed class BindToLocalScaleZ : ISequence
+    public sealed class BindToLocalScaleZ : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -771,9 +771,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -790,7 +790,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Euler AnglesX")]
 #endif
     [Serializable]
-    public sealed class BindToEulerAnglesX : ISequence
+    public sealed class BindToEulerAnglesX : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -815,9 +815,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -834,7 +834,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Euler AnglesY")]
 #endif
     [Serializable]
-    public sealed class BindToEulerAnglesY : ISequence
+    public sealed class BindToEulerAnglesY : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -859,9 +859,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -878,7 +878,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Euler AnglesZ")]
 #endif
     [Serializable]
-    public sealed class BindToEulerAnglesZ : ISequence
+    public sealed class BindToEulerAnglesZ : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -903,9 +903,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -922,7 +922,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local Euler AnglesX")]
 #endif
     [Serializable]
-    public sealed class BindToLocalEulerAnglesX : ISequence
+    public sealed class BindToLocalEulerAnglesX : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -947,9 +947,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -966,7 +966,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local Euler AnglesY")]
 #endif
     [Serializable]
-    public sealed class BindToLocalEulerAnglesY : ISequence
+    public sealed class BindToLocalEulerAnglesY : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -991,9 +991,9 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);
@@ -1010,7 +1010,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local Euler AnglesZ")]
 #endif
     [Serializable]
-    public sealed class BindToLocalEulerAnglesZ : ISequence
+    public sealed class BindToLocalEulerAnglesZ : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -1035,10 +1035,10 @@ namespace UnitySequencerSystem.LitMotion
         }
 
 #if USS_SUPPORT_UNITASK
-        public async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
     
-        public async Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var target = this.targetResolver.Resolve(container);

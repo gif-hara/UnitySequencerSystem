@@ -15,7 +15,7 @@ namespace UnitySequencerSystem.StandardSequences
     [AddTypeMenu("Standard/Forget")]
 #endif
     [Serializable]
-    public sealed class Forget : ISequence
+    public sealed class Forget : Sequence
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -33,9 +33,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
 #else
-        public Task PlayAsync(Container container, CancellationToken cancellationToken)
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
             var sequences = sequencesResolver.Resolve(container);

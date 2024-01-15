@@ -69,15 +69,15 @@ namespace UnitySequencerSystem.StandardSequences
     public sealed class GameObjectDestroy : Sequence
     {
         [SerializeField]
-        private string targetName;
+        private GameObjectResolver targetResolver;
 
         public GameObjectDestroy()
         {
         }
 
-        public GameObjectDestroy(string targetName)
+        public GameObjectDestroy(GameObjectResolver targetResolver)
         {
-            this.targetName = targetName;
+            this.targetResolver = targetResolver;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -86,7 +86,7 @@ namespace UnitySequencerSystem.StandardSequences
         public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
-            var target = container.Resolve<GameObject>(this.targetName);
+            var target = this.targetResolver.Resolve(container);
             UnityEngine.Object.Destroy(target);
 #if USS_SUPPORT_UNITASK
             return UniTask.CompletedTask;

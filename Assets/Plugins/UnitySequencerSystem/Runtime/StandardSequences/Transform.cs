@@ -534,4 +534,49 @@ namespace UnitySequencerSystem.StandardSequences
 #endif
         }
     }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/Transform To GameObject")]
+#endif
+    [Serializable]
+    public sealed class TransformToGameObject : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private TransformResolver transformResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver gameObjectNameResolver;
+
+        public TransformToGameObject()
+        {
+        }
+
+        public TransformToGameObject(TransformResolver transformResolver, StringResolver gameObjectNameResolver)
+        {
+            this.transformResolver = transformResolver;
+            this.gameObjectNameResolver = gameObjectNameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.transformResolver.Resolve(container);
+            var gameObjectName = this.gameObjectNameResolver.Resolve(container);
+            container.RegisterOrReplace(gameObjectName, target.gameObject);
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
 }

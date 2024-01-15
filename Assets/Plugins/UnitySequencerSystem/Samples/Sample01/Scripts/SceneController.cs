@@ -28,6 +28,7 @@ namespace UnitySequencerSystem.Samples.Sample01
         private async UniTask SpawnBulletAsync()
         {
             var container = new Container();
+            container.RegisterOrReplace("Player", this.playerObject);
             var spawnSequencer = new Sequencer(container, spawnBulletSequence.Sequences);
             await spawnSequencer.PlayAsync(this.destroyCancellationToken);
             var bulletBehaviourSequencer = new Sequencer(container, bulletBehaviourSequence.Sequences);

@@ -55,6 +55,7 @@ https://github.com/gif-hara/UnitySequencerSystem.git?path=Assets/Plugins/UnitySe
   - UniTaskを利用しない場合はTaskを利用しています。
   - 一部のUnity関連の操作をするシーケンスはとりあえずの対応は行っていますが基本的にUniTaskを利用するのをお勧めします。
 - [Unity-SerializeReferenceExtensions](https://github.com/mackysoft/Unity-SerializeReferenceExtensions)
+- [LitMotion](https://github.com/AnnulusGames/LitMotion)
 - TextMeshPro
 - InputSystem
 

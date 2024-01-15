@@ -12,5 +12,12 @@
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.inputsystem": "1.7.0",
     "com.mackysoft.serializereference-extensions": "1.2.0"
-  }
+  },
+  "samples": [
+    {
+      "displayName": "Sample01",
+      "description": "A sample of firing a simple bullet.",
+      "path": "Assets/UnitySequencerSystem/Samples/Sample01"
+    }
+  ]
 }

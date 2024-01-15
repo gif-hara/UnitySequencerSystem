@@ -17,16 +17,18 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 2598803836872949760
       type: {class: GameObjectInstantiate, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
       data:
         prefabResolver:
           rid: 2598803836872949761
-        containerNameResolver:
-          rid: -2
+        gameObjectNameResolver:
+          rid: 2598803836872949763
     - rid: 2598803836872949761
       type: {class: GameObjectResolver/ReferenceGameObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
       data:
         target: {fileID: 7881601733578194026, guid: 539197af046ea448080a4fc9ca23d9d9, type: 3}
+    - rid: 2598803836872949763
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: Bullet

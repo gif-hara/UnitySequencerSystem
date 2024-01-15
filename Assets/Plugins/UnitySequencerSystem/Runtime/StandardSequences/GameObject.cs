@@ -59,16 +59,16 @@ namespace UnitySequencerSystem.StandardSequences
         }
     }
 
-    /// <summary>
-    /// <see cref="GameObject"/>を破棄するシーケンス
-    /// </summary>
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/GameObject Destroy")]
 #endif
     [Serializable]
     public sealed class GameObjectDestroy : Sequence
     {
-        [SerializeField]
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
         private GameObjectResolver targetResolver;
 
         public GameObjectDestroy()
@@ -88,6 +88,51 @@ namespace UnitySequencerSystem.StandardSequences
         {
             var target = this.targetResolver.Resolve(container);
             UnityEngine.Object.Destroy(target);
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/GameObject To Transform")]
+#endif
+    [Serializable]
+    public sealed class GameObjectToTransform : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private GameObjectResolver targetResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private StringResolver transformNameResolver;
+
+        public GameObjectToTransform()
+        {
+        }
+
+        public GameObjectToTransform(GameObjectResolver targetResolver, StringResolver transformNameResolver)
+        {
+            this.targetResolver = targetResolver;
+            this.transformNameResolver = transformNameResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var transformName = this.transformNameResolver.Resolve(container);
+            container.RegisterOrReplace(transformName, target.transform);
 #if USS_SUPPORT_UNITASK
             return UniTask.CompletedTask;
 #else

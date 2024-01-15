@@ -1,8 +1,5 @@
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnitySequencerSystem.Resolvers;
-using UnitySequencerSystem.StandardSequences;
 
 namespace UnitySequencerSystem.Samples.Sample01
 {

@@ -1,7 +1,7 @@
 {
   "name": "com.hk.unitysequencersystem",
   "displayName": "UnitySequencerSystem",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "unity": "2022.3",
   "description": "Capable of building a simple sequence system",
   "author": {

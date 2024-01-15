@@ -12,7 +12,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c43a09a9de426fd4abfc1245979d7dad, type: 3}
   m_Name: BulletBehaviourSequences
   m_EditorClassIdentifier: 
-  sequences: []
+  sequences:
+  - rid: 2598803836872949783
+  - rid: 2598803836872949780
+  - rid: 2598803836872949789
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 2598803836872949780
+      type: {class: BindToLocalPosition, ns: UnitySequencerSystem.LitMotion, asm: UnitySequencerSystem}
+      data:
+        targetResolver:
+          rid: 2598803836872949781
+        parameters:
+          fromResolver:
+            rid: 2598803836872949782
+          toResolver:
+            rid: 2598803836872949787
+          durationResolver:
+            rid: 2598803836872949788
+          delayResolver:
+            rid: -2
+          loopCountResolver:
+            rid: -2
+          loopType: 0
+          motionSchedulerResolver:
+            rid: -2
+          ease: 0
+          ignoreTimeScale: 1
+    - rid: 2598803836872949781
+      type: {class: TransformResolver/Name, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: Bullet
+    - rid: 2598803836872949782
+      type: {class: Vector3Resolver/NameTransformPosition, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: Bullet
+    - rid: 2598803836872949783
+      type: {class: Vector3Add, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        leftVector3Resolver:
+          rid: 2598803836872949784
+        rightVector3Resolver:
+          rid: 2598803836872949785
+        addNameResolver:
+          rid: 2598803836872949786
+    - rid: 2598803836872949784
+      type: {class: Vector3Resolver/NameTransformPosition, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: Player
+    - rid: 2598803836872949785
+      type: {class: Vector3Resolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: {x: 20, y: 0, z: 0}
+    - rid: 2598803836872949786
+      type: {class: StringResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: ToPosition
+    - rid: 2598803836872949787
+      type: {class: Vector3Resolver/Name, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: ToPosition
+    - rid: 2598803836872949788
+      type: {class: FloatResolver/Constant, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        value: 0.5
+    - rid: 2598803836872949789
+      type: {class: GameObjectDestroy, ns: UnitySequencerSystem.StandardSequences, asm: UnitySequencerSystem}
+      data:
+        targetResolver:
+          rid: 2598803836872949790
+    - rid: 2598803836872949790
+      type: {class: GameObjectResolver/NameGameObject, ns: UnitySequencerSystem.Resolvers, asm: UnitySequencerSystem}
+      data:
+        name: Bullet

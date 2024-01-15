@@ -17,7 +17,7 @@
     {
       "displayName": "Sample01",
       "description": "A sample of firing a simple bullet.",
-      "path": "Assets/UnitySequencerSystem/Samples/Sample01"
+      "path": "Samples/Sample01"
     }
   ]
 }

@@ -2,6 +2,8 @@ using System;
 using System.Threading;
 using UnityEngine;
 using UnitySequencerSystem.Resolvers;
+using UnityEngine.Assertions;
+
 #if USS_SUPPORT_UNITASK
 using Cysharp.Threading.Tasks;
 #else
@@ -87,7 +89,58 @@ namespace UnitySequencerSystem.StandardSequences
 #endif
         {
             var target = this.targetResolver.Resolve(container);
-            UnityEngine.Object.Destroy(target);
+            if (target != null)
+            {
+                UnityEngine.Object.Destroy(target);
+            }
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/GameObject Set Active")]
+#endif
+    [Serializable]
+    public sealed class GameObjectSetActive : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private GameObjectResolver targetResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private BoolResolver activeResolver;
+
+        public GameObjectSetActive()
+        {
+        }
+
+        public GameObjectSetActive(GameObjectResolver targetResolver, BoolResolver activeResolver)
+        {
+            this.targetResolver = targetResolver;
+            this.activeResolver = activeResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var active = this.activeResolver.Resolve(container);
+            if (target != null)
+            {
+                target.SetActive(active);
+            }
 #if USS_SUPPORT_UNITASK
             return UniTask.CompletedTask;
 #else

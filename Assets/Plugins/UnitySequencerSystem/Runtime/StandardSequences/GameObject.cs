@@ -2,6 +2,8 @@ using System;
 using System.Threading;
 using UnityEngine;
 using UnitySequencerSystem.Resolvers;
+using UnityEngine.Assertions;
+
 #if USS_SUPPORT_UNITASK
 using Cysharp.Threading.Tasks;
 #else
@@ -87,7 +89,10 @@ namespace UnitySequencerSystem.StandardSequences
 #endif
         {
             var target = this.targetResolver.Resolve(container);
-            UnityEngine.Object.Destroy(target);
+            if (target != null)
+            {
+                UnityEngine.Object.Destroy(target);
+            }
 #if USS_SUPPORT_UNITASK
             return UniTask.CompletedTask;
 #else
@@ -132,7 +137,10 @@ namespace UnitySequencerSystem.StandardSequences
         {
             var target = this.targetResolver.Resolve(container);
             var active = this.activeResolver.Resolve(container);
-            target.SetActive(active);
+            if (target != null)
+            {
+                target.SetActive(active);
+            }
 #if USS_SUPPORT_UNITASK
             return UniTask.CompletedTask;
 #else

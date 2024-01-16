@@ -55,6 +55,7 @@ https://github.com/gif-hara/UnitySequencerSystem.git?path=Assets/Plugins/UnitySe
   - UniTaskを利用しない場合はTaskを利用しています。
   - 一部のUnity関連の操作をするシーケンスはとりあえずの対応は行っていますが基本的にUniTaskを利用するのをお勧めします。
 - [Unity-SerializeReferenceExtensions](https://github.com/mackysoft/Unity-SerializeReferenceExtensions)
+- [LitMotion](https://github.com/AnnulusGames/LitMotion)
 - TextMeshPro
 - InputSystem
 
@@ -106,17 +107,43 @@ USSには基本的な機能として以下のシーケンスを用意してい�
 ### Delay
 与えられた秒数待機します。
 
-## 具体的な例
-USSは名前の通り、シーケンシャルな処理に特化しています。これはゲーム制作には欠かせないアルゴリズムであり、それを柔軟に組み立てることが可能です。いくつか例を以下に示します。
+### その他随時実装中
+様々な型に随時対応しています。現在、以下のクラスの機能を提供しています。
+- Float
+- GameObject
+- Forget
+- If
+- InputSystem
+- Int
+- Particle
+- TextMeshPro
+- Transform
+- Update
+- Vector2
+- Vector3
+- WaitUntil
+- WhenAll
+- WhenAny
 
-### 真横に移動する弾
-- TODO
-### 指定したオブジェクトを追従する弾
-- TODO
+
+## 具体的な例
+
+USSは名前の通り、シーケンシャルな処理に特化しています。これはゲーム制作には欠かせないアルゴリズムであり、それを柔軟に組み立てることが可能です。以下にサンプルを用意しました。Unityにインポートする方法は以下となります。
+1. UnityメニューのWindow/Package Managerを選択する
+2. Package Managerウィンドウ内のUnitySequencerSystemを選択する
+3. 右側のSamplesタブから任意のサンプルをインポートする
+
+![Sample01 UPM](./img/Sample01_UPM.png)
+
+### Sample01 真横に移動する弾
+![Sample01](./img/Sample01.gif)
+
+シンプルにプレイヤー位置に弾を生成するシーケンスと弾の移動処理を担うシーケンス行います。
+確認する場合はUPM ManagerのSamplesタグからSample01をImportしてください。
+
 ### 会話システム
 - TODO
-### タワーディフェンスゲームのWAVEの仕組み
-- TODO
+
 ### RPGの攻撃処理
 - TODO
   

@@ -127,8 +127,11 @@ namespace UnitySequencerSystem.StandardSequences
     [Serializable]
     public sealed class WaitUntilInputActionTriggered : Sequence
     {
-        [SerializeField]
-        private InputActionReference inputActionReference;
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private InputActionResolver inputActionResolver;
 
 #if USS_SUPPORT_UNITASK
         [SerializeField]
@@ -140,9 +143,9 @@ namespace UnitySequencerSystem.StandardSequences
         }
 
 #if USS_SUPPORT_UNITASK
-        public WaitUntilInputActionTriggered(InputActionReference inputActionReference, PlayerLoopTiming playerLoopTiming = PlayerLoopTiming.Update)
+        public WaitUntilInputActionTriggered(InputActionResolver inputActionResolver, PlayerLoopTiming playerLoopTiming = PlayerLoopTiming.Update)
         {
-            this.inputActionReference = inputActionReference;
+            this.inputActionResolver = inputActionResolver;
             this.playerLoopTiming = playerLoopTiming;
         }
 #else
@@ -159,13 +162,14 @@ namespace UnitySequencerSystem.StandardSequences
         public override Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
-            inputActionReference.action.Enable();
+            var inputAction = inputActionResolver.Resolve(container);
+            inputAction.Enable();
 #if USS_SUPPORT_UNITASK
-            return UniTask.WaitUntil(IsPushed, timing: playerLoopTiming, cancellationToken: cancellationToken);
+            return UniTask.WaitUntil(() => IsPushed(inputAction), timing: playerLoopTiming, cancellationToken: cancellationToken);
 #else
             IEnumerator WaitUntil()
             {
-                while (!IsPushed())
+                while (!IsPushed(inputAction))
                 {
                     yield return null;
                 }
@@ -174,9 +178,9 @@ namespace UnitySequencerSystem.StandardSequences
 #endif
         }
 
-        private bool IsPushed()
+        private bool IsPushed(InputAction inputAction)
         {
-            return this.inputActionReference.action.triggered;
+            return inputAction.triggered;
         }
     }
 }

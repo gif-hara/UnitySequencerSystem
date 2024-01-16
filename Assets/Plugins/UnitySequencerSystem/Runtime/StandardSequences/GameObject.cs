@@ -97,6 +97,51 @@ namespace UnitySequencerSystem.StandardSequences
     }
 
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("Standard/GameObject Set Active")]
+#endif
+    [Serializable]
+    public sealed class GameObjectSetActive : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private GameObjectResolver targetResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private BoolResolver activeResolver;
+
+        public GameObjectSetActive()
+        {
+        }
+
+        public GameObjectSetActive(GameObjectResolver targetResolver, BoolResolver activeResolver)
+        {
+            this.targetResolver = targetResolver;
+            this.activeResolver = activeResolver;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var active = this.activeResolver.Resolve(container);
+            target.SetActive(active);
+#if USS_SUPPORT_UNITASK
+            return UniTask.CompletedTask;
+#else
+            return Task.CompletedTask;
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
     [AddTypeMenu("Standard/GameObject To Transform")]
 #endif
     [Serializable]

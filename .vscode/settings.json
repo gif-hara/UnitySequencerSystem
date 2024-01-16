@@ -21,7 +21,6 @@
         "**/*.ma": true,
         "**/*.MA": true,
         "**/*.mat": true,
-        "**/*.meta": true,
         "**/*.mid": true,
         "**/*.midi": true,
         "**/*.obj": true,

@@ -128,11 +128,12 @@ USSには基本的な機能として以下のシーケンスを用意してい�
 
 ## 具体的な例
 
-![Sample01 UPM](./img/Sample01_UPM.png)
-
 USSは名前の通り、シーケンシャルな処理に特化しています。これはゲーム制作には欠かせないアルゴリズムであり、それを柔軟に組み立てることが可能です。以下にサンプルを用意しました。Unityにインポートする方法は以下となります。
 1. UnityメニューのWindow/Package Managerを選択する
-2. Package Managerウィンドウ内の
+2. Package Managerウィンドウ内のUnitySequencerSystemを選択する
+3. 右側のSamplesタブから任意のサンプルをインポートする
+
+![Sample01 UPM](./img/Sample01_UPM.png)
 
 ### Sample01 真横に移動する弾
 ![Sample01](./img/Sample01.gif)

@@ -67,9 +67,6 @@ namespace UnitySequencerSystem.LitMotion
         [SerializeField]
         public Ease ease;
 
-        [SerializeField]
-        private bool ignoreTimeScale = true;
-
         public MotionBuilder<TValue, TOptions, TAdapter> Build(Container container)
         {
             var result = LMotion.Create<TValue, TOptions, TAdapter>(
@@ -77,8 +74,7 @@ namespace UnitySequencerSystem.LitMotion
                     toResolver.Resolve(container),
                     durationResolver.Resolve(container)
                     )
-                .WithEase(ease)
-                .WithIgnoreTimeScale(ignoreTimeScale);
+                .WithEase(ease);
             if (delayResolver != null)
             {
                 result = result.WithDelay(delayResolver.Resolve(container));

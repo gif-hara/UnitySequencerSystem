@@ -16,16 +16,7 @@ namespace UnitySequencerSystem.Resolvers.LitMotion
                 return MotionScheduler.Update;
             }
         }
-        
-        [Serializable]
-        public sealed class LateUpdate : MotionSchedulerResolver
-        {
-            public override IMotionScheduler Resolve(Container container)
-            {
-                return MotionScheduler.LateUpdate;
-            }
-        }
-        
+                
         [Serializable]
         public sealed class FixedUpdate : MotionSchedulerResolver
         {

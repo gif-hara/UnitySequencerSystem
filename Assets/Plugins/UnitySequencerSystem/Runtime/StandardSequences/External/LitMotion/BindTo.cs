@@ -141,6 +141,7 @@ namespace UnitySequencerSystem.LitMotion
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToPosition(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToPosition(target).ToYieldInteraction());
@@ -182,6 +183,7 @@ namespace UnitySequencerSystem.LitMotion
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToPosition(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToPosition(target).ToYieldInteraction());
@@ -223,6 +225,7 @@ namespace UnitySequencerSystem.LitMotion
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToEulerAngles(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToEulerAngles(target).ToYieldInteraction());
@@ -264,6 +267,7 @@ namespace UnitySequencerSystem.LitMotion
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToLocalEulerAngles(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalEulerAngles(target).ToYieldInteraction());
@@ -305,6 +309,7 @@ namespace UnitySequencerSystem.LitMotion
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToLocalScale(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalScale(target).ToYieldInteraction());
@@ -346,6 +351,7 @@ namespace UnitySequencerSystem.LitMotion
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToPositionX(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToPositionX(target).ToYieldInteraction());
@@ -387,6 +393,7 @@ namespace UnitySequencerSystem.LitMotion
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToPositionY(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToPositionY(target).ToYieldInteraction());
@@ -428,6 +435,7 @@ namespace UnitySequencerSystem.LitMotion
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToPositionZ(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToPositionZ(target).ToYieldInteraction());
@@ -470,6 +478,7 @@ namespace UnitySequencerSystem.LitMotion
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToLocalPositionX(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalPositionX(target).ToYieldInteraction());
@@ -512,6 +521,7 @@ namespace UnitySequencerSystem.LitMotion
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToLocalPositionY(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalPositionY(target).ToYieldInteraction());
@@ -554,6 +564,7 @@ namespace UnitySequencerSystem.LitMotion
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToLocalPositionZ(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalPositionZ(target).ToYieldInteraction());
@@ -599,6 +610,7 @@ namespace UnitySequencerSystem.LitMotion
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToRotation(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToRotation(target).ToYieldInteraction());
@@ -643,6 +655,7 @@ namespace UnitySequencerSystem.LitMotion
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToLocalRotation(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalRotation(target).ToYieldInteraction());
@@ -687,6 +700,7 @@ namespace UnitySequencerSystem.LitMotion
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToLocalScaleX(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalScaleX(target).ToYieldInteraction());
@@ -731,6 +745,7 @@ namespace UnitySequencerSystem.LitMotion
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToLocalScaleY(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalScaleY(target).ToYieldInteraction());
@@ -775,6 +790,7 @@ namespace UnitySequencerSystem.LitMotion
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToLocalScaleZ(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalScaleZ(target).ToYieldInteraction());
@@ -819,6 +835,7 @@ namespace UnitySequencerSystem.LitMotion
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToEulerAnglesX(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToEulerAnglesX(target).ToYieldInteraction());
@@ -863,6 +880,7 @@ namespace UnitySequencerSystem.LitMotion
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToEulerAnglesY(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToEulerAnglesY(target).ToYieldInteraction());
@@ -907,6 +925,7 @@ namespace UnitySequencerSystem.LitMotion
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToEulerAnglesZ(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToEulerAnglesZ(target).ToYieldInteraction());
@@ -950,7 +969,8 @@ namespace UnitySequencerSystem.LitMotion
         {
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
-#if USS_SUPPORT_UNITASK            
+#if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToLocalEulerAnglesX(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalEulerAnglesX(target).ToYieldInteraction());
@@ -994,7 +1014,8 @@ namespace UnitySequencerSystem.LitMotion
         {
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
-#if USS_SUPPORT_UNITASK            
+#if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToLocalEulerAnglesY(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalEulerAnglesY(target).ToYieldInteraction());
@@ -1040,6 +1061,7 @@ namespace UnitySequencerSystem.LitMotion
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
 #if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion.BindToLocalEulerAnglesZ(target).ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalEulerAnglesZ(target).ToYieldInteraction());

@@ -7,6 +7,8 @@ using LitMotion;
 using LitMotion.Extensions;
 using UnityEngine;
 using LitMotion.Adapters;
+using UnityEngine.UI;
+
 
 
 #if USS_SUPPORT_UNITASK
@@ -107,29 +109,43 @@ namespace UnitySequencerSystem.LitMotion
     {
     }
 
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-    [AddTypeMenu("LitMotion/Bind To Position")]
-#endif
     [Serializable]
-    public sealed class BindToPosition : Sequence
+    public abstract class BindTo<TValueResolver, TValue, TParameters> : Sequence
+        where TValueResolver : IResolver<TValue>
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
         [SerializeReference]
-        public TransformResolver targetResolver;
+        protected TValueResolver targetResolver;
 
         [SerializeField]
-        private Vector3Parameters parameters;
+        protected TParameters parameters;
 
+        public BindTo()
+        {
+        }
+
+        public BindTo(TValueResolver targetResolver, TParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Bind To Position")]
+#endif
+    [Serializable]
+    public sealed class BindToPosition : BindTo<TransformResolver, Transform, Vector3Parameters>
+    {
         public BindToPosition()
         {
         }
 
         public BindToPosition(TransformResolver targetResolver, Vector3Parameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -156,25 +172,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local Position")]
 #endif
     [Serializable]
-    public sealed class BindToLocalPosition : Sequence
+    public sealed class BindToLocalPosition : BindTo<TransformResolver, Transform, Vector3Parameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-        [SerializeField]
-        private Vector3Parameters parameters;
-
         public BindToLocalPosition()
         {
         }
 
         public BindToLocalPosition(TransformResolver targetResolver, Vector3Parameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -201,25 +207,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Euler Angles")]
 #endif
     [Serializable]
-    public sealed class BindToEulerAngles : Sequence
+    public sealed class BindToEulerAngles : BindTo<TransformResolver, Transform, Vector3Parameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-        [SerializeField]
-        private Vector3Parameters parameters;
-
         public BindToEulerAngles()
         {
         }
 
         public BindToEulerAngles(TransformResolver targetResolver, Vector3Parameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -246,25 +242,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local Euler Angles")]
 #endif
     [Serializable]
-    public sealed class BindToLocalEulerAngles : Sequence
+    public sealed class BindToLocalEulerAngles : BindTo<TransformResolver, Transform, Vector3Parameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-        [SerializeField]
-        private Vector3Parameters parameters;
-
         public BindToLocalEulerAngles()
         {
         }
 
         public BindToLocalEulerAngles(TransformResolver targetResolver, Vector3Parameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -291,25 +277,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local Scale")]
 #endif
     [Serializable]
-    public sealed class BindToLocalScale : Sequence
+    public sealed class BindToLocalScale : BindTo<TransformResolver, Transform, Vector3Parameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-        [SerializeField]
-        private Vector3Parameters parameters;
-
         public BindToLocalScale()
         {
         }
 
         public BindToLocalScale(TransformResolver targetResolver, Vector3Parameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -336,25 +312,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To PositionX")]
 #endif
     [Serializable]
-    public sealed class BindToPositionX : Sequence
+    public sealed class BindToPositionX : BindTo<TransformResolver, Transform, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-        [SerializeField]
-        private FloatParameters parameters;
-
         public BindToPositionX()
         {
         }
 
         public BindToPositionX(TransformResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -381,25 +347,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To PositionY")]
 #endif
     [Serializable]
-    public sealed class BindToPositionY : Sequence
+    public sealed class BindToPositionY : BindTo<TransformResolver, Transform, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-        [SerializeField]
-        private FloatParameters parameters;
-
         public BindToPositionY()
         {
         }
 
         public BindToPositionY(TransformResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -426,25 +382,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To PositionZ")]
 #endif
     [Serializable]
-    public sealed class BindToPositionZ : Sequence
+    public sealed class BindToPositionZ : BindTo<TransformResolver, Transform, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-        [SerializeField]
-        private FloatParameters parameters;
-
         public BindToPositionZ()
         {
         }
 
         public BindToPositionZ(TransformResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -471,25 +417,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local PositionX")]
 #endif
     [Serializable]
-    public sealed class BindToLocalPositionX : Sequence
+    public sealed class BindToLocalPositionX : BindTo<TransformResolver, Transform, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-        [SerializeField]
-        private FloatParameters parameters;
-
         public BindToLocalPositionX()
         {
         }
 
         public BindToLocalPositionX(TransformResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -517,25 +453,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local PositionY")]
 #endif
     [Serializable]
-    public sealed class BindToLocalPositionY : Sequence
+    public sealed class BindToLocalPositionY : BindTo<TransformResolver, Transform, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-        [SerializeField]
-        private FloatParameters parameters;
-
         public BindToLocalPositionY()
         {
         }
 
         public BindToLocalPositionY(TransformResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -563,25 +489,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local PositionZ")]
 #endif
     [Serializable]
-    public sealed class BindToLocalPositionZ : Sequence
+    public sealed class BindToLocalPositionZ : BindTo<TransformResolver, Transform, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-        [SerializeField]
-        private FloatParameters parameters;
-
         public BindToLocalPositionZ()
         {
         }
 
         public BindToLocalPositionZ(TransformResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -609,28 +525,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Rotation")]
 #endif
     [Serializable]
-    public sealed class BindToRotation : Sequence
+    public sealed class BindToRotation : BindTo<TransformResolver, Transform, QuaternionParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public QuaternionParameters parameters;
-
         public BindToRotation()
         {
         }
 
         public BindToRotation(TransformResolver targetResolver, QuaternionParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -658,28 +561,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local Rotation")]
 #endif
     [Serializable]
-    public sealed class BindToLocalRotation : Sequence
+    public sealed class BindToLocalRotation : BindTo<TransformResolver, Transform, QuaternionParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public QuaternionParameters parameters;
-
         public BindToLocalRotation()
         {
         }
 
         public BindToLocalRotation(TransformResolver targetResolver, QuaternionParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -706,28 +596,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local ScaleX")]
 #endif
     [Serializable]
-    public sealed class BindToLocalScaleX : Sequence
+    public sealed class BindToLocalScaleX : BindTo<TransformResolver, Transform, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public FloatParameters parameters;
-
         public BindToLocalScaleX()
         {
         }
 
         public BindToLocalScaleX(TransformResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -754,28 +631,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local ScaleY")]
 #endif
     [Serializable]
-    public sealed class BindToLocalScaleY : Sequence
+    public sealed class BindToLocalScaleY : BindTo<TransformResolver, Transform, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public FloatParameters parameters;
-
         public BindToLocalScaleY()
         {
         }
 
         public BindToLocalScaleY(TransformResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -802,28 +666,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local ScaleZ")]
 #endif
     [Serializable]
-    public sealed class BindToLocalScaleZ : Sequence
+    public sealed class BindToLocalScaleZ : BindTo<TransformResolver, Transform, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public FloatParameters parameters;
-
         public BindToLocalScaleZ()
         {
         }
 
         public BindToLocalScaleZ(TransformResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -850,28 +701,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Euler AnglesX")]
 #endif
     [Serializable]
-    public sealed class BindToEulerAnglesX : Sequence
+    public sealed class BindToEulerAnglesX : BindTo<TransformResolver, Transform, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public FloatParameters parameters;
-
         public BindToEulerAnglesX()
         {
         }
 
         public BindToEulerAnglesX(TransformResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -898,28 +736,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Euler AnglesY")]
 #endif
     [Serializable]
-    public sealed class BindToEulerAnglesY : Sequence
+    public sealed class BindToEulerAnglesY : BindTo<TransformResolver, Transform, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public FloatParameters parameters;
-
         public BindToEulerAnglesY()
         {
         }
 
         public BindToEulerAnglesY(TransformResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -946,28 +771,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Euler AnglesZ")]
 #endif
     [Serializable]
-    public sealed class BindToEulerAnglesZ : Sequence
+    public sealed class BindToEulerAnglesZ : BindTo<TransformResolver, Transform, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public FloatParameters parameters;
-
         public BindToEulerAnglesZ()
         {
         }
 
         public BindToEulerAnglesZ(TransformResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -994,28 +806,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local Euler AnglesX")]
 #endif
     [Serializable]
-    public sealed class BindToLocalEulerAnglesX : Sequence
+    public sealed class BindToLocalEulerAnglesX : BindTo<TransformResolver, Transform, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public FloatParameters parameters;
-
         public BindToLocalEulerAnglesX()
         {
         }
 
         public BindToLocalEulerAnglesX(TransformResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -1042,28 +841,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local Euler AnglesY")]
 #endif
     [Serializable]
-    public sealed class BindToLocalEulerAnglesY : Sequence
+    public sealed class BindToLocalEulerAnglesY : BindTo<TransformResolver, Transform, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public FloatParameters parameters;
-
         public BindToLocalEulerAnglesY()
         {
         }
 
         public BindToLocalEulerAnglesY(TransformResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -1090,28 +876,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Local Euler AnglesZ")]
 #endif
     [Serializable]
-    public sealed class BindToLocalEulerAnglesZ : Sequence
+    public sealed class BindToLocalEulerAnglesZ : BindTo<TransformResolver, Transform, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public TransformResolver targetResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public FloatParameters parameters;
-
         public BindToLocalEulerAnglesZ()
         {
         }
 
         public BindToLocalEulerAnglesZ(TransformResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -1139,28 +912,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To SpriteRenderer ColorR")]
 #endif
     [Serializable]
-    public sealed class BindToSpriteRendererColorR : Sequence
+    public sealed class BindToSpriteRendererColorR : BindTo<SpriteRendererResolver, SpriteRenderer, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public SpriteRendererResolver targetResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public FloatParameters parameters;
-
         public BindToSpriteRendererColorR()
         {
         }
 
         public BindToSpriteRendererColorR(SpriteRendererResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -1187,28 +947,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To SpriteRenderer ColorG")]
 #endif
     [Serializable]
-    public sealed class BindToSpriteRendererColorG : Sequence
+    public sealed class BindToSpriteRendererColorG : BindTo<SpriteRendererResolver, SpriteRenderer, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public SpriteRendererResolver targetResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public FloatParameters parameters;
-
         public BindToSpriteRendererColorG()
         {
         }
 
         public BindToSpriteRendererColorG(SpriteRendererResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -1235,28 +982,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To SpriteRenderer ColorB")]
 #endif
     [Serializable]
-    public sealed class BindToSpriteRendererColorB : Sequence
+    public sealed class BindToSpriteRendererColorB : BindTo<SpriteRendererResolver, SpriteRenderer, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public SpriteRendererResolver targetResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public FloatParameters parameters;
-
         public BindToSpriteRendererColorB()
         {
         }
 
         public BindToSpriteRendererColorB(SpriteRendererResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -1283,28 +1017,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To SpriteRenderer ColorA")]
 #endif
     [Serializable]
-    public sealed class BindToSpriteRendererColorA : Sequence
+    public sealed class BindToSpriteRendererColorA : BindTo<SpriteRendererResolver, SpriteRenderer, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public SpriteRendererResolver targetResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public FloatParameters parameters;
-
         public BindToSpriteRendererColorA()
         {
         }
 
         public BindToSpriteRendererColorA(SpriteRendererResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -1331,28 +1052,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Graphic ColorR")]
 #endif
     [Serializable]
-    public sealed class BindToGraphicColorR : Sequence
+    public sealed class BindToGraphicColorR : BindTo<GraphicResolver, Graphic, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public GraphicResolver targetResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public FloatParameters parameters;
-
         public BindToGraphicColorR()
         {
         }
 
         public BindToGraphicColorR(GraphicResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -1379,28 +1087,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Graphic ColorG")]
 #endif
     [Serializable]
-    public sealed class BindToGraphicColorG : Sequence
+    public sealed class BindToGraphicColorG : BindTo<GraphicResolver, Graphic, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public GraphicResolver targetResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public FloatParameters parameters;
-
         public BindToGraphicColorG()
         {
         }
 
         public BindToGraphicColorG(GraphicResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -1427,28 +1122,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Graphic ColorB")]
 #endif
     [Serializable]
-    public sealed class BindToGraphicColorB : Sequence
+    public sealed class BindToGraphicColorB : BindTo<GraphicResolver, Graphic, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public GraphicResolver targetResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public FloatParameters parameters;
-
         public BindToGraphicColorB()
         {
         }
 
         public BindToGraphicColorB(GraphicResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -1474,28 +1156,15 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Bind To Graphic ColorA")]
 #endif
     [Serializable]
-    public sealed class BindToGraphicColorA : Sequence
+    public sealed class BindToGraphicColorA : BindTo<GraphicResolver, Graphic, FloatParameters>
     {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public GraphicResolver targetResolver;
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        public FloatParameters parameters;
-
         public BindToGraphicColorA()
         {
         }
 
         public BindToGraphicColorA(GraphicResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
         {
-            this.targetResolver = targetResolver;
-            this.parameters = parameters;
         }
 
 #if USS_SUPPORT_UNITASK

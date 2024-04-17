@@ -1134,5 +1134,387 @@ namespace UnitySequencerSystem.LitMotion
 #endif
         }
     }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Bind To SpriteRenderer ColorR")]
+#endif
+    [Serializable]
+    public sealed class BindToSpriteRendererColorR : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public SpriteRendererResolver targetResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public FloatParameters parameters;
+
+        public BindToSpriteRendererColorR()
+        {
+        }
+
+        public BindToSpriteRendererColorR(SpriteRendererResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
+            await motion
+                .BindToColorR(target)
+                .AddTo(target)
+                .ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToColorR(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Bind To SpriteRenderer ColorG")]
+#endif
+    [Serializable]
+    public sealed class BindToSpriteRendererColorG : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public SpriteRendererResolver targetResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public FloatParameters parameters;
+
+        public BindToSpriteRendererColorG()
+        {
+        }
+
+        public BindToSpriteRendererColorG(SpriteRendererResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else  
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
+            await motion
+                .BindToColorG(target)
+                .AddTo(target)
+                .ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToColorG(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Bind To SpriteRenderer ColorB")]
+#endif
+    [Serializable]
+    public sealed class BindToSpriteRendererColorB : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public SpriteRendererResolver targetResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public FloatParameters parameters;
+
+        public BindToSpriteRendererColorB()
+        {
+        }
+
+        public BindToSpriteRendererColorB(SpriteRendererResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITTASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
+            await motion
+                .BindToColorB(target)
+                .AddTo(target)
+                .ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToColorB(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Bind To SpriteRenderer ColorA")]
+#endif
+    [Serializable]
+    public sealed class BindToSpriteRendererColorA : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public SpriteRendererResolver targetResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public FloatParameters parameters;
+
+        public BindToSpriteRendererColorA()
+        {
+        }
+
+        public BindToSpriteRendererColorA(SpriteRendererResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITTASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
+            await motion
+                .BindToColorA(target)
+                .AddTo(target)
+                .ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToColorA(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Bind To Graphic ColorR")]
+#endif
+    [Serializable]
+    public sealed class BindToGraphicColorR : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public GraphicResolver targetResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public FloatParameters parameters;
+
+        public BindToGraphicColorR()
+        {
+        }
+
+        public BindToGraphicColorR(GraphicResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITTASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
+            await motion
+                .BindToColorR(target)
+                .AddTo(target)
+                .ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToColorR(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Bind To Graphic ColorG")]
+#endif
+    [Serializable]
+    public sealed class BindToGraphicColorG : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public GraphicResolver targetResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public FloatParameters parameters;
+
+        public BindToGraphicColorG()
+        {
+        }
+
+        public BindToGraphicColorG(GraphicResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITTASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
+            await motion
+                .BindToColorG(target)
+                .AddTo(target)
+                .ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToColorG(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Bind To Graphic ColorB")]
+#endif
+    [Serializable]
+    public sealed class BindToGraphicColorB : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public GraphicResolver targetResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public FloatParameters parameters;
+
+        public BindToGraphicColorB()
+        {
+        }
+
+        public BindToGraphicColorB(GraphicResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITTASK
+            await motion
+                .BindToColorB(target)
+                .AddTo(target)
+                .ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToColorB(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Bind To Graphic ColorA")]
+#endif
+    [Serializable]
+    public sealed class BindToGraphicColorA : Sequence
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public GraphicResolver targetResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        public FloatParameters parameters;
+
+        public BindToGraphicColorA()
+        {
+        }
+
+        public BindToGraphicColorA(GraphicResolver targetResolver, FloatParameters parameters)
+        {
+            this.targetResolver = targetResolver;
+            this.parameters = parameters;
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITTASK
+            await motion
+                .BindToColorA(target)
+                .AddTo(target)
+                .ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToColorA(target).ToYieldInteraction());
+#endif
+        }
+    }
 }
 #endif

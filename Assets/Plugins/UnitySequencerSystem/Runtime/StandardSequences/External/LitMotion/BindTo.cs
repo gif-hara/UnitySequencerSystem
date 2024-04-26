@@ -95,6 +95,11 @@ namespace UnitySequencerSystem.LitMotion
     }
 
     [Serializable]
+    public sealed class Vector2Parameters : Parameters<Vector2Resolver, Vector2, NoOptions, Vector2MotionAdapter>
+    {
+    }
+
+    [Serializable]
     public sealed class Vector3Parameters : Parameters<Vector3Resolver, Vector3, NoOptions, Vector3MotionAdapter>
     {
     }
@@ -438,7 +443,6 @@ namespace UnitySequencerSystem.LitMotion
 #else
         public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
-
         {
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
@@ -474,7 +478,6 @@ namespace UnitySequencerSystem.LitMotion
 #else
         public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
-
         {
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
@@ -510,7 +513,6 @@ namespace UnitySequencerSystem.LitMotion
 #else
         public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
-
         {
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
@@ -522,6 +524,251 @@ namespace UnitySequencerSystem.LitMotion
                 .ToUniTask(cancellationToken: cancellationToken);
 #else
             await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToLocalPositionZ(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Bind To Anchored Position 3D")]
+#endif
+    [Serializable]
+    public sealed class BindToAnchoredPosition3D : BindTo<RectTransformResolver, RectTransform, Vector3Parameters>
+    {
+        public BindToAnchoredPosition3D()
+        {
+        }
+
+        public BindToAnchoredPosition3D(RectTransformResolver targetResolver, Vector3Parameters parameters)
+            : base(targetResolver, parameters)
+        {
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
+            await motion
+                .BindToAnchoredPosition3D(target)
+                .AddTo(target)
+                .ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToAnchoredPosition3D(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Bind To Anchored Position 3D X")]
+#endif
+    [Serializable]
+    public sealed class BindToAnchoredPosition3DX : BindTo<RectTransformResolver, RectTransform, FloatParameters>
+    {
+        public BindToAnchoredPosition3DX()
+        {
+        }
+
+        public BindToAnchoredPosition3DX(RectTransformResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
+        {
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
+            await motion
+                .BindToAnchoredPosition3DX(target)
+                .AddTo(target)
+                .ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToAnchoredPosition3DX(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Bind To Anchored Position 3D Y")]
+#endif
+    [Serializable]
+    public sealed class BindToAnchoredPosition3DY : BindTo<RectTransformResolver, RectTransform, FloatParameters>
+    {
+        public BindToAnchoredPosition3DY()
+        {
+        }
+
+        public BindToAnchoredPosition3DY(RectTransformResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
+        {
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
+            await motion
+                .BindToAnchoredPosition3DY(target)
+                .AddTo(target)
+                .ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToAnchoredPosition3DY(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Bind To Anchored Position 3D Z")]
+#endif
+    [Serializable]
+    public sealed class BindToAnchoredPosition3DZ : BindTo<RectTransformResolver, RectTransform, FloatParameters>
+    {
+        public BindToAnchoredPosition3DZ()
+        {
+        }
+
+        public BindToAnchoredPosition3DZ(RectTransformResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
+        {
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
+            await motion
+                .BindToAnchoredPosition3DZ(target)
+                .AddTo(target)
+                .ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToAnchoredPosition3DZ(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Bind To Anchored Position")]
+#endif
+    [Serializable]
+    public sealed class BindToAnchoredPosition : BindTo<RectTransformResolver, RectTransform, Vector2Parameters>
+    {
+        public BindToAnchoredPosition()
+        {
+        }
+
+        public BindToAnchoredPosition(RectTransformResolver targetResolver, Vector2Parameters parameters)
+            : base(targetResolver, parameters)
+        {
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
+            await motion
+                .BindToAnchoredPosition(target)
+                .AddTo(target)
+                .ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToAnchoredPosition(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Bind To Anchored Position X")]
+#endif
+    [Serializable]
+    public sealed class BindToAnchoredPositionX : BindTo<RectTransformResolver, RectTransform, FloatParameters>
+    {
+        public BindToAnchoredPositionX()
+        {
+        }
+
+        public BindToAnchoredPositionX(RectTransformResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
+        {
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
+            await motion
+                .BindToAnchoredPositionX(target)
+                .AddTo(target)
+                .ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToAnchoredPositionX(target).ToYieldInteraction());
+#endif
+        }
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Bind To Anchored Position Y")]
+#endif
+    [Serializable]
+    public sealed class BindToAnchoredPositionY : BindTo<RectTransformResolver, RectTransform, FloatParameters>
+    {
+        public BindToAnchoredPositionY()
+        {
+        }
+
+        public BindToAnchoredPositionY(RectTransformResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
+        {
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+#if USS_SUPPORT_UNITASK
+            cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
+            await motion
+                .BindToAnchoredPositionY(target)
+                .AddTo(target)
+                .ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToAnchoredPositionY(target).ToYieldInteraction());
 #endif
         }
     }
@@ -965,7 +1212,7 @@ namespace UnitySequencerSystem.LitMotion
 
 #if USS_SUPPORT_UNITASK
         public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
-#else  
+#else
         public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
@@ -1259,5 +1506,37 @@ namespace UnitySequencerSystem.LitMotion
 #endif
         }
     }
-}
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Bind To CanvasGroup Alpha")]
 #endif
+    [Serializable]
+    public sealed class BindToCanvasGroupAlpha : BindTo<CanvasGroupResolver, CanvasGroup, FloatParameters>
+    {
+        public BindToCanvasGroupAlpha()
+        {
+        }
+
+        public BindToCanvasGroupAlpha(CanvasGroupResolver targetResolver, FloatParameters parameters)
+            : base(targetResolver, parameters)
+        {
+        }
+
+#if USS_SUPPORT_UNITASK
+        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+#else
+        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
+#endif
+        {
+            var target = this.targetResolver.Resolve(container);
+            var motion = parameters.Build(container);
+            await motion
+                .BindToCanvasGroupAlpha(target)
+                .AddTo(target)
+                .ToUniTask(cancellationToken: cancellationToken);
+#else
+            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToCanvasGroupAlpha(target).ToYieldInteraction());
+#endif
+        }
+    }
+}

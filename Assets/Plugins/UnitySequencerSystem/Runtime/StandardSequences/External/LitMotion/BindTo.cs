@@ -1006,7 +1006,7 @@ namespace UnitySequencerSystem.LitMotion
         {
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
-#if USS_SUPPORT_UNITTASK
+#if USS_SUPPORT_UNITASK
             cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion
                 .BindToColorB(target)
@@ -1041,7 +1041,7 @@ namespace UnitySequencerSystem.LitMotion
         {
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
-#if USS_SUPPORT_UNITTASK
+#if USS_SUPPORT_UNITASK
             cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion
                 .BindToColorA(target)
@@ -1076,7 +1076,7 @@ namespace UnitySequencerSystem.LitMotion
         {
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
-#if USS_SUPPORT_UNITTASK
+#if USS_SUPPORT_UNITASK
             cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion
                 .BindToColor(target)
@@ -1111,7 +1111,7 @@ namespace UnitySequencerSystem.LitMotion
         {
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
-#if USS_SUPPORT_UNITTASK
+#if USS_SUPPORT_UNITASK
             cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion
                 .BindToColorR(target)
@@ -1146,7 +1146,7 @@ namespace UnitySequencerSystem.LitMotion
         {
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
-#if USS_SUPPORT_UNITTASK
+#if USS_SUPPORT_UNITASK
             cancellationToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, target.GetCancellationTokenOnDestroy()).Token;
             await motion
                 .BindToColorG(target)
@@ -1181,7 +1181,7 @@ namespace UnitySequencerSystem.LitMotion
         {
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
-#if USS_SUPPORT_UNITTASK
+#if USS_SUPPORT_UNITASK
             await motion
                 .BindToColorB(target)
                 .AddTo(target)
@@ -1215,7 +1215,7 @@ namespace UnitySequencerSystem.LitMotion
         {
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
-#if USS_SUPPORT_UNITTASK
+#if USS_SUPPORT_UNITASK
             await motion
                 .BindToColorA(target)
                 .AddTo(target)
@@ -1249,7 +1249,7 @@ namespace UnitySequencerSystem.LitMotion
         {
             var target = this.targetResolver.Resolve(container);
             var motion = parameters.Build(container);
-#if USS_SUPPORT_UNITTASK
+#if USS_SUPPORT_UNITASK
             await motion
                 .BindToColor(target)
                 .AddTo(target)

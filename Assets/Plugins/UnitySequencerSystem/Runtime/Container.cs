@@ -65,6 +65,38 @@ namespace UnitySequencerSystem
             return (T)this.namedData[typeof(T)][name];
         }
 
+        public bool Contains<T>()
+        {
+            return this.data.ContainsKey(typeof(T));
+        }
+        
+        public bool Contains<T>(string name)
+        {
+            return this.namedData.ContainsKey(typeof(T)) && this.namedData[typeof(T)].ContainsKey(name);
+        }
+        
+        public bool TryResolve<T>(out T value)
+        {
+            if (this.data.TryGetValue(typeof(T), out var obj))
+            {
+                value = (T)obj;
+                return true;
+            }
+            value = default;
+            return false;
+        }
+        
+        public bool TryResolve<T>(string name, out T value)
+        {
+            if (this.namedData.TryGetValue(typeof(T), out var x) && x.TryGetValue(name, out var obj))
+            {
+                value = (T)obj;
+                return true;
+            }
+            value = default;
+            return false;
+        }
+
         public override string ToString()
         {
             var sb = new System.Text.StringBuilder();

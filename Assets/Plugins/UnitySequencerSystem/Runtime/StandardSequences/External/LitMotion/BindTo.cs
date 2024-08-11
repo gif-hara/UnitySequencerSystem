@@ -69,14 +69,24 @@ namespace UnitySequencerSystem.LitMotion
         [SerializeField]
         public Ease ease;
 
+        [SerializeField]
+        private AnimationCurve customAnimationCurve;
+
         public MotionBuilder<TValue, TOptions, TAdapter> Build(Container container)
         {
             var result = LMotion.Create<TValue, TOptions, TAdapter>(
                     fromResolver.Resolve(container),
                     toResolver.Resolve(container),
                     durationResolver.Resolve(container)
-                    )
-                .WithEase(ease);
+                    );
+            if (ease == Ease.CustomAnimationCurve)
+            {
+                result = result.WithEase(customAnimationCurve);
+            }
+            else
+            {
+                result = result.WithEase(ease);
+            }
             if (delayResolver != null)
             {
                 result = result.WithDelay(delayResolver.Resolve(container));
@@ -116,6 +126,131 @@ namespace UnitySequencerSystem.LitMotion
 
     [Serializable]
     public sealed class ColorParameters : Parameters<ColorResolver, Color, NoOptions, ColorMotionAdapter>
+    {
+    }
+
+    public interface IBindable<TValue, TOptions, TAdapter>
+        where TValue : unmanaged
+        where TOptions : unmanaged, IMotionOptions
+        where TAdapter : unmanaged, IMotionAdapter<TValue, TOptions>
+    {
+        MotionHandle Bind(MotionBuilder<TValue, TOptions, TAdapter> motionBuilder, Container container);
+
+    }
+
+    public interface IBindableVector3 : IBindable<Vector3, NoOptions, Vector3MotionAdapter>
+    {
+    }
+
+    public interface IAddTo
+    {
+        MotionHandle AddTo(MotionHandle motionHandler, Container container);
+    }
+
+    [Serializable]
+    public sealed class AddToTransform : IAddTo
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private TransformResolver targetResolver;
+
+        public MotionHandle AddTo(MotionHandle motionHandler, Container container)
+        {
+            return motionHandler.AddTo(targetResolver.Resolve(container));
+        }
+    }
+
+    [Serializable]
+    public abstract class BindToTransform : IBindableVector3
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        protected TransformResolver targetResolver;
+
+        public abstract MotionHandle Bind(MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, Container container);
+    }
+
+    [Serializable]
+    public abstract class BindToRectTransform : IBindableVector3
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        protected RectTransformResolver targetResolver;
+
+        public abstract MotionHandle Bind(MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, Container container);
+    }
+
+    [Serializable]
+    public sealed class BindToTransformPosition : BindToTransform
+    {
+        public override MotionHandle Bind(MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, Container container)
+        {
+            return motionBuilder.BindToPosition(targetResolver.Resolve(container));
+        }
+    }
+
+    [Serializable]
+    public sealed class BindToRectTransformPosition3D : BindToRectTransform
+    {
+        public override MotionHandle Bind(MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, Container container)
+        {
+            return motionBuilder.BindToAnchoredPosition3D(targetResolver.Resolve(container));
+        }
+    }
+
+    [Serializable]
+    public abstract class LMotion<TParameters, TValueResolver, TValue, TOptions, TAdapter, TBindable, TAddTo> : Sequence
+        where TParameters : Parameters<TValueResolver, TValue, TOptions, TAdapter>
+        where TValueResolver : IResolver<TValue>
+        where TValue : unmanaged
+        where TOptions : unmanaged, IMotionOptions
+        where TAdapter : unmanaged, IMotionAdapter<TValue, TOptions>
+        where TBindable : IBindable<TValue, TOptions, TAdapter>
+        where TAddTo : IAddTo
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private TParameters parameters;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private TBindable bindTo;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private TAddTo addTo;
+
+        public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
+        {
+            var motionBuilder = parameters.Build(container);
+            var motionHandler = bindTo.Bind(motionBuilder, container);
+            if (addTo != null)
+            {
+                motionHandler = addTo.AddTo(motionHandler, container);
+            }
+            return motionHandler
+                .ToUniTask(cancellationToken: cancellationToken);
+        }
+    }
+
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Motion Vector3")]
+#endif
+    [Serializable]
+    public sealed class LMotionVector3 : LMotion<Vector3Parameters, Vector3Resolver, Vector3, NoOptions, Vector3MotionAdapter, IBindableVector3, IAddTo>
     {
     }
 

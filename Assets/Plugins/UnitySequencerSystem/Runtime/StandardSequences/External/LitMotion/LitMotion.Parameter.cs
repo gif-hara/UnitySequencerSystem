@@ -19,54 +19,54 @@ namespace UnitySequencerSystem.LitMotion
         [SubclassSelector]
 #endif
         [SerializeReference]
-        public TValueResolver fromResolver;
+        protected TValueResolver fromResolver;
 
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
         [SerializeReference]
-        public TValueResolver toResolver;
+        protected TValueResolver toResolver;
 
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
         [SerializeReference]
-        public FloatResolver durationResolver;
+        protected FloatResolver durationResolver;
 
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
         [SerializeReference]
-        public FloatResolver delayResolver;
+        protected FloatResolver delayResolver;
 
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
         [SerializeReference]
-        public IntResolver loopCountResolver;
+        protected IntResolver loopCountResolver;
 
         [SerializeField]
-        private LoopType loopType;
+        protected LoopType loopType;
 
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
 #endif
         [SerializeReference]
-        public MotionSchedulerResolver motionSchedulerResolver;
+        protected MotionSchedulerResolver motionSchedulerResolver;
 
         [SerializeField]
-        public Ease ease;
+        protected Ease ease;
 
         [SerializeField]
-        private AnimationCurve customAnimationCurve;
+        protected AnimationCurve customAnimationCurve;
 
-        public MotionBuilder<TValue, TOptions, TAdapter> Build(Container container)
+        public virtual MotionBuilder<TValue, TOptions, TAdapter> Build(Container container)
         {
             var result = LMotion.Create<TValue, TOptions, TAdapter>(
-                    fromResolver.Resolve(container),
-                    toResolver.Resolve(container),
-                    durationResolver.Resolve(container)
-                    );
+                fromResolver.Resolve(container),
+                toResolver.Resolve(container),
+                durationResolver.Resolve(container)
+                );
             if (ease == Ease.CustomAnimationCurve)
             {
                 result = result.WithEase(customAnimationCurve);
@@ -120,6 +120,55 @@ namespace UnitySequencerSystem.LitMotion
     [Serializable]
     public sealed class FloatShakeParameters : Parameters<FloatResolver, float, ShakeOptions, FloatShakeMotionAdapter>
     {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private IntResolver frequencyResolver;
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private FloatResolver dampingResolver;
+
+        public override MotionBuilder<float, ShakeOptions, FloatShakeMotionAdapter> Build(Container container)
+        {
+            var result = LMotion.Shake.Create(
+                fromResolver.Resolve(container),
+                toResolver.Resolve(container),
+                durationResolver.Resolve(container)
+            );
+            if (ease == Ease.CustomAnimationCurve)
+            {
+                result = result.WithEase(customAnimationCurve);
+            }
+            else
+            {
+                result = result.WithEase(ease);
+            }
+            if (delayResolver != null)
+            {
+                result = result.WithDelay(delayResolver.Resolve(container));
+            }
+            if (loopCountResolver != null)
+            {
+                result = result.WithLoops(loopCountResolver.Resolve(container), loopType);
+            }
+            if (motionSchedulerResolver != null)
+            {
+                result = result.WithScheduler(motionSchedulerResolver.Resolve(container));
+            }
+            if (frequencyResolver != null)
+            {
+                result = result.WithFrequency(frequencyResolver.Resolve(container));
+            }
+            if (dampingResolver != null)
+            {
+                result = result.WithDampingRatio(dampingResolver.Resolve(container));
+            }
+            return result;
+        }
     }
 }
 #endif

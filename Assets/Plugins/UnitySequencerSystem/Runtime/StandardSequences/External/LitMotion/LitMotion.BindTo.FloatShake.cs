@@ -8,7 +8,7 @@ using UnitySequencerSystem.Resolvers;
 
 namespace UnitySequencerSystem.LitMotion
 {
-    public class BindToShake
+    public class BindToFloatShake
     {
         public interface IBindToFloatShake : IBindTo<float, ShakeOptions, FloatShakeMotionAdapter>
         {
@@ -32,6 +32,24 @@ namespace UnitySequencerSystem.LitMotion
             public override MotionHandle BindTo(MotionBuilder<float, ShakeOptions, FloatShakeMotionAdapter> motionBuilder, Container container)
             {
                 return motionBuilder.BindToEulerAnglesX(targetResolver.Resolve(container));
+            }
+        }
+
+        [Serializable]
+        public sealed class TransformEulerAnglesY : TransformShakeFloat
+        {
+            public override MotionHandle BindTo(MotionBuilder<float, ShakeOptions, FloatShakeMotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToEulerAnglesY(targetResolver.Resolve(container));
+            }
+        }
+
+        [Serializable]
+        public sealed class TransformEulerAnglesZ : TransformShakeFloat
+        {
+            public override MotionHandle BindTo(MotionBuilder<float, ShakeOptions, FloatShakeMotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToEulerAnglesZ(targetResolver.Resolve(container));
             }
         }
     }

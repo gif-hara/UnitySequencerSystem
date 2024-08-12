@@ -87,7 +87,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Motion Shake Float")]
 #endif
     [Serializable]
-    public sealed class MotionShakeFloat : Motion<FloatShakeParameters, FloatResolver, float, ShakeOptions, FloatShakeMotionAdapter, BindToShake.IBindToFloatShake, IAddTo>
+    public sealed class MotionShakeFloat : Motion<FloatShakeParameters, FloatResolver, float, ShakeOptions, FloatShakeMotionAdapter, BindToFloatShake.IBindToFloatShake, IAddTo>
     {
     }
 }

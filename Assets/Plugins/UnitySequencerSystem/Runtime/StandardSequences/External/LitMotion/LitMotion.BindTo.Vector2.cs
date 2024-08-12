@@ -8,346 +8,349 @@ using UnitySequencerSystem.Resolvers;
 
 namespace UnitySequencerSystem.LitMotion
 {
-    public interface IBindToVector2 : IBindTo<Vector2, NoOptions, Vector2MotionAdapter>
+    public class BindToVector2
     {
-    }
+        public interface IBindTo : IBindTo<Vector2, NoOptions, Vector2MotionAdapter>
+        {
+        }
 
-    [Serializable]
-    public abstract class BindToTransformVector2 : IBindToVector2
-    {
+        [Serializable]
+        public abstract class BindToTransformVector2 : IBindTo
+        {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
+            [SubclassSelector]
 #endif
-        [SerializeReference]
-        protected TransformResolver targetResolver;
+            [SerializeReference]
+            protected TransformResolver targetResolver;
 
-        public abstract MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container);
-    }
+            public abstract MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container);
+        }
 
-    [Serializable]
-    public abstract class BindToRectTransformVector2 : IBindToVector2
-    {
+        [Serializable]
+        public abstract class BindToRectTransformVector2 : IBindTo
+        {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
+            [SubclassSelector]
 #endif
-        [SerializeReference]
-        protected RectTransformResolver targetResolver;
+            [SerializeReference]
+            protected RectTransformResolver targetResolver;
 
-        public abstract MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container);
-    }
-
-    [Serializable]
-    public sealed class BindToTransformEulerAngleXY : BindToTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
-        {
-            return motionBuilder.BindToEulerAnglesXY(targetResolver.Resolve(container));
+            public abstract MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container);
         }
-    }
 
-    [Serializable]
-    public sealed class BindToTransformEulerAngleXZ : BindToTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class TransformEulerAngleXY : BindToTransformVector2
         {
-            return motionBuilder.BindToEulerAnglesXZ(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToEulerAnglesXY(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToTransformEulerAngleYZ : BindToTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class TransformEulerAngleXZ : BindToTransformVector2
         {
-            return motionBuilder.BindToEulerAnglesYZ(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToEulerAnglesXZ(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToTransformLocalEulerAnglesXY : BindToTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class TransformEulerAngleYZ : BindToTransformVector2
         {
-            return motionBuilder.BindToLocalEulerAnglesXY(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToEulerAnglesYZ(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToTransformLocalEulerAnglesXZ : BindToTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class TransformLocalEulerAnglesXY : BindToTransformVector2
         {
-            return motionBuilder.BindToLocalEulerAnglesXZ(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToLocalEulerAnglesXY(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToTransformLocalEulerAnglesYZ : BindToTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class TransformLocalEulerAnglesXZ : BindToTransformVector2
         {
-            return motionBuilder.BindToLocalEulerAnglesYZ(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToLocalEulerAnglesXZ(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToTransformLocalPositionXY : BindToTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class TransformLocalEulerAnglesYZ : BindToTransformVector2
         {
-            return motionBuilder.BindToLocalPositionXY(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToLocalEulerAnglesYZ(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToTransformLocalPositionXZ : BindToTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class TransformLocalPositionXY : BindToTransformVector2
         {
-            return motionBuilder.BindToLocalPositionXZ(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToLocalPositionXY(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToTransformLocalPositionYZ : BindToTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class TransformLocalPositionXZ : BindToTransformVector2
         {
-            return motionBuilder.BindToLocalPositionYZ(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToLocalPositionXZ(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToTransformLocalScaleXY : BindToTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class TransformLocalPositionYZ : BindToTransformVector2
         {
-            return motionBuilder.BindToLocalScaleXY(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToLocalPositionYZ(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToTransformLocalScaleXZ : BindToTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class TransformLocalScaleXY : BindToTransformVector2
         {
-            return motionBuilder.BindToLocalScaleXZ(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToLocalScaleXY(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToTransformLocalScaleYZ : BindToTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class TransformLocalScaleXZ : BindToTransformVector2
         {
-            return motionBuilder.BindToLocalScaleYZ(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToLocalScaleXZ(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToTransformPositionXY : BindToTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class TransformLocalScaleYZ : BindToTransformVector2
         {
-            return motionBuilder.BindToPositionXY(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToLocalScaleYZ(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToTransformPositionXZ : BindToTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class TransformPositionXY : BindToTransformVector2
         {
-            return motionBuilder.BindToPositionXZ(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToPositionXY(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToTransformPositionYZ : BindToTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class TransformPositionXZ : BindToTransformVector2
         {
-            return motionBuilder.BindToPositionYZ(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToPositionXZ(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToRectTransformAnchoredPosition : BindToRectTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class TransformPositionYZ : BindToTransformVector2
         {
-            return motionBuilder.BindToAnchoredPosition(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToPositionYZ(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToRectTransformAnchorMax : BindToRectTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class RectTransformAnchoredPosition : BindToRectTransformVector2
         {
-            return motionBuilder.BindToAnchorMax(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToAnchoredPosition(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToRectTransformAnchorMin : BindToRectTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class RectTransformAnchorMax : BindToRectTransformVector2
         {
-            return motionBuilder.BindToAnchorMin(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToAnchorMax(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToRectTransformEulerAnglesXY : BindToRectTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class RectTransformAnchorMin : BindToRectTransformVector2
         {
-            return motionBuilder.BindToEulerAnglesXY(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToAnchorMin(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToRectTransformEulerAnglesXZ : BindToRectTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class RectTransformEulerAnglesXY : BindToRectTransformVector2
         {
-            return motionBuilder.BindToEulerAnglesXZ(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToEulerAnglesXY(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToRectTransformEulerAnglesYZ : BindToRectTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class RectTransformEulerAnglesXZ : BindToRectTransformVector2
         {
-            return motionBuilder.BindToEulerAnglesYZ(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToEulerAnglesXZ(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToRectTransformLocalEulerAnglesXY : BindToRectTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class RectTransformEulerAnglesYZ : BindToRectTransformVector2
         {
-            return motionBuilder.BindToLocalEulerAnglesXY(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToEulerAnglesYZ(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToRectTransformLocalEulerAnglesXZ : BindToRectTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class RectTransformLocalEulerAnglesXY : BindToRectTransformVector2
         {
-            return motionBuilder.BindToLocalEulerAnglesXZ(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToLocalEulerAnglesXY(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToRectTransformLocalEulerAnglesYZ : BindToRectTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class RectTransformLocalEulerAnglesXZ : BindToRectTransformVector2
         {
-            return motionBuilder.BindToLocalEulerAnglesYZ(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToLocalEulerAnglesXZ(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToRectTransformLocalPositionXY : BindToRectTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class RectTransformLocalEulerAnglesYZ : BindToRectTransformVector2
         {
-            return motionBuilder.BindToLocalPositionXY(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToLocalEulerAnglesYZ(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToRectTransformLocalPositionXZ : BindToRectTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class RectTransformLocalPositionXY : BindToRectTransformVector2
         {
-            return motionBuilder.BindToLocalPositionXZ(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToLocalPositionXY(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToRectTransformLocalPositionYZ : BindToRectTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class RectTransformLocalPositionXZ : BindToRectTransformVector2
         {
-            return motionBuilder.BindToLocalPositionYZ(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToLocalPositionXZ(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToRectTransformLocalScaleXY : BindToRectTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class RectTransformLocalPositionYZ : BindToRectTransformVector2
         {
-            return motionBuilder.BindToLocalScaleXY(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToLocalPositionYZ(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToRectTransformLocalScaleXZ : BindToRectTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class RectTransformLocalScaleXY : BindToRectTransformVector2
         {
-            return motionBuilder.BindToLocalScaleXZ(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToLocalScaleXY(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToRectTransformLocalScaleYZ : BindToRectTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class RectTransformLocalScaleXZ : BindToRectTransformVector2
         {
-            return motionBuilder.BindToLocalScaleYZ(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToLocalScaleXZ(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToRectTransformPivot : BindToRectTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class RectTransformLocalScaleYZ : BindToRectTransformVector2
         {
-            return motionBuilder.BindToPivot(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToLocalScaleYZ(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToRectTransformPositionXY : BindToRectTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class RectTransformPivot : BindToRectTransformVector2
         {
-            return motionBuilder.BindToPositionXY(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToPivot(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToRectTransformPositionXZ : BindToRectTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class RectTransformPositionXY : BindToRectTransformVector2
         {
-            return motionBuilder.BindToPositionXZ(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToPositionXY(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToRectTransformPositionYZ : BindToRectTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class RectTransformPositionXZ : BindToRectTransformVector2
         {
-            return motionBuilder.BindToPositionYZ(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToPositionXZ(targetResolver.Resolve(container));
+            }
         }
-    }
 
-    [Serializable]
-    public sealed class BindToRectTransformSizeDelta : BindToRectTransformVector2
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        [Serializable]
+        public sealed class RectTransformPositionYZ : BindToRectTransformVector2
         {
-            return motionBuilder.BindToSizeDelta(targetResolver.Resolve(container));
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToPositionYZ(targetResolver.Resolve(container));
+            }
+        }
+
+        [Serializable]
+        public sealed class RectTransformSizeDelta : BindToRectTransformVector2
+        {
+            public override MotionHandle BindTo(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToSizeDelta(targetResolver.Resolve(container));
+            }
         }
     }
 }

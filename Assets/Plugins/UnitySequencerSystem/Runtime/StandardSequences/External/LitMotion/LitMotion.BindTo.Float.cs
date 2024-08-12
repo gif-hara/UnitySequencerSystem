@@ -10,12 +10,12 @@ namespace UnitySequencerSystem.LitMotion
 {
     public class BindToFloat
     {
-        public interface IBindToFloat : IBindTo<float, NoOptions, FloatMotionAdapter>
+        public interface IBindTo : IBindTo<float, NoOptions, FloatMotionAdapter>
         {
         }
 
         [Serializable]
-        public abstract class BindToTransformFloat : IBindToFloat
+        public abstract class BindToTransformFloat : IBindTo
         {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
             [SubclassSelector]
@@ -27,7 +27,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public abstract class BindToRectTransformFloat : IBindToFloat
+        public abstract class BindToRectTransformFloat : IBindTo
         {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
             [SubclassSelector]
@@ -39,7 +39,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public abstract class BindToCanvasGroupFloat : IBindToFloat
+        public abstract class BindToCanvasGroupFloat : IBindTo
         {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
             [SubclassSelector]
@@ -51,7 +51,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public abstract class BindToAudioMixerFloat : IBindToFloat
+        public abstract class BindToAudioMixerFloat : IBindTo
         {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
             [SubclassSelector]

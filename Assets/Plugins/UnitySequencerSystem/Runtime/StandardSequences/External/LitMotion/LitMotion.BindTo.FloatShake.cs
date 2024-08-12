@@ -10,12 +10,12 @@ namespace UnitySequencerSystem.LitMotion
 {
     public class BindToFloatShake
     {
-        public interface IBindToFloatShake : IBindTo<float, ShakeOptions, FloatShakeMotionAdapter>
+        public interface IBindTo : IBindTo<float, ShakeOptions, FloatShakeMotionAdapter>
         {
         }
 
         [Serializable]
-        public abstract class TransformShakeFloat : IBindToFloatShake
+        public abstract class TransformShakeFloat : IBindTo
         {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
             [SubclassSelector]
@@ -27,7 +27,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public abstract class RectTransformShakeFloat : IBindToFloatShake
+        public abstract class RectTransformShakeFloat : IBindTo
         {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
             [SubclassSelector]

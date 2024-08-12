@@ -55,7 +55,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Motion Vector3")]
 #endif
     [Serializable]
-    public sealed class MotionVector3 : Motion<Vector3Parameters, Vector3Resolver, Vector3, NoOptions, Vector3MotionAdapter, IBindToVector3, IAddTo>
+    public sealed class MotionVector3 : Motion<Vector3Parameters, Vector3Resolver, Vector3, NoOptions, Vector3MotionAdapter, BindToVector3.IBindTo, IAddTo>
     {
     }
 
@@ -63,7 +63,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Motion Vector2")]
 #endif
     [Serializable]
-    public sealed class MotionVector2 : Motion<Vector2Parameters, Vector2Resolver, Vector2, NoOptions, Vector2MotionAdapter, IBindToVector2, IAddTo>
+    public sealed class MotionVector2 : Motion<Vector2Parameters, Vector2Resolver, Vector2, NoOptions, Vector2MotionAdapter, BindToVector2.IBindTo, IAddTo>
     {
     }
 
@@ -71,7 +71,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Motion Quaternion")]
 #endif
     [Serializable]
-    public sealed class MotionQuaternion : Motion<QuaternionParameters, QuaternionResolver, Quaternion, NoOptions, QuaternionMotionAdapter, IBindToQuaternion, IAddTo>
+    public sealed class MotionQuaternion : Motion<QuaternionParameters, QuaternionResolver, Quaternion, NoOptions, QuaternionMotionAdapter, BindToQuaternion.IBindTo, IAddTo>
     {
     }
 
@@ -79,7 +79,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Motion Float")]
 #endif
     [Serializable]
-    public sealed class MotionFloat : Motion<FloatParameters, FloatResolver, float, NoOptions, FloatMotionAdapter, BindToFloat.IBindToFloat, IAddTo>
+    public sealed class MotionFloat : Motion<FloatParameters, FloatResolver, float, NoOptions, FloatMotionAdapter, BindToFloat.IBindTo, IAddTo>
     {
     }
 
@@ -87,7 +87,7 @@ namespace UnitySequencerSystem.LitMotion
     [AddTypeMenu("LitMotion/Motion Shake Float")]
 #endif
     [Serializable]
-    public sealed class MotionShakeFloat : Motion<FloatShakeParameters, FloatResolver, float, ShakeOptions, FloatShakeMotionAdapter, BindToFloatShake.IBindToFloatShake, IAddTo>
+    public sealed class MotionShakeFloat : Motion<FloatShakeParameters, FloatResolver, float, ShakeOptions, FloatShakeMotionAdapter, BindToFloatShake.IBindTo, IAddTo>
     {
     }
 }

@@ -132,6 +132,12 @@ namespace UnitySequencerSystem.LitMotion
         [SerializeReference]
         private FloatResolver dampingResolver;
 
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        private RandomSeedResolver randomSeedResolver;
+
         public override MotionBuilder<float, ShakeOptions, FloatShakeMotionAdapter> Build(Container container)
         {
             var result = LMotion.Shake.Create(
@@ -166,6 +172,10 @@ namespace UnitySequencerSystem.LitMotion
             if (dampingResolver != null)
             {
                 result = result.WithDampingRatio(dampingResolver.Resolve(container));
+            }
+            if (randomSeedResolver != null)
+            {
+                result = result.WithRandomSeed(randomSeedResolver.Resolve(container));
             }
             return result;
         }

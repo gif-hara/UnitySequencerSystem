@@ -163,7 +163,7 @@ namespace UnitySequencerSystem.LitMotion
     }
 
     [Serializable]
-    public abstract class BindToTransform : IBindableVector3
+    public abstract class BindToTransformVector3 : IBindableVector3
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -175,7 +175,7 @@ namespace UnitySequencerSystem.LitMotion
     }
 
     [Serializable]
-    public abstract class BindToRectTransform : IBindableVector3
+    public abstract class BindToRectTransformVector3 : IBindableVector3
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -187,7 +187,7 @@ namespace UnitySequencerSystem.LitMotion
     }
 
     [Serializable]
-    public sealed class BindToTransformPosition : BindToTransform
+    public sealed class BindToTransformPosition : BindToTransformVector3
     {
         public override MotionHandle Bind(MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, Container container)
         {
@@ -196,7 +196,7 @@ namespace UnitySequencerSystem.LitMotion
     }
 
     [Serializable]
-    public sealed class BindToRectTransformPosition3D : BindToRectTransform
+    public sealed class BindToRectTransformPosition3D : BindToRectTransformVector3
     {
         public override MotionHandle Bind(MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, Container container)
         {

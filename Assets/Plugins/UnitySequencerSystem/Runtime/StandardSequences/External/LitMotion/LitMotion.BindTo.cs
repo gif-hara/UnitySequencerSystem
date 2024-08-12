@@ -28,5 +28,9 @@ namespace UnitySequencerSystem.LitMotion
     public interface IBindToRect : IBindTo<Rect, NoOptions, RectMotionAdapter>
     {
     }
+
+    public interface IBindToFloat : IBindTo<float, NoOptions, FloatMotionAdapter>
+    {
+    }
 }
 #endif

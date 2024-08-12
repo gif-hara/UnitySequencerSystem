@@ -24,5 +24,9 @@ namespace UnitySequencerSystem.LitMotion
     public interface IBindToQuaternion : IBindTo<Quaternion, NoOptions, QuaternionMotionAdapter>
     {
     }
+
+    public interface IBindToRect : IBindTo<Rect, NoOptions, RectMotionAdapter>
+    {
+    }
 }
 #endif

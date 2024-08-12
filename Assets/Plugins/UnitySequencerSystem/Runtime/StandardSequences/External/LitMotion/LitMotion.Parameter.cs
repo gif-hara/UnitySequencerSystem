@@ -116,5 +116,10 @@ namespace UnitySequencerSystem.LitMotion
     public sealed class ColorParameters : Parameters<ColorResolver, Color, NoOptions, ColorMotionAdapter>
     {
     }
+
+    [Serializable]
+    public sealed class FloatShakeParameters : Parameters<FloatResolver, float, ShakeOptions, FloatShakeMotionAdapter>
+    {
+    }
 }
 #endif

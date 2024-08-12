@@ -21,6 +21,18 @@ namespace UnitySequencerSystem.LitMotion
     }
 
     [Serializable]
+    public abstract class BindToTransformQuaternion : IBindToQuaternion
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        protected TransformResolver targetResolver;
+
+        public abstract MotionHandle Bind(MotionBuilder<Quaternion, NoOptions, QuaternionMotionAdapter> motionBuilder, Container container);
+    }
+
+    [Serializable]
     public sealed class BindToTransformEulerAngles : BindToTransformVector3
     {
         public override MotionHandle Bind(MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, Container container)
@@ -62,6 +74,24 @@ namespace UnitySequencerSystem.LitMotion
         public override MotionHandle Bind(MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, Container container)
         {
             return motionBuilder.BindToPosition(targetResolver.Resolve(container));
+        }
+    }
+
+    [Serializable]
+    public sealed class BindToTransformLocalRotation : BindToTransformQuaternion
+    {
+        public override MotionHandle Bind(MotionBuilder<Quaternion, NoOptions, QuaternionMotionAdapter> motionBuilder, Container container)
+        {
+            return motionBuilder.BindToLocalRotation(targetResolver.Resolve(container));
+        }
+    }
+
+    [Serializable]
+    public sealed class BindToTransformRotation : BindToTransformQuaternion
+    {
+        public override MotionHandle Bind(MotionBuilder<Quaternion, NoOptions, QuaternionMotionAdapter> motionBuilder, Container container)
+        {
+            return motionBuilder.BindToRotation(targetResolver.Resolve(container));
         }
     }
 }

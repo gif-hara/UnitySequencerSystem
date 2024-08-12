@@ -273,15 +273,6 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class RectTransformLocalEulerAnglesZ : RectTransformShakeFloat
-        {
-            public override MotionHandle BindTo(MotionBuilder<float, ShakeOptions, FloatShakeMotionAdapter> motionBuilder, Container container)
-            {
-                return motionBuilder.BindToLocalPositionX(targetResolver.Resolve(container));
-            }
-        }
-
-        [Serializable]
         public sealed class RectTransformLocalPositionX : RectTransformShakeFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, ShakeOptions, FloatShakeMotionAdapter> motionBuilder, Container container)

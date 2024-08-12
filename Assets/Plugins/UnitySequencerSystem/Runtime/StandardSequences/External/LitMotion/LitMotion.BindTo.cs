@@ -10,7 +10,7 @@ namespace UnitySequencerSystem.LitMotion
         where TOptions : unmanaged, IMotionOptions
         where TAdapter : unmanaged, IMotionAdapter<TValue, TOptions>
     {
-        MotionHandle Bind(MotionBuilder<TValue, TOptions, TAdapter> motionBuilder, Container container);
+        MotionHandle BindTo(MotionBuilder<TValue, TOptions, TAdapter> motionBuilder, Container container);
     }
 
     public interface IBindToVector3 : IBindTo<Vector3, NoOptions, Vector3MotionAdapter>

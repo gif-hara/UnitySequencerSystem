@@ -40,7 +40,7 @@ namespace UnitySequencerSystem.LitMotion
         public override UniTask PlayAsync(Container container, CancellationToken cancellationToken)
         {
             var motionBuilder = parameters.Build(container);
-            var motionHandler = bindTo.Bind(motionBuilder, container);
+            var motionHandler = bindTo.BindTo(motionBuilder, container);
             if (addTo != null)
             {
                 motionHandler = addTo.AddTo(motionHandler, container);

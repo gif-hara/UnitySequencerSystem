@@ -13,10 +13,6 @@ namespace UnitySequencerSystem.LitMotion
         MotionHandle BindTo(MotionBuilder<TValue, TOptions, TAdapter> motionBuilder, Container container);
     }
 
-    public interface IBindToVector3 : IBindTo<Vector3, NoOptions, Vector3MotionAdapter>
-    {
-    }
-
     public interface IBindToQuaternion : IBindTo<Quaternion, NoOptions, QuaternionMotionAdapter>
     {
     }

@@ -9,18 +9,6 @@ using UnitySequencerSystem.Resolvers;
 namespace UnitySequencerSystem.LitMotion
 {
     [Serializable]
-    public abstract class BindToTransformVector3 : IBindToVector3
-    {
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-        [SubclassSelector]
-#endif
-        [SerializeReference]
-        protected TransformResolver targetResolver;
-
-        public abstract MotionHandle BindTo(MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, Container container);
-    }
-
-    [Serializable]
     public abstract class BindToTransformQuaternion : IBindToQuaternion
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
@@ -30,51 +18,6 @@ namespace UnitySequencerSystem.LitMotion
         protected TransformResolver targetResolver;
 
         public abstract MotionHandle BindTo(MotionBuilder<Quaternion, NoOptions, QuaternionMotionAdapter> motionBuilder, Container container);
-    }
-
-    [Serializable]
-    public sealed class BindToTransformEulerAngles : BindToTransformVector3
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, Container container)
-        {
-            return motionBuilder.BindToEulerAngles(targetResolver.Resolve(container));
-        }
-    }
-
-    [Serializable]
-    public sealed class BindToTransformLocalEulerAngles : BindToTransformVector3
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, Container container)
-        {
-            return motionBuilder.BindToLocalEulerAngles(targetResolver.Resolve(container));
-        }
-    }
-
-    [Serializable]
-    public sealed class BindToTransformLocalPosition : BindToTransformVector3
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, Container container)
-        {
-            return motionBuilder.BindToLocalPosition(targetResolver.Resolve(container));
-        }
-    }
-
-    [Serializable]
-    public sealed class BindToTransformLocalScale : BindToTransformVector3
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, Container container)
-        {
-            return motionBuilder.BindToLocalScale(targetResolver.Resolve(container));
-        }
-    }
-
-    [Serializable]
-    public sealed class BindToTransformPosition : BindToTransformVector3
-    {
-        public override MotionHandle BindTo(MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, Container container)
-        {
-            return motionBuilder.BindToPosition(targetResolver.Resolve(container));
-        }
     }
 
     [Serializable]

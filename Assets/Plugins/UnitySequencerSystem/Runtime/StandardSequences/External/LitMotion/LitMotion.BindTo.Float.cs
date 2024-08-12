@@ -63,7 +63,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToTransformEulerAnglesX : BindToTransformFloat
+        public sealed class TransformEulerAnglesX : BindToTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -72,7 +72,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToTransformEulerAnglesY : BindToTransformFloat
+        public sealed class TransformEulerAnglesY : BindToTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -81,7 +81,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToTransformEulerAnglesZ : BindToTransformFloat
+        public sealed class TransformEulerAnglesZ : BindToTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -90,7 +90,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToTransformLocalEulerAnglesX : BindToTransformFloat
+        public sealed class TransformLocalEulerAnglesX : BindToTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -99,7 +99,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToTransformLocalEulerAnglesY : BindToTransformFloat
+        public sealed class TransformLocalEulerAnglesY : BindToTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -108,7 +108,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToTransformLocalEulerAnglesZ : BindToTransformFloat
+        public sealed class TransformLocalEulerAnglesZ : BindToTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -117,7 +117,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToTransformLocalPositionX : BindToTransformFloat
+        public sealed class TransformLocalPositionX : BindToTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -126,7 +126,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToTransformLocalPositionY : BindToTransformFloat
+        public sealed class TransformLocalPositionY : BindToTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -135,7 +135,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToTransformLocalPositionZ : BindToTransformFloat
+        public sealed class TransformLocalPositionZ : BindToTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -144,7 +144,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToTransformLocalScaleX : BindToTransformFloat
+        public sealed class TransformLocalScaleX : BindToTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -153,7 +153,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToTransformLocalScaleY : BindToTransformFloat
+        public sealed class TransformLocalScaleY : BindToTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -162,7 +162,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToTransformLocalScaleZ : BindToTransformFloat
+        public sealed class TransformLocalScaleZ : BindToTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -171,7 +171,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToTransformPositionX : BindToTransformFloat
+        public sealed class TransformPositionX : BindToTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -180,7 +180,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToTransformPositionY : BindToTransformFloat
+        public sealed class TransformPositionY : BindToTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -189,7 +189,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToTransformPositionZ : BindToTransformFloat
+        public sealed class TransformPositionZ : BindToTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -198,7 +198,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToRectTransformAnchoredPosition3DX : BindToRectTransformFloat
+        public sealed class RectTransformAnchoredPosition3DX : BindToRectTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -207,7 +207,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToRectTransformAnchoredPosition3DY : BindToRectTransformFloat
+        public sealed class RectTransformAnchoredPosition3DY : BindToRectTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -216,7 +216,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToRectTransformAnchoredPosition3DZ : BindToRectTransformFloat
+        public sealed class RectTransformAnchoredPosition3DZ : BindToRectTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -225,7 +225,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToRectTransformAnchoredPositionX : BindToRectTransformFloat
+        public sealed class RectTransformAnchoredPositionX : BindToRectTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -234,7 +234,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToRectTransformAnchoredPositionY : BindToRectTransformFloat
+        public sealed class RectTransformAnchoredPositionY : BindToRectTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -243,7 +243,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToRectTransformEulerAnglesX : BindToRectTransformFloat
+        public sealed class RectTransformEulerAnglesX : BindToRectTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -252,7 +252,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToRectTransformEulerAnglesY : BindToRectTransformFloat
+        public sealed class RectTransformEulerAnglesY : BindToRectTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -261,7 +261,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToRectTransformEulerAnglesZ : BindToRectTransformFloat
+        public sealed class RectTransformEulerAnglesZ : BindToRectTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -270,7 +270,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToRectTransformLocalEulerAnglesX : BindToRectTransformFloat
+        public sealed class RectTransformLocalEulerAnglesX : BindToRectTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -279,7 +279,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToRectTransformLocalEulerAnglesY : BindToRectTransformFloat
+        public sealed class RectTransformLocalEulerAnglesY : BindToRectTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -288,7 +288,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToRectTransformLocalEulerAnglesZ : BindToRectTransformFloat
+        public sealed class RectTransformLocalEulerAnglesZ : BindToRectTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -297,7 +297,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToRectTransformLocalPositionX : BindToRectTransformFloat
+        public sealed class RectTransformLocalPositionX : BindToRectTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -306,7 +306,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToRectTransformLocalPositionY : BindToRectTransformFloat
+        public sealed class RectTransformLocalPositionY : BindToRectTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -315,7 +315,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToRectTransformLocalPositionZ : BindToRectTransformFloat
+        public sealed class RectTransformLocalPositionZ : BindToRectTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -324,7 +324,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToRectTransformLocalScaleX : BindToRectTransformFloat
+        public sealed class RectTransformLocalScaleX : BindToRectTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -333,7 +333,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToRectTransformLocalScaleY : BindToRectTransformFloat
+        public sealed class RectTransformLocalScaleY : BindToRectTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -342,7 +342,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToRectTransformLocalScaleZ : BindToRectTransformFloat
+        public sealed class RectTransformLocalScaleZ : BindToRectTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -351,7 +351,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToRectTransformPositionX : BindToRectTransformFloat
+        public sealed class RectTransformPositionX : BindToRectTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -360,7 +360,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToRectTransformPositionY : BindToRectTransformFloat
+        public sealed class RectTransformPositionY : BindToRectTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
@@ -369,7 +369,7 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
-        public sealed class BindToRectTransformPositionZ : BindToRectTransformFloat
+        public sealed class RectTransformPositionZ : BindToRectTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {

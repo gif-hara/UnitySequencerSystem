@@ -66,5 +66,21 @@ namespace UnitySequencerSystem.LitMotion
     public sealed class MotionVector2 : Motion<Vector2Parameters, Vector2Resolver, Vector2, NoOptions, Vector2MotionAdapter, IBindToVector2, IAddTo>
     {
     }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Motion Quaternion")]
+#endif
+    [Serializable]
+    public sealed class MotionQuaternion : Motion<QuaternionParameters, QuaternionResolver, Quaternion, NoOptions, QuaternionMotionAdapter, IBindToQuaternion, IAddTo>
+    {
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Motion Float")]
+#endif
+    [Serializable]
+    public sealed class MotionFloat : Motion<FloatParameters, FloatResolver, float, NoOptions, FloatMotionAdapter, IBindToFloat, IAddTo>
+    {
+    }
 }
 #endif

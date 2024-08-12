@@ -1405,37 +1405,5 @@ namespace UnitySequencerSystem.LitMotion
 #endif
         }
     }
-
-#if USS_SUPPORT_SUB_CLASS_SELECTOR
-    [AddTypeMenu("LitMotion/Bind To CanvasGroup Alpha")]
-#endif
-    [Serializable]
-    public sealed class BindToCanvasGroupAlpha : BindTo<CanvasGroupResolver, CanvasGroup, FloatParameters>
-    {
-        public BindToCanvasGroupAlpha()
-        {
-        }
-
-        public BindToCanvasGroupAlpha(CanvasGroupResolver targetResolver, FloatParameters parameters)
-            : base(targetResolver, parameters)
-        {
-        }
-
-#if USS_SUPPORT_UNITASK
-        public override async UniTask PlayAsync(Container container, CancellationToken cancellationToken)
-#else
-        public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
-#endif
-        {
-            var target = this.targetResolver.Resolve(container);
-            var motion = parameters.Build(container);
-            await motion
-                .BindToCanvasGroupAlpha(target)
-                .AddTo(target)
-                .ToUniTask(cancellationToken: cancellationToken);
-#else
-            await MainThreadDispatcher.Instance.RunCoroutineAsTask(motion.BindToCanvasGroupAlpha(target).ToYieldInteraction());
-#endif
-        }
-    }
 }
+#endif

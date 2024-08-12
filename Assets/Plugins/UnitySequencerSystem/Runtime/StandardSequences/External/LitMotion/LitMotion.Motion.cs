@@ -84,10 +84,26 @@ namespace UnitySequencerSystem.LitMotion
     }
 
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
-    [AddTypeMenu("LitMotion/Motion Shake Float")]
+    [AddTypeMenu("LitMotion/Motion Float Shake")]
 #endif
     [Serializable]
-    public sealed class MotionShakeFloat : Motion<FloatShakeParameters, FloatResolver, float, ShakeOptions, FloatShakeMotionAdapter, BindToFloatShake.IBindTo, IAddTo>
+    public sealed class MotionFloatShake : Motion<FloatShakeParameters, FloatResolver, float, ShakeOptions, FloatShakeMotionAdapter, BindToFloatShake.IBindTo, IAddTo>
+    {
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Motion Vector2 Shake")]
+#endif
+    [Serializable]
+    public sealed class MotionVector2Shake : Motion<Vector2ShakeParameters, Vector2Resolver, Vector2, ShakeOptions, Vector2ShakeMotionAdapter, BindToVector2Shake.IBindTo, IAddTo>
+    {
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Motion Vector3 Shake")]
+#endif
+    [Serializable]
+    public sealed class MotionVector3Shake : Motion<Vector3ShakeParameters, Vector3Resolver, Vector3, ShakeOptions, Vector3ShakeMotionAdapter, BindToVector3Shake.IBindTo, IAddTo>
     {
     }
 }

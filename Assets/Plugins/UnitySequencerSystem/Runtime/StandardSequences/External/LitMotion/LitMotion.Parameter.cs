@@ -118,7 +118,10 @@ namespace UnitySequencerSystem.LitMotion
     }
 
     [Serializable]
-    public sealed class FloatShakeParameters : Parameters<FloatResolver, float, ShakeOptions, FloatShakeMotionAdapter>
+    public abstract class ShakeParameters<TValueResolver, TValue, TAdapter> : Parameters<TValueResolver, TValue, ShakeOptions, TAdapter>
+        where TValueResolver : IResolver<TValue>
+        where TValue : unmanaged
+        where TAdapter : unmanaged, IMotionAdapter<TValue, ShakeOptions>
     {
 #if USS_SUPPORT_SUB_CLASS_SELECTOR
         [SubclassSelector]
@@ -138,13 +141,9 @@ namespace UnitySequencerSystem.LitMotion
         [SerializeReference]
         private RandomSeedResolver randomSeedResolver;
 
-        public override MotionBuilder<float, ShakeOptions, FloatShakeMotionAdapter> Build(Container container)
+        public override MotionBuilder<TValue, ShakeOptions, TAdapter> Build(Container container)
         {
-            var result = LMotion.Shake.Create(
-                fromResolver.Resolve(container),
-                toResolver.Resolve(container),
-                durationResolver.Resolve(container)
-            );
+            var result = CreateShakeBuilder(container);
             if (ease == Ease.CustomAnimationCurve)
             {
                 result = result.WithEase(customAnimationCurve);
@@ -178,6 +177,47 @@ namespace UnitySequencerSystem.LitMotion
                 result = result.WithRandomSeed(randomSeedResolver.Resolve(container));
             }
             return result;
+        }
+
+        protected abstract MotionBuilder<TValue, ShakeOptions, TAdapter> CreateShakeBuilder(Container container);
+    }
+
+    [Serializable]
+    public sealed class FloatShakeParameters : ShakeParameters<FloatResolver, float, FloatShakeMotionAdapter>
+    {
+        protected override MotionBuilder<float, ShakeOptions, FloatShakeMotionAdapter> CreateShakeBuilder(Container container)
+        {
+            return LMotion.Shake.Create(
+                fromResolver.Resolve(container),
+                toResolver.Resolve(container),
+                durationResolver.Resolve(container)
+            );
+        }
+    }
+
+    [Serializable]
+    public sealed class Vector2ShakeParameters : ShakeParameters<Vector2Resolver, Vector2, Vector2ShakeMotionAdapter>
+    {
+        protected override MotionBuilder<Vector2, ShakeOptions, Vector2ShakeMotionAdapter> CreateShakeBuilder(Container container)
+        {
+            return LMotion.Shake.Create(
+                fromResolver.Resolve(container),
+                toResolver.Resolve(container),
+                durationResolver.Resolve(container)
+            );
+        }
+    }
+
+    [Serializable]
+    public sealed class Vector3ShakeParameters : ShakeParameters<Vector3Resolver, Vector3, Vector3ShakeMotionAdapter>
+    {
+        protected override MotionBuilder<Vector3, ShakeOptions, Vector3ShakeMotionAdapter> CreateShakeBuilder(Container container)
+        {
+            return LMotion.Shake.Create(
+                fromResolver.Resolve(container),
+                toResolver.Resolve(container),
+                durationResolver.Resolve(container)
+            );
         }
     }
 }

@@ -184,6 +184,51 @@ namespace UnitySequencerSystem.LitMotion
     }
 
     [Serializable]
+    public sealed class BindToRectTransformAnchoredPosition3DX : BindToRectTransformFloat
+    {
+        public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
+        {
+            return motionBuilder.BindToAnchoredPosition3DX(targetResolver.Resolve(container));
+        }
+    }
+
+    [Serializable]
+    public sealed class BindToRectTransformAnchoredPosition3DY : BindToRectTransformFloat
+    {
+        public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
+        {
+            return motionBuilder.BindToAnchoredPosition3DY(targetResolver.Resolve(container));
+        }
+    }
+
+    [Serializable]
+    public sealed class BindToRectTransformAnchoredPosition3DZ : BindToRectTransformFloat
+    {
+        public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
+        {
+            return motionBuilder.BindToAnchoredPosition3DZ(targetResolver.Resolve(container));
+        }
+    }
+
+    [Serializable]
+    public sealed class BindToRectTransformAnchoredPositionX : BindToRectTransformFloat
+    {
+        public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
+        {
+            return motionBuilder.BindToAnchoredPositionX(targetResolver.Resolve(container));
+        }
+    }
+
+    [Serializable]
+    public sealed class BindToRectTransformAnchoredPositionY : BindToRectTransformFloat
+    {
+        public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
+        {
+            return motionBuilder.BindToAnchoredPositionY(targetResolver.Resolve(container));
+        }
+    }
+
+    [Serializable]
     public sealed class BindToRectTransformEulerAnglesX : BindToRectTransformFloat
     {
         public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)

@@ -142,6 +142,10 @@ namespace UnitySequencerSystem.LitMotion
     {
     }
 
+    public interface IBindableVector2 : IBindable<Vector2, NoOptions, Vector2MotionAdapter>
+    {
+    }
+
     public interface IAddTo
     {
         MotionHandle AddTo(MotionHandle motionHandler, Container container);
@@ -187,6 +191,18 @@ namespace UnitySequencerSystem.LitMotion
     }
 
     [Serializable]
+    public abstract class BindToRectTransformVector2 : IBindableVector2
+    {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [SubclassSelector]
+#endif
+        [SerializeReference]
+        protected RectTransformResolver targetResolver;
+
+        public abstract MotionHandle Bind(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container);
+    }
+
+    [Serializable]
     public sealed class BindToTransformPosition : BindToTransformVector3
     {
         public override MotionHandle Bind(MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, Container container)
@@ -201,6 +217,15 @@ namespace UnitySequencerSystem.LitMotion
         public override MotionHandle Bind(MotionBuilder<Vector3, NoOptions, Vector3MotionAdapter> motionBuilder, Container container)
         {
             return motionBuilder.BindToAnchoredPosition3D(targetResolver.Resolve(container));
+        }
+    }
+
+    [Serializable]
+    public sealed class BindToRectTransformAnchoredPosition : BindToRectTransformVector2
+    {
+        public override MotionHandle Bind(MotionBuilder<Vector2, NoOptions, Vector2MotionAdapter> motionBuilder, Container container)
+        {
+            return motionBuilder.BindToAnchoredPosition(targetResolver.Resolve(container));
         }
     }
 
@@ -251,6 +276,14 @@ namespace UnitySequencerSystem.LitMotion
 #endif
     [Serializable]
     public sealed class LMotionVector3 : LMotion<Vector3Parameters, Vector3Resolver, Vector3, NoOptions, Vector3MotionAdapter, IBindableVector3, IAddTo>
+    {
+    }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+    [AddTypeMenu("LitMotion/Motion Vector2")]
+#endif
+    [Serializable]
+    public sealed class LMotionVector2 : LMotion<Vector2Parameters, Vector2Resolver, Vector2, NoOptions, Vector2MotionAdapter, IBindableVector2, IAddTo>
     {
     }
 

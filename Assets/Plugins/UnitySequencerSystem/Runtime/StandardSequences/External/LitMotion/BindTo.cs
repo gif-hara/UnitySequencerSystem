@@ -2,11 +2,9 @@
 using System;
 using System.Threading;
 using UnitySequencerSystem.Resolvers;
-using UnitySequencerSystem.Resolvers.LitMotion;
 using LitMotion;
 using LitMotion.Extensions;
 using UnityEngine;
-using LitMotion.Adapters;
 using UnityEngine.UI;
 
 

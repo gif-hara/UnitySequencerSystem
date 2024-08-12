@@ -20,5 +20,9 @@ namespace UnitySequencerSystem.LitMotion
     public interface IBindToVector2 : IBindTo<Vector2, NoOptions, Vector2MotionAdapter>
     {
     }
+
+    public interface IBindToQuaternion : IBindTo<Quaternion, NoOptions, QuaternionMotionAdapter>
+    {
+    }
 }
 #endif

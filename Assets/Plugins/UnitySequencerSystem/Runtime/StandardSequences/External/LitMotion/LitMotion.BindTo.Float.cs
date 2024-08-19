@@ -63,6 +63,18 @@ namespace UnitySequencerSystem.LitMotion
         }
 
         [Serializable]
+        public abstract class BindToMaterialFloat : IBindTo
+        {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+            [SubclassSelector]
+#endif
+            [SerializeReference]
+            protected MaterialResolver targetResolver;
+
+            public abstract MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container);
+        }
+
+        [Serializable]
         public sealed class TransformEulerAnglesX : BindToTransformFloat
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
@@ -398,6 +410,21 @@ namespace UnitySequencerSystem.LitMotion
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
                 return motionBuilder.BindToAudioMixerFloat(targetResolver.Resolve(container), nameResolver.Resolve(container));
+            }
+        }
+
+        [Serializable]
+        public sealed class BindToMaterialValue : BindToMaterialFloat
+        {
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+            [SubclassSelector]
+#endif
+            [SerializeReference]
+            private StringResolver nameResolver;
+
+            public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
+            {
+                return motionBuilder.BindToMaterialFloat(targetResolver.Resolve(container), nameResolver.Resolve(container));
             }
         }
     }

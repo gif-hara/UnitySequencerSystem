@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnitySequencerSystem.Resolvers;
+
 
 #if USS_SUPPORT_UNITASK
 using Cysharp.Threading.Tasks;
@@ -26,15 +28,15 @@ namespace UnitySequencerSystem.StandardSequences
         [SubclassSelector]
 #endif
         [SerializeReference]
-        private List<Sequence> sequences;
+        private SequencesResolver sequencesResolver;
 
         public WhenAny()
         {
         }
 
-        public WhenAny(List<Sequence> sequences)
+        public WhenAny(SequencesResolver sequencesResolver)
         {
-            this.sequences = sequences;
+            this.sequencesResolver = sequencesResolver;
         }
 
 #if USS_SUPPORT_UNITASK
@@ -43,6 +45,7 @@ namespace UnitySequencerSystem.StandardSequences
         public override async Task PlayAsync(Container container, CancellationToken cancellationToken)
 #endif
         {
+            var sequences = sequencesResolver.Resolve(container);
 #if USS_SUPPORT_UNITASK
             await UniTask.WhenAny(sequences.Select(s => s.PlayAsync(container, cancellationToken)));
 #else

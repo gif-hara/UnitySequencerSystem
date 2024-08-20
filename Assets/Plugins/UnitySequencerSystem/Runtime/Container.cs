@@ -69,12 +69,12 @@ namespace UnitySequencerSystem
         {
             return this.data.ContainsKey(typeof(T));
         }
-        
+
         public bool Contains<T>(string name)
         {
             return this.namedData.ContainsKey(typeof(T)) && this.namedData[typeof(T)].ContainsKey(name);
         }
-        
+
         public bool TryResolve<T>(out T value)
         {
             if (this.data.TryGetValue(typeof(T), out var obj))
@@ -85,7 +85,7 @@ namespace UnitySequencerSystem
             value = default;
             return false;
         }
-        
+
         public bool TryResolve<T>(string name, out T value)
         {
             if (this.namedData.TryGetValue(typeof(T), out var x) && x.TryGetValue(name, out var obj))
@@ -95,6 +95,19 @@ namespace UnitySequencerSystem
             }
             value = default;
             return false;
+        }
+
+        public void Remove<T>()
+        {
+            this.data.Remove(typeof(T));
+        }
+
+        public void Remove<T>(string name)
+        {
+            if (this.namedData.TryGetValue(typeof(T), out var namedData))
+            {
+                namedData.Remove(name);
+            }
         }
 
         public override string ToString()

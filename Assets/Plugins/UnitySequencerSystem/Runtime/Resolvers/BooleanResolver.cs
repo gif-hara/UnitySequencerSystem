@@ -54,5 +54,29 @@ namespace UnitySequencerSystem.Resolvers
                 return container.Resolve<bool>(name);
             }
         }
+
+#if USS_SUPPORT_SUB_CLASS_SELECTOR
+        [AddTypeMenu("Func")]
+#endif
+        [Serializable]
+        public sealed class FuncBoolean : BooleanResolver
+        {
+            [SerializeField]
+            private string name;
+
+            public FuncBoolean()
+            {
+            }
+
+            public FuncBoolean(string name)
+            {
+                this.name = name;
+            }
+
+            public override bool Resolve(Container container)
+            {
+                return container.Resolve<Func<bool>>(name).Invoke();
+            }
+        }
     }
 }

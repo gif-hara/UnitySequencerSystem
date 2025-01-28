@@ -394,7 +394,7 @@ namespace UnitySequencerSystem.LitMotion
         {
             public override MotionHandle BindTo(MotionBuilder<float, NoOptions, FloatMotionAdapter> motionBuilder, Container container)
             {
-                return motionBuilder.BindToCanvasGroupAlpha(targetResolver.Resolve(container));
+                return motionBuilder.BindToAlpha(targetResolver.Resolve(container));
             }
         }
 

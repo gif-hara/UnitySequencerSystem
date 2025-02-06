@@ -1,0 +1,11 @@
+/Users/hkitahara/Documents/UnityProjects/UnitySequencerSystem/ResolverProject/bin/Release/netstandard2.0/ResolverProject.deps.json
+/Users/hkitahara/Documents/UnityProjects/UnitySequencerSystem/ResolverProject/bin/Release/netstandard2.0/ResolverProject.dll
+/Users/hkitahara/Documents/UnityProjects/UnitySequencerSystem/ResolverProject/bin/Release/netstandard2.0/ResolverProject.pdb
+/Users/hkitahara/Documents/UnityProjects/UnitySequencerSystem/ResolverProject/obj/Release/netstandard2.0/ResolverProject.csproj.AssemblyReference.cache
+/Users/hkitahara/Documents/UnityProjects/UnitySequencerSystem/ResolverProject/obj/Release/netstandard2.0/ResolverProject.GeneratedMSBuildEditorConfig.editorconfig
+/Users/hkitahara/Documents/UnityProjects/UnitySequencerSystem/ResolverProject/obj/Release/netstandard2.0/ResolverProject.AssemblyInfoInputs.cache
+/Users/hkitahara/Documents/UnityProjects/UnitySequencerSystem/ResolverProject/obj/Release/netstandard2.0/ResolverProject.AssemblyInfo.cs
+/Users/hkitahara/Documents/UnityProjects/UnitySequencerSystem/ResolverProject/obj/Release/netstandard2.0/ResolverProject.csproj.CoreCompileInputs.cache
+/Users/hkitahara/Documents/UnityProjects/UnitySequencerSystem/ResolverProject/obj/Release/netstandard2.0/ResolverProject.sourcelink.json
+/Users/hkitahara/Documents/UnityProjects/UnitySequencerSystem/ResolverProject/obj/Release/netstandard2.0/ResolverProject.dll
+/Users/hkitahara/Documents/UnityProjects/UnitySequencerSystem/ResolverProject/obj/Release/netstandard2.0/ResolverProject.pdb
